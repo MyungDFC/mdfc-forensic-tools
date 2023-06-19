@@ -1,18 +1,18 @@
 {
-  "name": "electron-flask",
-  "version": "1.2.0",
-  "description": "",
+  "name": "fcm-desktop",
+  "version": "1.0.0",
+  "description": "ForensicCaseManager(FCM) Desktop Application",
   "main": "renderer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
     "package": "node package_python.js && npm run -s package-electron && npm run -s package-cleanup",
     "package-electron": "electron-builder --publish=never",
-    "package-cleanup": "rm -rf build && rm -rf run_app.spec && rm -rf dist-python"
+    "package-cleanup": "rmdir build /s /q && rmdir dist-python /s /q && del run_app.spec"
   },
   "build": {
-    "appId": "com.electron-flask.my-app",
-    "productName": "ElectronFlask",
+    "appId": "com.fcm-desktop.my-app",
+    "productName": "FCM Desktop",
     "asar": false,
     "asarUnpack": [
       "**/*.node"
@@ -35,8 +35,16 @@
       }
     ]
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name" : "Changjoon Park",
+    "email" : "sisyphus9402@gmail.com",
+    "url" : "https://github.com/changjoon-park"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/changjoon-park/fcm-desktop.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "ps-tree": "^1.2.0"
   },
