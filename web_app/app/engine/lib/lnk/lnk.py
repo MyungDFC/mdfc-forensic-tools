@@ -1,10 +1,10 @@
 import os.path
 from ctypes import sizeof, c_char_p, c_uint32, c_ushort, c_ubyte, c_short, cast, POINTER, LittleEndianStructure
 
-from engine.lib.delphi import ExtractFileName, ExtractFilePath
-from engine.lib.datetime import FILETIME, FileTime, filetime_to_datetime
-from engine.lib.sysutil import TDataAccess
-from engine.lib.lnk.const import *
+from app.engine.lib.delphi import ExtractFileName, ExtractFilePath
+from app.engine.lib.datetime import FILETIME, FileTime, filetime_to_datetime
+from app.engine.lib.sysutil import TDataAccess
+from app.engine.lib.lnk.const import *
 
 
 

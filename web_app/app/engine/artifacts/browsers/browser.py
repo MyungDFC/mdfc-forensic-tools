@@ -5,8 +5,8 @@ from dissect.sql.sqlite3 import SQLite3
 from dissect.sql.exceptions import Error as SQLError
 from dissect.target.helpers.record import TargetRecordDescriptor
 
-from engine.util.extractor import extract_basename, extract_fileext
-from engine.forensic_artifact import ForensicArtifact
+from app.engine.util.extractor import extract_basename, extract_fileext
+from app.engine.forensic_artifact import ForensicArtifact
 
 BrowserHistoryRecord = TargetRecordDescriptor(
     "browser/history/urls",

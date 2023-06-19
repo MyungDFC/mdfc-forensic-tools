@@ -1,11 +1,11 @@
 from typing import BinaryIO
-import os.path
 from ctypes import c_char, c_uint16, c_uint32, c_uint64, c_ubyte, LittleEndianStructure
-from engine.lib.olefile import olefile
-from engine.lib.sysutil import TDataAccess
-from engine.lib.lnk.const import *
-from engine.lib.lnk.lnk import TLNKFileParser
-from engine.lib.delphi import (
+
+from app.engine.lib.olefile import olefile
+from app.engine.lib.sysutil import TDataAccess
+from app.engine.lib.lnk.const import *
+from app.engine.lib.lnk.lnk import TLNKFileParser
+from app.engine.lib.delphi import (
     ExtractFileName, 
     ExtractFilePath, 
     ExtractFileExt, 

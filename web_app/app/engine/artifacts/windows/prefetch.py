@@ -6,8 +6,8 @@ from flow.record.fieldtypes import uri
 from dissect import cstruct
 from dissect.target.helpers.record import TargetRecordDescriptor
 
-from engine.util.lzxpress_huffman import LZXpressHuffman
-from engine.forensic_artifact import ForensicArtifact
+from app.engine.util.lzxpress_huffman import LZXpressHuffman
+from app.engine.forensic_artifact import ForensicArtifact
 
 
 PrefetchRecord = TargetRecordDescriptor(

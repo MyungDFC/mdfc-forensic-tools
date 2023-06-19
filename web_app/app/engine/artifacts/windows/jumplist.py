@@ -5,9 +5,9 @@ from typing import Generator
 from dissect.target.helpers.descriptor_extensions import UserRecordDescriptorExtension
 from dissect.target.helpers.record import create_extended_descriptor
 
-from engine.lib.jumplist.app_id_list import app_id_list
-from engine.lib.jumplist.jumplist import TJumpListParser
-from engine.forensic_artifact import ForensicArtifact
+from app.engine.lib.jumplist.app_id_list import app_id_list
+from app.engine.lib.jumplist.jumplist import TJumpListParser
+from app.engine.forensic_artifact import ForensicArtifact
 
 
 JumpListRecord = create_extended_descriptor([UserRecordDescriptorExtension])(

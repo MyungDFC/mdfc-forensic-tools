@@ -1,6 +1,6 @@
 import json
 
-from engine.artifacts.browsers.browser import ChromiumBrowser
+from app.engine.artifacts.browsers.browser import ChromiumBrowser
 
 
 class Chrome(ChromiumBrowser):

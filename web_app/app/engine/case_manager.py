@@ -1,8 +1,8 @@
 import argparse
 from dataclasses import dataclass, field
 
-from engine.plugins import PLUGINS
-from engine.forensic_artifact import ForensicArtifact
+from app.engine.plugins import PLUGINS
+from app.engine.forensic_artifact import ForensicArtifact
 
 
 @dataclass(kw_only=True)

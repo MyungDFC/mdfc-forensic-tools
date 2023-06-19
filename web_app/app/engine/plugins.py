@@ -1,11 +1,11 @@
 from collections import namedtuple
 
-from engine.artifacts.windows.recyclebin import RecycleBin
-from engine.artifacts.windows.prefetch import Prefetch
-from engine.artifacts.windows.jumplist import JumpList
-from engine.artifacts.windows.eventlog import ForensicEvent
-from engine.artifacts.browsers.chrome import Chrome
-from engine.artifacts.browsers.edge import Edge
+from app.engine.artifacts.windows.recyclebin import RecycleBin
+from app.engine.artifacts.windows.prefetch import Prefetch
+from app.engine.artifacts.windows.jumplist import JumpList
+from app.engine.artifacts.windows.eventlog import ForensicEvent
+from app.engine.artifacts.browsers.chrome import Chrome
+from app.engine.artifacts.browsers.edge import Edge
 
 
 Plugin = namedtuple("Plugin", ["artifact", "category"])

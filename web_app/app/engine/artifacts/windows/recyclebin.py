@@ -8,7 +8,7 @@ from dissect import cstruct
 from flow.record.fieldtypes import uri
 from dissect.target.helpers.record import TargetRecordDescriptor
 
-from engine.forensic_artifact import ForensicArtifact
+from app.engine.forensic_artifact import ForensicArtifact
 
 
 RecycleBinRecord = TargetRecordDescriptor(

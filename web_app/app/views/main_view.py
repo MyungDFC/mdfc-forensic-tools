@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 from werkzeug.utils import redirect
-from engine.case_manager import CaseManager
+from app.engine.case_manager import CaseManager
 
 bp = Blueprint("main", __name__, url_prefix="/")
 

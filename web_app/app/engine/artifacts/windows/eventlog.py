@@ -4,7 +4,7 @@ from typing import Generator
 from dissect.eventlog.evtx import Evtx
 from dissect.target.helpers.record import TargetRecordDescriptor
 
-from engine.forensic_artifact import ForensicArtifact
+from app.engine.forensic_artifact import ForensicArtifact
 
 
 LogonEventRecord = TargetRecordDescriptor(

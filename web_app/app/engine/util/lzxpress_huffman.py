@@ -2,7 +2,7 @@ import io
 import struct
 from typing import BinaryIO
 
-from engine.lib import \
+from app.engine.lib import \
     compressors as comp  # https://github.com/coderforlife/ms-compress/blob/master/test/compressors.py
 
 
