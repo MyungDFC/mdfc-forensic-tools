@@ -12,8 +12,8 @@ def index():
         # "Edge",
         # "RecycleBin",
         # "Prefetch",
-        "JumpList",
-        # "LogonEvent",
+        # "JumpList",
+        "LogonEvent",
         # "USB(EventLog)",
         # "WLAN",
     ]
