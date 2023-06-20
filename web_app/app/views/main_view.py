@@ -11,10 +11,10 @@ def index():
         # "Chrome",
         # "Edge",
         # "RecycleBin",
-        "Prefetch",
-        # "JumpList",
+        # "Prefetch",
+        "JumpList",
         # "LogonEvent",
-        "USB(EventLog)",
+        # "USB(EventLog)",
         # "WLAN",
     ]
     cm = CaseManager(_artifacts=artifacts)
@@ -53,16 +53,18 @@ def index():
                     artifact_name=artifact_name,
                     records=records,
                 )
-            # elif forensic_artifact.artifact == "JumpList":
-            #     return render_template(
-            #         "page/results/table_jumplist.html",
-            #         forensic_artifact=forensic_artifact
-            #     )
-            # elif forensic_artifact.artifact == "LogonEvent":
-            #     return render_template(
-            #         "page/results/table_logonevent.html",
-            #         forensic_artifact=forensic_artifact
-            #     )
+            elif forensic_artifact.artifact == "JumpList":
+                return render_template(
+                    "page/results/table_jumplist.html",
+                    artifact_name=artifact_name,
+                    records=records,
+                )
+            elif forensic_artifact.artifact == "LogonEvent":
+                return render_template(
+                    "page/results/table_logonevent.html",
+                    artifact_name=artifact_name,
+                    records=records,
+                )
             elif forensic_artifact.artifact == "USB(EventLog)":
                 return render_template(
                     "page/results/table_usb.html",

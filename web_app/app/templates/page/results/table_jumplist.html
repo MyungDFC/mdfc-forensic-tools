@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>마지막 열람시간</th>
+                <th>파일 이름</th>
+                <th>확장자</th>
+                <th>파일 크기(byte)</th>
+                <th>볼륨 이름</th>
+                <th>볼륨 일련번호</th>
+                <th>경로</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <th>{{ loop.index }}</th>
+                    <td>{{ record["last_opened"] }}</td>
+                    <td>{{ record["file_name"] }}</td>
+                    <td>{{ record["file_ext"] }}</td>
+                    <td>{{ record["size"] }}</td>
+                    <td>{{ record["volume_label"] }}</td>
+                    <td>{{ record["volume_serial_number"] }}</td>
+                    <td>{{ record["path"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
