@@ -4,34 +4,10 @@ from pathlib import Path
 
 from flow.record.fieldtypes import uri
 from dissect import cstruct
-from dissect.target.helpers.record import TargetRecordDescriptor
 
 from app.engine.util.lzxpress_huffman import LZXpressHuffman
 from app.engine.forensic_artifact import ForensicArtifact
 
-
-PrefetchRecord = TargetRecordDescriptor(
-    "filesystem/ntfs/prefetch",
-    [
-        ("datetime", "ts"),
-        ("uri", "filename"),
-        ("uri", "prefetch"),
-        ("uri", "linkedfile"),
-        ("uint32", "runcount"),
-    ],
-)
-
-GroupedPrefetchRecord = TargetRecordDescriptor(
-    "filesystem/ntfs/prefetch",
-    [
-        ("datetime", "ts"),
-        ("uri", "filename"),
-        ("uri", "prefetch"),
-        ("uri[]", "linkedfiles"),
-        ("uint32", "runcount"),
-        ("datetime[]", "previousruns"),
-    ],
-)
 
 c_prefetch = """
     struct PREFETCH_HEADER_DETECT {
@@ -266,7 +242,7 @@ class Prefetch(ForensicArtifact):
             "prefetch": prefetch
         }
         
-    def prefetch(self) -> Generator[GroupedPrefetchRecord, None, None]:
+    def prefetch(self) -> Generator[dict, None, None]:
         for entry in self._iter_entry():
             try:
                 prefetch = PrefetchParser(fh=entry.open("rb"))
@@ -274,13 +250,13 @@ class Prefetch(ForensicArtifact):
                 ts = self.ts.wintimestamp(prefetch.latest_timestamp)
                 previousruns = [self.ts.wintimestamp(ts) for ts in prefetch.previous_timestamps]
 
-                yield GroupedPrefetchRecord(
-                    ts=ts,
-                    filename=filename,
-                    prefetch=entry.name,
-                    linkedfiles=prefetch.metrics,
-                    runcount=prefetch.fn.run_count,
-                    previousruns=previousruns,
-                )
+                yield {
+                    "ts": ts,
+                    "filename": filename,
+                    "prefetch": entry.name,
+                    "linkedfiles": prefetch.metrics,
+                    "runcount": prefetch.fn.run_count,
+                    "previousruns": previousruns,
+                }
             except:
                 pass

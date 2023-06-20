@@ -2,36 +2,10 @@ import os
 import json
 from typing import Generator
 
-from dissect.target.helpers.descriptor_extensions import UserRecordDescriptorExtension
-from dissect.target.helpers.record import create_extended_descriptor
-
 from app.engine.lib.jumplist.app_id_list import app_id_list
 from app.engine.lib.jumplist.jumplist import TJumpListParser
 from app.engine.forensic_artifact import ForensicArtifact
 
-
-JumpListRecord = create_extended_descriptor([UserRecordDescriptorExtension])(
-    "windows/jumplist",
-    [
-        ("datetime", "last_opened"),
-        ("string", "file_name"),
-        ("string", "file_ext"),
-        ("string", "path"),
-        ("string", "size"),
-        # ("string", "target_created"),
-        # ("string", "target_modified"),
-        # ("string", "target_accessed"),
-        ("string", "volume_label"),
-        ("string", "volume_serial_number"),
-        ("string", "drive_type"),
-        ("string", "app_id"),
-        ("string", "app_name"),
-        ("string", "access_count"),
-        ("string", "entry_id"),
-        ("string", "machine_id"),
-        ("string", "mac_address"),
-    ],
-)
 
 class JumpList(ForensicArtifact):
 
@@ -55,14 +29,14 @@ class JumpList(ForensicArtifact):
         """
 
         jumplist = sorted([
-            json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+            json.dumps(record, indent=2, default=str, ensure_ascii=False)
             for record in self.jumplist()], reverse=descending)
    
         self.result = {
             "jumplist": jumplist
         }
 
-    def jumplist(self) -> Generator[JumpListRecord, None, None]:
+    def jumplist(self) -> Generator[dict, None, None]:
         for entry in self._iter_entry():
             try:
                 entry_filename = os.path.split(entry)[1]
@@ -90,24 +64,24 @@ class JumpList(ForensicArtifact):
                     file_name = os.path.splitext(basename)[0]
                     file_ext = os.path.splitext(basename)[1].strip(".")
                                         
-                    yield JumpListRecord(
-                        last_opened=self.ts.to_localtime(record_time),
-                        file_name=str(file_name),
-                        file_ext=file_ext,
-                        path=str(path),
-                        size=str(result[12]),
-                        # target_created=target_created,
-                        # target_modified=target_modified,
-                        # target_accessed=target_accessed,
-                        volume_label=str(result[14]),
-                        volume_serial_number=str(result[15]),
-                        drive_type=str(result[13]),
-                        app_id=str(app_id),
-                        app_name=str(application_name),
-                        access_count=str(result[2]),
-                        entry_id=str(result[3]),
-                        machine_id=str(result[16]),
-                        mac_address=str(result[17]),
-                    )
+                    yield {
+                        "last_opened": self.ts.to_localtime(record_time),
+                        "file_name": str(file_name),
+                        "file_ext": file_ext,
+                        "path": str(path),
+                        "size": str(result[12]),
+                        # "target_created": target_created,
+                        # "target_modified": target_modified,
+                        # "target_accessed": target_accessed,
+                        "volume_label": str(result[14]),
+                        "volume_serial_number": str(result[15]),
+                        "drive_type": str(result[13]),
+                        "app_id": str(app_id),
+                        "app_name": str(application_name),
+                        "access_count": str(result[2]),
+                        "entry_id": str(result[3]),
+                        "machine_id": str(result[16]),
+                        "mac_address": str(result[17]),
+                    }
             except:
                 pass

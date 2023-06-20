@@ -6,22 +6,8 @@ from typing import Generator
 
 from dissect import cstruct
 from flow.record.fieldtypes import uri
-from dissect.target.helpers.record import TargetRecordDescriptor
 
 from app.engine.forensic_artifact import ForensicArtifact
-
-
-RecycleBinRecord = TargetRecordDescriptor(
-    "windows/recyclebin",
-    [
-        ("datetime", "ts"),
-        ("uri", "path"),
-        ("string", "filename"),
-        ("filesize", "filesize"),
-        ("uri", "deleted_path"),
-        ("string", "source"),
-    ],
-)
 
 c_recyclebin_i = """
 struct header_v1 {
@@ -97,27 +83,27 @@ class RecycleBin(ForensicArtifact):
           source (uri): Location of $I meta file on disk
         """
         recyclebin = sorted([
-            json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+            json.dumps(record, indent=2, default=str, ensure_ascii=False)
             for record in self.recyclebin()], reverse=descending)
      
         self.result = {
             "recyclebin": recyclebin
         }
 
-    def recyclebin(self) -> Generator[RecycleBinRecord, None, None]:
+    def recyclebin(self) -> Generator[dict, None, None]:
         for entry in self._iter_entry(recurse=True):
             try:
                 recyclebin = RecycleBinParser(path=entry)
                 path = uri.from_windows(recyclebin.filename.rstrip("\x00"))
                 filename = os.path.split(path)[1]
                 
-                yield RecycleBinRecord(
-                    ts=self.ts.wintimestamp(recyclebin.timestamp),
-                    path=path,
-                    filename=filename,
-                    filesize=recyclebin.file_size,
-                    deleted_path=uri.from_windows(recyclebin.deleted_path),
-                    source=uri.from_windows(recyclebin.source_path),
-                )
+                yield {
+                    "ts": self.ts.wintimestamp(recyclebin.timestamp),
+                    "path": path,
+                    "filename": filename,
+                    "filesize": recyclebin.file_size,
+                    "deleted_path": uri.from_windows(recyclebin.deleted_path),
+                    "source": uri.from_windows(recyclebin.source_path),
+                }
             except:
                 pass

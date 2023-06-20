@@ -3,63 +3,9 @@ from typing import Generator
 
 from dissect.sql.sqlite3 import SQLite3
 from dissect.sql.exceptions import Error as SQLError
-from dissect.target.helpers.record import TargetRecordDescriptor
 
 from app.engine.util.extractor import extract_basename, extract_fileext
 from app.engine.forensic_artifact import ForensicArtifact
-
-BrowserHistoryRecord = TargetRecordDescriptor(
-    "browser/history/urls",
-    [
-        ("datetime", "ts"),
-        ("string", "title"),
-        ("varint", "visit_type"),
-        ("varint", "visit_count"),
-        ("string", "url"),
-        ("string", "id"),
-        ("string", "hidden"),
-        ("varint", "from_visit"),
-        ("uri", "from_url"),
-        ("string", "browser_type"),
-        ("path", "source"),
-    ]
-)
-
-BrowserDownloadsRecord = TargetRecordDescriptor(
-    "browser/history/downloads",
-    [
-        ("datetime", "ts_start"),
-        ("datetime", "ts_end"),
-        ("string", "file_name"),
-        ("string", "file_extension"),
-        ("filesize", "received_bytes"),
-        ("string", "download_path"),
-        ("uri", "download_url"),
-        ("uri", "download_chain_url"),
-        ("uri", "reference_url"),
-        ("varint", "id"),
-        ("string", "mime_type"),
-        ("string", "state"),
-        ("string", "browser_type"),
-        ("path", "source"),
-    ],
-)
-
-KeywordSearchTermsRecord = TargetRecordDescriptor(
-    "browser/history/keyword_search_terms",
-    [
-        ("datetime", "ts"),
-        ("string", "term"),
-        ("string", "title"),
-        ("string", "search_engine"),
-        ("uri", "url"),
-        ("string", "id"),
-        ("varint", "visit_count"),
-        ("string", "hidden"),
-        ("string", "browser_type"),
-        ("string", "source"),
-    ],
-)
 
 
 class ChromiumBrowser(ForensicArtifact):
@@ -74,7 +20,7 @@ class ChromiumBrowser(ForensicArtifact):
     def parse(self, descending: bool = False) -> None:
         raise NotImplementedError
     
-    def history(self) -> Generator[BrowserHistoryRecord, None, None]:
+    def history(self) -> Generator[dict, None, None]:
         for db_file in self._iter_entry(name="History*"):
             try:
                 db = SQLite3(db_file.open("rb"))
@@ -93,19 +39,19 @@ class ChromiumBrowser(ForensicArtifact):
                             from_visit, from_url = None, None
 
                         if (url := url_record.url).startswith("http"):
-                            yield BrowserHistoryRecord(
-                                ts=self.ts.webkittimestamp(row.visit_time),
-                                id=row.id,
-                                url=url,
-                                title=url_record.title,
-                                visit_type=None,
-                                visit_count=url_record.visit_count,
-                                hidden=url_record.hidden,
-                                from_visit=row.from_visit or None,
-                                from_url=from_url.url if from_url else None,
-                                source=str(db_file),
-                                browser_type=self.browser_type,
-                            )
+                            yield {
+                                "ts": self.ts.webkittimestamp(row.visit_time),
+                                "id": row.id,
+                                "url": url,
+                                "title": url_record.title,
+                                "visit_type": None,
+                                "visit_count": url_record.visit_count,
+                                "hidden": url_record.hidden,
+                                "from_visit": row.from_visit or None,
+                                "from_url": from_url.url if from_url else None,
+                                "source": str(db_file),
+                                "browser_type": self.browser_type,
+                            }
                 except SQLError as e:
                     print(f"Error processing history file: {db_file} / exc_info={e}")
                 except:
@@ -114,7 +60,7 @@ class ChromiumBrowser(ForensicArtifact):
                 pass
 
 
-    def downloads(self) -> Generator[BrowserDownloadsRecord, None, None]:
+    def downloads(self) -> Generator[dict, None, None]:
         for db_file in self._iter_entry(name="History*"):
             try:
                 db = SQLite3(db_file.open("rb"))
@@ -141,22 +87,22 @@ class ChromiumBrowser(ForensicArtifact):
                         else:
                             state = "Complete"
 
-                        yield BrowserDownloadsRecord(
-                            ts_start=self.ts.webkittimestamp(row.start_time),
-                            ts_end=self.ts.webkittimestamp(row.end_time) if row.end_time else None,
-                            file_name=file_name,
-                            file_extension=file_extension,
-                            received_bytes=row.get("total_bytes"),
-                            download_path=download_path,
-                            download_url=row.get("tab_url"),
-                            download_chain_url=download_chain_url,
-                            reference_url=row.referrer,
-                            id=row.get("id"),
-                            mime_type = row.get("mime_type"),
-                            state=state,
-                            browser_type=self.browser_type,
-                            source=str(db_file),
-                        )
+                        yield {
+                            "ts_start": self.ts.webkittimestamp(row.start_time),
+                            "ts_end": self.ts.webkittimestamp(row.end_time) if row.end_time else None,
+                            "file_name": file_name,
+                            "file_extension": file_extension,
+                            "received_bytes": row.get("total_bytes"),
+                            "download_path": download_path,
+                            "download_url": row.get("tab_url"),
+                            "download_chain_url": download_chain_url,
+                            "reference_url": row.referrer,
+                            "id": row.get("id"),
+                            "mime_type": row.get("mime_type"),
+                            "state": state,
+                            "browser_type": self.browser_type,
+                            "source": str(db_file),
+                        }
                 except SQLError as e:
                     print(f"Error processing history file: {db_file} / exc_info={e}")
                 except:
@@ -202,18 +148,17 @@ class ChromiumBrowser(ForensicArtifact):
                             if site_url in url:
                                 search_engine = engine_name
 
-                        yield KeywordSearchTermsRecord(
-                            ts=self.ts.webkittimestamp(last_visit_time),
-                            term=term,
-                            title=title,
-                            search_engine=search_engine,
-                            url=url,
-                            id=id,
-                            visit_count=visit_count,
-                            hidden=hidden,
-                            browser_type=self.browser_type,
-                        )
-
+                        yield {
+                            "ts": self.ts.webkittimestamp(last_visit_time),
+                            "term": term,
+                            "title": title,
+                            "search_engine": search_engine,
+                            "url": url,
+                            "id": id,
+                            "visit_count": visit_count,
+                            "hidden": hidden,
+                            "browser_type": self.browser_type,
+                        }
                 except SQLError as e:
                     print(f"Error processing history file: {db_file} / exc_info={e}")
             except:

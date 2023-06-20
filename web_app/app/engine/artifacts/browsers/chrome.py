@@ -14,15 +14,15 @@ class Chrome(ChromiumBrowser):
 
     def parse(self, descending: bool = False) -> None:
         history = sorted([
-                json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+                json.dumps(record, indent=2, default=str, ensure_ascii=False)
                 for record in self.history()], reverse=descending)
 
         downloads = sorted([
-                json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+                json.dumps(record, indent=2, default=str, ensure_ascii=False)
                 for record in self.downloads()], reverse=descending)
         
         keyword_search_terms = sorted([
-                json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+                json.dumps(record, indent=2, default=str, ensure_ascii=False)
                 for record in self.keyword_search_terms()], reverse=descending)
 
         self.result = {
