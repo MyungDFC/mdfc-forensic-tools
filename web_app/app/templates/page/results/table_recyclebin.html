@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>삭제 시간</th>
+                <th>파일 이름</th>
+                <th>확장자</th>
+                <th>파일 크기(byte)</th>
+                <th>삭제되기 이전 경로</th>
+                <th>현재 경로</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <th>{{ loop.index }}</th>
+                    <td>{{ record["ts"] }}</td>
+                    <td>{{ record["filename"] }}</td>
+                    <td>{{ record["fileext"] }}</td>
+                    <td>{{ record["filesize"] }}</td>
+                    <td>{{ record["path"] }}</td>
+                    <td>{{ record["deleted_path"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
