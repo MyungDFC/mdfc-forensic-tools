@@ -96,7 +96,7 @@ class ForensicEvent(ForensicArtifact):
             }
         elif self.artifact == "USB(EventLog)":
             usb_event = sorted([
-                json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+                json.dumps(record, indent=2, default=str, ensure_ascii=False)
                 for record in self.usb_event()], reverse=descending)
 
             self.result = {
@@ -179,7 +179,7 @@ class ForensicEvent(ForensicArtifact):
                 else:
                     continue
                 
-    def usb_event(self) -> Generator[UsbEventRecord, None, None]:
+    def usb_event(self) -> Generator[dict, None, None]:
         SIZE_GB = 1024 * 1024 * 1024
         
         for entry in self._iter_entry(name="Microsoft-Windows-Partition%4Diagnostic.evtx"):
@@ -197,21 +197,25 @@ class ForensicEvent(ForensicArtifact):
                     else:
                         task = "USB Disconnected"
 
-                    yield UsbEventRecord(
-                        ts=self.ts.to_localtime(event.get("TimeCreated_SystemTime").value),
-                        task=task,
-                        event_id=event_id,
-                        event_record_id=event.get("EventRecordID"),
-                        capacity_gb=capacity_gb,
-                        manufacturer=event.get("Manufacturer"),
-                        model=event.get("Model"),
-                        revision=event.get("Revision"),
-                        serialnumber=event.get("SerialNumber"),
-                        mbr=event.get("Mbr"),
-                        parent_id=event.get("ParentId"),
-                        channel=event.get("Channel"),
-                        provider=event.get("Provider_Name"),
-                    )
+                    yield {
+                        "ts": self.ts.to_localtime(event.get("TimeCreated_SystemTime").value),
+                        "task": task,
+                        "event_id": event_id,
+                        "event_record_id": event.get("EventRecordID"),
+                        "capacity_gb": capacity_gb,
+                        "manufacturer": event.get("Manufacturer"),
+                        "model": event.get("Model"),
+                        "revision": event.get("Revision"),
+                        "serialnumber": event.get("SerialNumber"),
+                        "mbr": event.get("Mbr"),
+                        # "vbr0": event.get("Vbr0"),
+                        # "vbr1": event.get("Vbr1"),
+                        # "vbr2": event.get("Vbr2"),
+                        # "vbr3": event.get("Vbr3"),
+                        "parent_id": event.get("ParentId"),
+                        "channel": event.get("Channel"),
+                        "provider": event.get("Provider_Name"),
+                    }
                 else:
                     continue
     

@@ -45,10 +45,17 @@ class ForensicArtifact:
                 yield from dir.glob(entry)
 
     def parse(self, descending: bool = False) -> None:
-        """parse artifact. parsed results update 'self.result' variable.
+        """Parse artifact and update 'self.result' variable.
 
         Args:
             descending (bool, optional)
                 - sort parsed results by descending/ascending order. Defaults to False.
+
+        Returns: None
+
+        # 'json.dumps' returned a string(<class 'str'>).
+        # The JSON string can then be written to a file or
+        # sent over a network connection.
+        # It can be parsed back into a Python object using the 'json.loads()'.
         """
         raise NotImplementedError

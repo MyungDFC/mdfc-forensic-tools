@@ -8,18 +8,18 @@ from app.engine.forensic_artifact import ForensicArtifact
 @dataclass(kw_only=True)
 class CaseManager:
     _artifacts: list = field(default_factory=list)
-    forensic_artifact: ForensicArtifact = field(default_factory=list)
+    forensic_artifacts: ForensicArtifact = field(default_factory=list)
     
     def __post_init__(self):
         for artifact, plugin in PLUGINS.items():
             ForensicArtifact, _ = plugin
             for artifact_entry in self._artifacts:
                 if artifact == artifact_entry:
-                    self.forensic_artifact.append(
+                    self.forensic_artifacts.append(
                         ForensicArtifact(artifact=artifact))
             
     def parse_all(self) -> None:
-        for entry in self.forensic_artifact:
+        for entry in self.forensic_artifacts:
             entry.parse(descending=False)
         
 
@@ -37,4 +37,4 @@ if __name__ == '__main__':
         
     case = CaseManager(_artifacts=artifacts)
     case.parse_all()
-    print(case.forensic_artifact[0].result)
+    print(case.forensic_artifacts[0].result)
