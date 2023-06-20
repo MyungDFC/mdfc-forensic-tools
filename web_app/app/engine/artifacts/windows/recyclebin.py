@@ -12,13 +12,13 @@ from app.engine.forensic_artifact import ForensicArtifact
 c_recyclebin_i = """
 struct header_v1 {
     int64    version;
-    int64    file_size;
+    int64    filesize;
     int64    timestamp;
     wchar    filename[260];
 };
 struct header_v2 {
     int64    version;
-    int64    file_size;
+    int64    filesize;
     int64    timestamp;
     int32    filename_length;
     wchar    filename[filename_length];
@@ -44,7 +44,7 @@ class RecycleBinParser:
         entry = header(data)
         self.timestamp = entry.timestamp
         self.filename = entry.filename
-        self.file_size = entry.file_size
+        self.filesize = entry.filesize
 
     def find_sid(self, path: Path) -> str:
         parent_path = path.parent
@@ -94,16 +94,18 @@ class RecycleBin(ForensicArtifact):
         for entry in self._iter_entry(recurse=True):
             try:
                 recyclebin = RecycleBinParser(path=entry)
-                path = uri.from_windows(recyclebin.filename.rstrip("\x00"))
+                path = uri.from_windows(recyclebin.filename.rstrip("\x00")).replace("/", "\\")
                 filename = os.path.split(path)[1]
+                fileext = os.path.splitext(filename)[1].strip(".")
                 
                 yield {
                     "ts": self.ts.wintimestamp(recyclebin.timestamp),
-                    "path": path,
                     "filename": filename,
-                    "filesize": recyclebin.file_size,
-                    "deleted_path": uri.from_windows(recyclebin.deleted_path),
-                    "source": uri.from_windows(recyclebin.source_path),
+                    "fileext": fileext,
+                    "filesize": recyclebin.filesize,
+                    "deleted_path": uri.from_windows(recyclebin.deleted_path).replace("/", "\\"),
+                    "path": path,
+                    "source": uri.from_windows(recyclebin.source_path).replace("/", "\\"),
                 }
             except:
                 pass

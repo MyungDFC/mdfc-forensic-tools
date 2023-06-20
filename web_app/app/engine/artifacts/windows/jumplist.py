@@ -60,16 +60,15 @@ class JumpList(ForensicArtifact):
                     # target_modified = result[9]
                     # target_accessed = result[10]
                     path = result[6] + result[5]
-                    basename = os.path.basename(path)
-                    file_name = os.path.splitext(basename)[0]
-                    file_ext = os.path.splitext(basename)[1].strip(".")
+                    filename = os.path.split(path)[1]
+                    fileext = os.path.splitext(filename)[1].strip(".")
                                         
                     yield {
                         "last_opened": self.ts.to_localtime(record_time),
-                        "file_name": str(file_name),
-                        "file_ext": file_ext,
+                        "filename": str(filename),
+                        "fileext": fileext,
                         "path": str(path),
-                        "size": str(result[12]),
+                        "filesize": str(result[12]),
                         # "target_created": target_created,
                         # "target_modified": target_modified,
                         # "target_accessed": target_accessed,

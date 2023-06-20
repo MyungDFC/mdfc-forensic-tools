@@ -12,8 +12,8 @@ def index():
         # "Edge",
         # "RecycleBin",
         # "Prefetch",
-        # "JumpList",
-        "LogonEvent",
+        "JumpList",
+        # "LogonEvent",
         # "USB(EventLog)",
         # "WLAN",
     ]
@@ -42,11 +42,12 @@ def index():
             #         artifact_name=artifact_name,
             #         records=records,
             #     )
-            # elif forensic_artifact.artifact == "RecycleBin":
-            #     return render_template(
-            #         "page/results/table_recyclebin.html",
-            #         forensic_artifact=forensic_artifact
-            #     )
+            elif forensic_artifact.artifact == "RecycleBin":
+                return render_template(
+                    "page/results/table_recyclebin.html",
+                    artifact_name=artifact_name,
+                    records=records,
+                )
             elif forensic_artifact.artifact == "Prefetch":
                 return render_template(
                     "page/results/table_prefetch.html",
