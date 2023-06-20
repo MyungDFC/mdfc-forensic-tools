@@ -11,7 +11,7 @@ def index():
         # "Chrome",
         # "Edge",
         # "RecycleBin",
-        # "Prefetch",
+        "Prefetch",
         # "JumpList",
         # "LogonEvent",
         "USB(EventLog)",
@@ -30,12 +30,12 @@ def index():
                 json.loads(record) for record in records
             ]
             
-            # if forensic_artifact.artifact == "Chrome":
-            #     return render_template(
-            #         "page/results/table_chrome.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
+            if forensic_artifact.artifact == "Chrome":
+                return render_template(
+                    "page/results/table_chrome.html",
+                    artifact_name=artifact_name,
+                    records=records,
+                )
             # elif forensic_artifact.artifact == "Edge":
             #     return render_template(
             #         "page/results/table_edge.html",
@@ -47,11 +47,12 @@ def index():
             #         "page/results/table_recyclebin.html",
             #         forensic_artifact=forensic_artifact
             #     )
-            # elif forensic_artifact.artifact == "Prefetch":
-            #     return render_template(
-            #         "page/results/table_prefetch.html",
-            #         forensic_artifact=forensic_artifact
-            #     )
+            elif forensic_artifact.artifact == "Prefetch":
+                return render_template(
+                    "page/results/table_prefetch.html",
+                    artifact_name=artifact_name,
+                    records=records,
+                )
             # elif forensic_artifact.artifact == "JumpList":
             #     return render_template(
             #         "page/results/table_jumplist.html",
@@ -62,7 +63,7 @@ def index():
             #         "page/results/table_logonevent.html",
             #         forensic_artifact=forensic_artifact
             #     )
-            if forensic_artifact.artifact == "USB(EventLog)":
+            elif forensic_artifact.artifact == "USB(EventLog)":
                 return render_template(
                     "page/results/table_usb.html",
                     artifact_name=artifact_name,

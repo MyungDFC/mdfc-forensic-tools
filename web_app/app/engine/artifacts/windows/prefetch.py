@@ -235,7 +235,7 @@ class Prefetch(ForensicArtifact):
         """
 
         prefetch = sorted([
-            json.dumps(record._packdict(), indent=2, default=str, ensure_ascii=False)
+            json.dumps(record, indent=2, default=str, ensure_ascii=False)
             for record in self.prefetch()], reverse=descending)
                
         self.result = {
