@@ -12,10 +12,10 @@ def index():
         # "Edge",
         # "RecycleBin",
         # "Prefetch",
-        "JumpList",
+        # "JumpList",
         # "LogonEvent",
         # "USB(EventLog)",
-        # "WLAN",
+        "WLAN",
     ]
     cm = CaseManager(_artifacts=artifacts)
     cm.parse_all()
@@ -72,8 +72,9 @@ def index():
                     artifact_name=artifact_name,
                     records=records,
                 )
-            # elif forensic_artifact.artifact == "WLAN":
-            #     return render_template(
-            #         "page/results/table_wlan.html",
-            #         forensic_artifact=forensic_artifact
-            #     )
+            elif forensic_artifact.artifact == "WLAN":
+                return render_template(
+                    "page/results/table_wlan.html",
+                    artifact_name=artifact_name,
+                    records=records,
+                )

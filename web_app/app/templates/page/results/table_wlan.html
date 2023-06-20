@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이벤트 시간</th>
+                <th>이벤트 유형</th>
+                <th>프로필 이름</th>
+                <th>SSID</th>
+                <th>인터페이스 GUID</th>
+                <th>인터페이스 설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <th>{{ loop.index }}</th>
+                    <td>{{ record["ts"] }}</td>
+                    <td>{{ record["task"] }}</td>
+                    <td>{{ record["profile_name"] }}</td>
+                    <td>{{ record["ssid"] }}</td>
+                    <td>{{ record["interface_guid"] }}</td>
+                    <td>{{ record["interface_description"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
