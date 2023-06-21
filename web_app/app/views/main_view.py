@@ -6,6 +6,10 @@ from app.engine.case_manager import CaseManager
 bp = Blueprint("main", __name__, url_prefix="/")
 
 @bp.route("/")
+def home():
+    return render_template("page/home/index.html")
+
+@bp.route("/dashboard")
 def index():
     artifacts = [
         # "Chrome",
