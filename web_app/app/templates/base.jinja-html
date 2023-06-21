@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | Electron App</title>
-    <!-- App style -->
-    <link
-      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
-      rel="stylesheet"
-    />
-    <link
-      href="{{ url_for('static', filename='css/index.css') }}"
-      rel="stylesheet"
-    />
+  <!-- App style -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" />
 </head>
-<body>
 
+<body>
   <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
     <!-- Vertical Navbar -->
-    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 py-lg-0 navbar-light bg-light border-end-lg" id="navbarVertical">
+    <nav
+      class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 py-lg-0 navbar-light bg-light border-end-lg"
+      id="navbarVertical">
       <div class="container-fluid">
         <!-- Toggler -->
-        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse"
+          aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
@@ -33,9 +31,12 @@
           <!-- Dropdown -->
           <div class="dropdown">
             <!-- Toggle -->
-            <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
               <div class="avatar-parent-child">
-                <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar- rounded-circle">
+                <img alt="Image Placeholder"
+                  src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                  class="avatar avatar- rounded-circle">
                 <span class="avatar-child avatar-badge bg-success"></span>
               </div>
             </a>
@@ -56,12 +57,17 @@
             <div x-data="{focused: false}" :class="{ 'focused': focused }">
               <div class="input-group input-group-sm">
                 <span class="input-group-text border-end-0 rounded-left-pill" id="basic-addon1">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                    <path fill-rule="evenodd"
+                      d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
                   </svg>
                 </span>
-                <input type="text" class="form-control border-left-0 ps-0 rounded-end-pill" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1" @focus="focused = !focused" @click.away="focused = false">
+                <input type="text" class="form-control border-left-0 ps-0 rounded-end-pill" placeholder="Search"
+                  aria-label="Username" aria-describedby="basic-addon1" @focus="focused = !focused"
+                  @click.away="focused = false">
               </div>
             </div>
           </form>
@@ -69,28 +75,27 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="bi bi-house"></i> Dashboard
+                <i class="bi bi-house"></i> Home
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="bi bi-bar-chart"></i> Analitycs
+                <i class="bi bi-bar-chart"></i> Dashboard
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="bi bi-chat"></i> Messages
-                <span class="badge bg-opacity-30 bg-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">6</span>
+                <i class="bi bi-chat"></i> Blog
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="bi bi-bookmarks"></i> Collections
+                <i class="bi bi-bookmarks"></i> Youtube
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <i class="bi bi-people"></i> Users
+                <i class="bi bi-people"></i> About
               </a>
             </li>
           </ul>
@@ -129,6 +134,7 @@
     </nav>
     <!-- Main content -->
     <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      {% block Header %}
       <!-- Header -->
       <header class="pb-24 bg-dark">
         <div class="container-fluid">
@@ -142,7 +148,8 @@
                     <span class="input-group-text" id="">
                       <i class="bi bi-search me-2"></i>
                     </span>
-                    <input type="email" class="form-control ps-0" placeholder="Search" aria-label="Search" aria-describedby="">
+                    <input type="email" class="form-control ps-0" placeholder="Search" aria-label="Search"
+                      aria-describedby="">
                   </div>
                   <span class="mt-2 valid-feedback">Looks good!</span>
                 </div>
@@ -165,7 +172,8 @@
                 </div>
                 <div>
                   <a href="#" class="avatar avatar-sm bg-warning rounded-circle text-white">
-                    <img alt="..." src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                    <img alt="..."
+                      src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
                   </a>
                 </div>
               </div>
@@ -325,6 +333,8 @@
           </div>
         </div>
       </header>
+      {% endblock Header %}
+      {% block Contnt %}
       <!-- Main content -->
       <main class="py-7">
         <!-- Container -->
@@ -361,7 +371,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Dribbble
                         </a>
@@ -373,7 +384,9 @@
                         <a class="text-current" href="mailto:">Los Angeles</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Robert Fox</a>
                       </td>
@@ -382,7 +395,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -407,7 +421,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Netguru
                         </a>
@@ -419,7 +434,9 @@
                         <a class="text-current" href="mailto:">New York</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Darlene Robertson</a>
                       </td>
@@ -428,7 +445,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -453,7 +471,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Figma
                         </a>
@@ -465,7 +484,9 @@
                         <a class="text-current" href="mailto:">San Francisco</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Theresa Webb</a>
                       </td>
@@ -474,7 +495,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -499,7 +521,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Mailchimp
                         </a>
@@ -511,7 +534,9 @@
                         <a class="text-current" href="mailto:">Bucharest</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Kristin Watson</a>
                       </td>
@@ -520,7 +545,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -545,7 +571,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Webpixels
                         </a>
@@ -557,7 +584,9 @@
                         <a class="text-current" href="mailto:">Cluj</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Cody Fisher</a>
                       </td>
@@ -566,7 +595,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -591,7 +621,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Dribbble
                         </a>
@@ -603,7 +634,9 @@
                         <a class="text-current" href="mailto:">Los Angeles</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Robert Fox</a>
                       </td>
@@ -612,7 +645,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -637,7 +671,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Netguru
                         </a>
@@ -649,7 +684,9 @@
                         <a class="text-current" href="mailto:">New York</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Darlene Robertson</a>
                       </td>
@@ -658,7 +695,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -683,7 +721,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Figma
                         </a>
@@ -695,7 +734,9 @@
                         <a class="text-current" href="mailto:">San Francisco</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Theresa Webb</a>
                       </td>
@@ -704,7 +745,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -729,7 +771,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Mailchimp
                         </a>
@@ -741,7 +784,9 @@
                         <a class="text-current" href="mailto:">Bucharest</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Kristin Watson</a>
                       </td>
@@ -750,7 +795,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -775,7 +821,8 @@
                         </div>
                       </td>
                       <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <a class="text-heading font-semibold" href="#">
                           Webpixels
                         </a>
@@ -787,7 +834,9 @@
                         <a class="text-current" href="mailto:">Cluj</a>
                       </td>
                       <td>
-                        <img alt="..." src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-xs rounded-circle me-2">
+                        <img alt="..."
+                          src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                          class="avatar avatar-xs rounded-circle me-2">
                         <!-- Link -->
                         <a class="text-current" href="#">Cody Fisher</a>
                       </td>
@@ -796,7 +845,8 @@
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
-                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <i class="bi bi-three-dots-vertical"></i>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
@@ -823,6 +873,7 @@
           </div>
         </div>
       </main>
+      {% endblock Contnt %}
     </div>
   </div>
 
@@ -832,4 +883,5 @@
   <!-- App script -->
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </body>
+
 </html>

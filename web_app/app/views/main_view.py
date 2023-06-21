@@ -5,9 +5,15 @@ from app.engine.case_manager import CaseManager
 
 bp = Blueprint("main", __name__, url_prefix="/")
 
+# NOTE: This is the main view of the application.
 @bp.route("/")
 def home():
-    return render_template("page/home/index.html")
+    return render_template("page/home/index.jinja-html")
+    # return render_template("page/home/index.html")
+
+@bp.route("/dashboard")
+def dashboard():
+    return render_template("page/about/index.html")
 
 @bp.route("/dashboard")
 def index():
