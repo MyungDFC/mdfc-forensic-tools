@@ -1,17 +1,181 @@
 {% extends "base.jinja-html" %}
 
+{% block ContentHeader %}
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+    <div class="mb-npx">
+      <div class="row align-items-center">
+        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+          <!-- Title -->
+          <h1 class="h2 mb-0 ls-tight">{{ artifact_name }}</h1>
+        </div>
+        <!-- Actions -->
+        <div class="col-sm-6 col-12 text-sm-end">
+          <div class="mx-n1">
+            <div class="dropdown">
+              <button class="btn btn-sm btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{ artifact_name }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm bg-tertiary rounded-circle text-white">
+                      RF
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="{{ url_for('main.dashboard') }}" class="text-sm text-heading font-semibold mb-0">
+                      USB 연결정보
+                    </a>
+                  </div>
+                </div>
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm rounded-circle">
+                      <img alt="..."
+                        src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="#" class="text-sm text-heading font-semibold mb-0">
+                      타임라인
+                    </a>
+                  </div>
+                </div>
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm rounded-circle">
+                      <img alt="..."
+                        src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="#" class="text-sm text-heading font-semibold mb-0">
+                      Theresa Webb
+                    </a>
+                  </div>
+                </div>
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm bg-success rounded-circle text-white">
+                      KW
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="#" class="text-sm text-heading font-semibold mb-0">
+                      Kristin Watson
+                    </a>
+                  </div>
+                </div>
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm rounded-circle">
+                      <img alt="..."
+                        src="https://images.unsplash.com/photo-1608976328267-e673d3ec06ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="#" class="text-sm text-heading font-semibold mb-0">
+                      Cody Fisher
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Nav -->
+      <ul class="nav nav-tabs mt-4 overflow-x border-0">
+      </ul>
+    </div>
+  </div>
+</header>
+{% endblock ContentHeader %}
+
 {% block ContentMain %}
 <main class="py-6 bg-surface-secondary">
   <div class="container-fluid">
     <!-- Card Stats -->
     {% block CardStates %}
+    <div class="card">
+      <div class="p-2">
+        <a href="#">
+          <img
+            src="https://images.unsplash.com/photo-1611095971113-9f7542655338?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&h=600&q=80"
+            alt="..." class="card-img">
+        </a>
+      </div>
+      <div class="card-body">
+        <!-- Title -->
+        <h5 class="mb-2">Landing Page Redesign</h5>
+        <!-- Text -->
+        <p class="text-sm text-muted mb-3">
+          I need 5 examples of the logo
+        </p>
+        <!-- Actions -->
+        <div class="mx-n1 my-5">
+          <a href="#" class="btn btn-square btn-sm btn-secondary rounded-circle mx-1">
+            <span class="svg-icon">
+              <i class="bi bi-paperclip"></i>
+            </span>
+          </a>
+          <a href="#" class="btn btn-square btn-sm btn-secondary rounded-circle mx-1">
+            <span class="svg-icon">
+              <i class="bi bi-kanban"></i>
+            </span>
+          </a>
+          <a href="#" class="btn btn-square btn-sm btn-secondary rounded-circle mx-1">
+            <span class="svg-icon">
+              <i class="bi bi-check-square"></i>
+            </span>
+          </a>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="mx-n2">
+            <a href="#" class="px-2 text-sm text-muted">
+              <span class="svg-icon svg-align-baseline me-1">
+                <i class="bi bi-chat-square"></i>
+              </span>
+              4 comments
+            </a>
+          </div>
+          <div class="ms-auto me-n2">
+            <a href="#" class="px-2 text-danger">
+              <span class="svg-icon svg-align-baseline me-2">
+                <i class="bi bi-heart-fill"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     {% endblock CardStates %}
 
     <!-- Card Body -->
     <div class="card mb-7">
       <!-- Header -->
-      <div class="card-header">
-        <h5 class="mb-0">Applications</h5>
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+          <!-- Title -->
+          <h3>{{ artifact_name }}</h3>
+          <!-- Button -->
+          <div class="ms-auto">
+            <a href="#" class="btn btn-sm btn-primary ms-auto">
+              Reload
+            </a>
+            <a href="#" class="btn btn-sm btn-neutral ms-2">
+              Export
+            </a>
+            {# <div class="input-group input-group-sm input-group-inline">
+              <span class="input-group-text pe-2">
+                <i class="bi bi-search"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+            </div> #}
+          </div>
+        </div>
       </div>
       <!-- Table -->
       <div class="table-responsive">

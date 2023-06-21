@@ -72,6 +72,7 @@ def dashboard():
                     records=records,
                 )
             elif forensic_artifact.artifact == "USB(EventLog)":
+                artifact_name = "USB 연결정보"  # Convert artifact_name to Korean
                 return render_template(
                     "page/dashboard/table_usb.jinja-html",
                     artifact_name=artifact_name,
