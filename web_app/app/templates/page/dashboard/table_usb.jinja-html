@@ -1,0 +1,70 @@
+{% extends "page/dashboard/base_table.jinja-html" %}
+
+{% block TableHeader %}
+<th scope="col">이벤트 시간</th>
+<th scope="col">이벤트 유형</th>
+<th scope="col">제조사</th>
+<th scope="col">모델명</th>
+<th scope="col">USB 일련번호</th>
+<th scope="col">저장매체 용량(GB)</th>
+{% endblock TableHeader %}
+
+<td>{{ record["serialnumber"] }}</td>
+<td>{{ record["capacity_gb"] }}</td>
+</tr>
+{% block TableBody %}
+{% for record in records %}
+<tr>
+  <td class="text-lg" scope="col">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckRow1">
+      <label class="form-check-label" for="flexCheckRow1"></label>
+    </div>
+  </td>
+  <td>
+    <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
+      class="avatar avatar-xs rounded-circle me-2">
+    <a class="text-heading font-semibold" href="#">
+      {{ record["ts"] }}
+    </a>
+  </td>
+  <td>
+    <span>{{ record["task"] }}</span>
+  </td>
+  <td>
+    <a class="text-current" href="mailto:">{{ record["manufacturer"] }}</a>
+  </td>
+  <td>
+    <img alt="..."
+      src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+      class="avatar avatar-xs rounded-circle me-2">
+    <!-- Link -->
+    <a class="text-current" href="#">{{ record["model"] }}</a>
+  </td>
+  <td>
+    {{ record["serialnumber"] }}
+  </td>
+  <td>
+    {{ record["capacity_gb"] }}
+  </td>
+  <td class="text-end">
+    <div class="dropdown">
+      <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-end">
+        <a href="#!" class="dropdown-item">
+          Action
+        </a>
+        <a href="#!" class="dropdown-item">
+          Another action
+        </a>
+        <a href="#!" class="dropdown-item">
+          Something else here
+        </a>
+      </div>
+    </div>
+  </td>
+</tr>
+{% endfor %}
+{% endblock TableBody %}

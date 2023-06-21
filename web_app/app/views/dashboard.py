@@ -3,15 +3,10 @@ from flask import Blueprint, render_template, url_for
 from werkzeug.utils import redirect
 from app.engine.case_manager import CaseManager
 
-bp = Blueprint("main", __name__, url_prefix="/")
+bp = Blueprint("dashboard", __name__, url_prefix="/dashboard")
 
-# NOTE: This is the main view of the application.
-@bp.route("/")
-def home():
-    return render_template("page/home/index.jinja-html")
-
-@bp.route("/dashboard")
-def dashboard():
+@bp.route("/", methods=["GET"])
+def timeline():
     artifacts = [
         # "Chrome",
         # "Edge",
