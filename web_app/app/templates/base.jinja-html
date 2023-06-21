@@ -181,7 +181,7 @@
         </div>
       </div>
     </nav>
-    <!-- Main content -->
+    <!-- Main Content -->
     {% block Content %}
     <div class="h-screen flex-grow-1 overflow-y-lg-auto">
       <!-- Header -->
