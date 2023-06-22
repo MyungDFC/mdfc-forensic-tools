@@ -1,1 +1,339 @@
 {% extends "base.jinja-html" %}
+
+{% block Content %}
+
+<div class="h-screen flex-grow-1 overflow-y-lg-auto">
+  {# CTA Section #}
+  <div class="py-20 py-lg-32 bg-surface-secondary">
+    <div class="container max-w-screen-xl">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          <!-- Surtitle -->
+          <h5 class="h5 mb-5 text-uppercase text-primary">
+            Get started
+          </h5>
+          <!-- Heading -->
+          <h1 class="ls-tight font-bolder mb-5">
+            Simplify, then find everything.
+          </h1>
+          <!-- Text -->
+          <p class="lead mb-10">
+            Plan, build and launch beautiful and consistent user interfaces for the web that drives meaningful
+            engagement
+            and growth for your brand.
+          </p>
+          <!-- Buttons -->
+          <div class="mx-n2">
+            <a href="{{ url_for('dashboard.process') }}" class="btn btn-lg btn-primary shadow-sm mx-2 px-lg-8">
+              Get started
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {# Milestones Section #}
+  <div class=" pt-16 pb-16">
+    <div class="container max-w-screen-xl">
+      <div class="row mt-5">
+        <div class="col-10 mx-auto">
+          <div class="card-group shadow-5 rounded-4 border-top-3 border-primary overflow-hidden">
+            <div class="card shadow-none border-0">
+              <div class="card-body">
+                <h2 class="font-weight-bold text-center mb-0">
+                  40.000+
+                </h2>
+                <p class="text-center text-muted mb-0">
+                  Firme si PFA-uri
+                </p>
+              </div>
+            </div>
+            <div class="card shadow-none border-0">
+              <div class="card-body">
+                <h2 class="font-weight-bold text-center mb-0">
+                  2.500.000+
+                </h2>
+                <p class="text-center text-muted mb-0">
+                  Facturi emise
+                </p>
+              </div>
+            </div>
+            <div class="card shadow-none border-0">
+              <div class="card-body">
+                <h2 class="font-weight-bold text-center mb-0">
+                  99.99%
+                </h2>
+                <p class="text-center text-muted mb-0">
+                  Uptime server
+                </p>
+              </div>
+            </div>
+            <div class="card shadow-none border-0">
+              <div class="card-body">
+                <h2 class="font-weight-bold text-center mb-0">
+                  97%
+                </h2>
+                <p class="text-center text-muted mb-0">
+                  Clienti fericiti
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {# Features Section #}
+  <div class="py-24">
+    <div class="container">
+      <!-- Section title -->
+      <div class="row justify-content-center text-center mb-20">
+        <div class="col-lg-7">
+          <!-- Surtitle -->
+          <h5 class="h5 mb-5 text-uppercase text-primary">
+            Features
+          </h5>
+          <!-- Heading -->
+          <h1 class="ls-tight font-bolder mb-5">
+            Impressive modules and features
+          </h1>
+          <!-- Text -->
+          <p class="lead text-muted">
+            With this premium component library you will start building modern user interfaces faster and more
+            consistent than ever before.
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-xl-8">
+          <div class="position-relative">
+            <a href="#"
+              class="btn btn-lg btn-square btn-white rounded-circle position-absolute top-1/2 start-1/2 translate-middle overlap-10">
+              <i class="bi bi-play-fill"></i>
+            </a>
+            <img alt="..."
+              src="https://images.unsplash.com/photo-1601342631831-060bc0b274d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+              class="img-fluid rounded-4 shadow-4">
+          </div>
+        </div>
+      </div>
+      <div class="row g-7 text-center mt-20">
+        <div class="col-md-4">
+          <div class="px-lg-5">
+            <!-- Icon -->
+            <div class="icon icon-shape text-base font-semibold bg-primary text-white rounded-circle mb-7">1</div>
+            <!-- Title -->
+            <h4 class="mb-2">Create your account</h4>
+            <!-- Text -->
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="px-lg-5">
+            <!-- Icon -->
+            <div class="icon icon-shape text-base font-semibold bg-warning text-white rounded-circle mb-7">2</div>
+            <!-- Title -->
+            <h4 class="mb-2">Build your website</h4>
+            <!-- Text -->
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="px-lg-5">
+            <!-- Icon -->
+            <div class="icon icon-shape text-base font-semibold bg-dark text-white rounded-circle mb-7">3</div>
+            <!-- Title -->
+            <h4 class="mb-2">Get ready for launch</h4>
+            <!-- Text -->
+            <p>
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {# Testimonials Section: Need to add a semicoln image#}
+  <div class=" pt-24 pb-24">
+    <div class="container max-w-screen-xl">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 text-center">
+          <!-- Quote sign -->
+          <div class="mb-8 text-heading" style='font-size: 60px'>
+            <i class="bi bi-chat-square-quote"></i>
+          </div>
+          <!-- Text -->
+          <p class="text-xl text-heading lh-relaxed">
+            The public is more familiar with bad design than good design. It is, in effect, conditioned to prefer bad
+            design, because that is what it lives with. The new becomes threatening, the old reassuring.
+          </p>
+          <!-- Logo -->
+          <div class="d-inline-block w-32 svg-fluid mt-16 mb-6">
+            <svg width="246" height="70" viewBox="0 0 246 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M44.9474 6.26317C43.9649 3.07019 40.5263 1.35089 37.3333 2.33335C34.1403 3.31581 32.4211 6.7544 33.4035 9.94738L49 57.9649C50.1053 60.9123 53.2982 62.6316 56.3684 61.6491C59.5614 60.6667 61.5263 57.3509 60.5439 54.1579C60.421 54.1579 44.9474 6.26317 44.9474 6.26317Z"
+                fill="#DFA22F" />
+              <path
+                d="M20.7544 14.1228C19.6491 10.9298 16.3333 9.21054 13.1403 10.193C9.94736 11.1755 8.22806 14.6141 9.21052 17.807L24.807 65.8246C25.9123 68.7719 29.1053 70.4912 32.1754 69.5088C35.3684 68.5263 37.3333 65.2105 36.3509 62.0176C36.2281 62.0176 20.7544 14.1228 20.7544 14.1228Z"
+                fill="#3CB187" />
+              <path
+                d="M64.5965 45.9298C67.7895 44.9474 69.5088 41.5088 68.5263 38.3158C67.5438 35.1228 64.1053 33.4035 60.9123 34.386L12.7719 50.1053C9.82456 51.2105 8.10526 54.4035 9.08771 57.4737C10.0702 60.6667 13.386 62.6316 16.5789 61.6491C16.7017 61.5263 64.5965 45.9298 64.5965 45.9298Z"
+                fill="#CE1E5B" />
+              <path
+                d="M22.8422 59.5614C25.9123 58.5789 29.965 57.2281 34.2632 55.8772C33.2808 52.807 31.9299 48.7544 30.579 44.4561L19.158 48.1404L22.8422 59.5614Z"
+                fill="#392538" />
+              <path
+                d="M47.0352 51.7017C51.3334 50.3509 55.386 49 58.4562 48.0175C57.4738 44.9474 56.1229 40.8947 54.772 36.5965L43.351 40.2807L47.0352 51.7017Z"
+                fill="#BB242A" />
+              <path
+                d="M56.7369 21.7368C59.9298 20.7544 61.6491 17.3158 60.6667 14.1228C59.6842 10.9298 56.2456 9.21053 53.0527 10.193L4.91231 25.9123C1.96494 27.0175 0.245638 30.2105 1.22809 33.2807C2.21055 36.4737 5.52634 38.4386 8.71932 37.4561C8.84213 37.3333 56.7369 21.7368 56.7369 21.7368Z"
+                fill="#72C5CD" />
+              <path
+                d="M14.9824 35.3684C18.0526 34.386 22.1052 33.0351 26.4035 31.6842C25.0526 27.386 23.7017 23.3333 22.7193 20.2632L11.2982 23.9474L14.9824 35.3684Z"
+                fill="#238C73" />
+              <path
+                d="M39.1754 27.5088C43.4737 26.1579 47.5263 24.807 50.5965 23.8246C49.2456 19.5263 47.8947 15.4737 46.9123 12.4035L35.4912 16.0877L39.1754 27.5088Z"
+                fill="#62803A" />
+              <path
+                d="M113.228 18.7895C115.316 19.7719 115.561 20.386 113.842 23.5789C112.123 26.7719 111.754 27.0175 109.667 26.1579C107.088 25.0526 103.649 24.193 101.561 24.193C98 24.193 95.6667 25.421 95.6667 27.386C95.6667 33.7719 116.053 30.3333 116.053 43.9649C116.053 50.8421 110.158 55.386 101.439 55.386C96.772 55.386 91.1228 53.7895 87.193 51.8246C85.2281 50.8421 85.1053 50.2281 86.8246 47.0351C88.2983 44.2105 88.7895 43.8421 90.8772 44.7017C94.193 46.1754 98.4913 47.2807 101.316 47.2807C104.509 47.2807 106.719 45.9298 106.719 44.0877C106.719 37.9474 85.965 40.8947 85.965 27.6316C85.965 20.6316 91.7369 15.9649 100.579 15.9649C104.509 15.9649 109.667 17.193 113.228 18.7895Z"
+                fill="#373D40" />
+              <path
+                d="M129.684 2.70175V53.2983C129.684 54.0351 128.825 54.8947 127.719 54.8947H122.439C121.333 54.8947 120.474 54.0351 120.474 53.2983V2.70175C120.474 0.245614 121.211 0 125.14 0C129.439 0 129.684 0.245614 129.684 2.70175Z"
+                fill="#373D40" />
+              <path
+                d="M142.947 43.8421C142.947 46.4211 145.158 48.1404 148.474 48.1404C152.526 48.1404 156.088 46.1754 158.298 42.9825V39.5439C156.21 38.6842 153.632 38.3158 151.298 38.3158C146.263 38.3158 142.947 40.6491 142.947 43.8421ZM167.509 31.193V53.0526C167.509 54.1579 166.649 55.0175 165.544 55.0175H160.263C159.035 55.0175 158.175 54.1579 158.298 52.9298L158.421 50.5965C155.596 53.7895 151.421 55.386 147.368 55.386C139.386 55.386 134.105 50.8421 134.105 43.9649C134.105 36.7193 140.123 31.807 149.21 31.6842C152.649 31.6842 155.719 32.2982 158.298 33.4035V30.9474C158.298 26.8947 155.105 24.5614 149.825 24.5614C147.368 24.5614 144.175 25.5439 141.719 27.0175C139.877 28.1228 139.386 28 137.298 24.9298C135.333 21.8596 135.333 21.2456 137.298 20.0175C140.982 17.6842 146.018 16.0877 150.684 16.0877C161 15.9649 167.509 21.614 167.509 31.193Z"
+                fill="#373D40" />
+              <path
+                d="M203.614 18.9123C205.579 20.0175 205.579 20.6316 203.491 23.9474C201.526 27.0175 201.158 27.2631 199.07 26.1579C197.474 25.2982 194.895 24.5614 192.684 24.5614C186.053 24.5614 181.509 28.9824 181.509 35.614C181.509 42.4912 185.93 47.1579 192.684 47.1579C195.018 47.1579 197.842 46.2982 199.807 45.193C201.772 44.0877 202.14 44.2105 204.228 47.1579C206.07 49.9824 206.07 50.5965 204.351 51.7017C201.404 53.7895 196.614 55.386 192.561 55.386C180.158 55.386 171.93 47.5263 171.93 35.614C171.93 23.8246 180.158 15.9649 192.684 15.9649C196.491 15.9649 200.912 17.3158 203.614 18.9123Z"
+                fill="#373D40" />
+              <path
+                d="M244.018 50.1053C245.614 52.0702 245 52.807 241.07 54.1579C237.14 55.6316 236.649 55.5088 235.175 53.6667L224.123 38.9298L219.211 43.7193V53.2982C219.211 54.0351 218.351 54.8947 217.246 54.8947H211.965C210.86 54.8947 210 54.0351 210 53.2982V2.70175C210 0.245614 210.737 0 214.667 0C219.088 0 219.333 0.368421 219.333 2.70175V31.5614L234.439 17.0702C236.158 15.4737 237.018 15.5965 239.965 17.5614C243.281 19.6491 243.526 20.2632 241.93 21.8596L230.632 32.7895L244.018 50.1053Z"
+                fill="#373D40" />
+            </svg>
+          </div>
+          <!-- Name -->
+          <span class="d-block h5 mb-1">Michal Cayne, CEO</span>
+          <!-- Job title -->
+          <span class="d-block text-sm text-muted mb-5">Graphic Designer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {# Footers Section #}
+  <footer class="py-20">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <img src="https://preview.webpixels.io/web/img/logos/clever-dark.svg" class="h-10" alt="...">
+        </div>
+      </div>
+      <div class="row mt-10 mb-7">
+        <div class="col">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg">Demos</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg">Pages</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg">Elements</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row justify-content-center my-7">
+        <div class="col-auto">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg text-muted">
+                <figure>
+                  <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab"
+                    data-icon="github" class="svg-inline--fa fa-github fa-w-16" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                    <path fill="currentColor"
+                      d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                    </path>
+                  </svg>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg text-muted">
+                <figure>
+                  <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab"
+                    data-icon="dribbble" class="svg-inline--fa fa-dribbble fa-w-16" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor"
+                      d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm163.97 114.366c29.503 36.046 47.369 81.957 47.835 131.955-6.984-1.477-77.018-15.682-147.502-6.818-5.752-14.041-11.181-26.393-18.617-41.614 78.321-31.977 113.818-77.482 118.284-83.523zM396.421 97.87c-3.81 5.427-35.697 48.286-111.021 76.519-34.712-63.776-73.185-116.168-79.04-124.008 67.176-16.193 137.966 1.27 190.061 47.489zm-230.48-33.25c5.585 7.659 43.438 60.116 78.537 122.509-99.087 26.313-186.36 25.934-195.834 25.809C62.38 147.205 106.678 92.573 165.941 64.62zM44.17 256.323c0-2.166.043-4.322.108-6.473 9.268.19 111.92 1.513 217.706-30.146 6.064 11.868 11.857 23.915 17.174 35.949-76.599 21.575-146.194 83.527-180.531 142.306C64.794 360.405 44.17 310.73 44.17 256.323zm81.807 167.113c22.127-45.233 82.178-103.622 167.579-132.756 29.74 77.283 42.039 142.053 45.189 160.638-68.112 29.013-150.015 21.053-212.768-27.882zm248.38 8.489c-2.171-12.886-13.446-74.897-41.152-151.033 66.38-10.626 124.7 6.768 131.947 9.055-9.442 58.941-43.273 109.844-90.795 141.978z">
+                    </path>
+                  </svg>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg text-muted">
+                <figure>
+                  <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab"
+                    data-icon="instagram" class="svg-inline--fa fa-instagram fa-w-14" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path fill="currentColor"
+                      d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                    </path>
+                  </svg>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg text-muted">
+                <figure>
+                  <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab"
+                    data-icon="facebook" class="svg-inline--fa fa-facebook fa-w-16" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor"
+                      d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z">
+                    </path>
+                  </svg>
+                </figure>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-lg text-muted">
+                <figure>
+                  <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab"
+                    data-icon="medium" class="svg-inline--fa fa-medium fa-w-14" role="img"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path fill="currentColor"
+                      d="M0 32v448h448V32H0zm372.2 106.1l-24 23c-2.1 1.6-3.1 4.2-2.7 6.7v169.3c-.4 2.6.6 5.2 2.7 6.7l23.5 23v5.1h-118V367l24.3-23.6c2.4-2.4 2.4-3.1 2.4-6.7V199.8l-67.6 171.6h-9.1L125 199.8v115c-.7 4.8 1 9.7 4.4 13.2l31.6 38.3v5.1H71.2v-5.1l31.6-38.3c3.4-3.5 4.9-8.4 4.1-13.2v-133c.4-3.7-1-7.3-3.8-9.8L75 138.1V133h87.3l67.4 148L289 133.1h83.2v5z">
+                    </path>
+                  </svg>
+                </figure>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row justify-content-center text-center">
+        <div class="col-xl-9">
+          <p class="text-sm text-muted opacity-8">
+            &copy; Copyright 2021 Webpixels - Build like a PRO with Purpose UI. Plan, build and launch beautiful and
+            consistent user interfaces for the web that drives meaningful engagement and growth for your brand.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+
+{% endblock Content %}

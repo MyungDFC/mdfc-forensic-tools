@@ -1,12 +1,12 @@
 {% extends "page/dashboard/base_table.jinja-html" %}
 
 {% block TableHeader %}
-<th scope="col">이벤트 시간</th>
-<th scope="col">이벤트 유형</th>
-<th scope="col">제조사</th>
-<th scope="col">모델명</th>
-<th scope="col">USB 일련번호</th>
-<th scope="col">저장매체 용량(GB)</th>
+<th scope="col">Timestamp</th>
+<th scope="col">Task</th>
+<th scope="col">Manufacturer</th>
+<th scope="col">Model</th>
+<th scope="col">Serialnumber</th>
+<th scope="col">Capacity(GB)</th>
 {% endblock TableHeader %}
 
 {% block TableBody %}
