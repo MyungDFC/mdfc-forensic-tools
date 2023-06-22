@@ -2,6 +2,8 @@ from flask import Flask, render_template
 import os
 import sys
 
+from .views import home
+
 def init_extensions(app: Flask):
     # use .init_app() on your extensions to register them on
     # the Flask instance
@@ -40,9 +42,11 @@ def create_app(config_object_name) -> Flask:
 
     with app.app_context():
         # Register Blueprints
-        from .views import main, dashboard
-        app.register_blueprint(main.bp)
+        from .views import home, dashboard, blog, youtube
+        app.register_blueprint(home.bp)
         app.register_blueprint(dashboard.bp)
+        app.register_blueprint(blog.bp)
+        app.register_blueprint(youtube.bp)
 
         @app.errorhandler(404)
         def page_not_found(error):
