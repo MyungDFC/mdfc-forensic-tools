@@ -123,7 +123,7 @@ def usb_event():
     ]
 
     return render_template(
-        "page/dashboard/table_event_usb.jinja-html",
+        "page/dashboard/table_usb_event.jinja-html",
         title = title,
         records=records
     )
