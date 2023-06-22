@@ -1,5 +1,9 @@
 {% extends "base.jinja-html" %}
 
+{% block Title %}
+<title>FCM Desktop | {{ title }}</title>
+{% endblock Title %}
+
 {% block ContentHeader %}
 <header class="bg-surface-primary border-bottom pt-6">
   <div class="container-fluid">

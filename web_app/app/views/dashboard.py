@@ -32,7 +32,11 @@ def process():
 
 @bp.route("/statistics", methods=["GET"])
 def statistics():
-    return render_template("page/dashboard/table_statistics.jinja-html")
+    title = "Statistics"
+    return render_template(
+        "page/dashboard/table_statistics.jinja-html",
+        title=title
+    )
 
 
 @bp.route("/recyclebin", methods=["GET"])
