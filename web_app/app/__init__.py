@@ -40,8 +40,9 @@ def create_app(config_object_name) -> Flask:
 
     with app.app_context():
         # Register Blueprints
-        from .views import main_view
-        app.register_blueprint(main_view.bp)
+        from .views import main, dashboard
+        app.register_blueprint(main.bp)
+        app.register_blueprint(dashboard.bp)
 
         @app.errorhandler(404)
         def page_not_found(error):
