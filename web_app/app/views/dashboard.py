@@ -10,7 +10,7 @@ def process():
     artifacts = [
         # "Chrome",
         # "Edge",
-        # "RecycleBin",
+        "RecycleBin",
         # "Prefetch",
         # "JumpList",
         # "LogonEvent",
@@ -27,49 +27,6 @@ def process():
                 type: list[json]
             """
             session[artifact_name] = records 
-
-            # if forensic_artifact.artifact == "Chrome":
-            #     session["artifact_name"] = records
-            #     return render_template(
-            #         "page/results/table_chrome.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
-            # elif forensic_artifact.artifact == "Edge":
-            #     return render_template(
-            #         "page/results/table_edge.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
-            # elif forensic_artifact.artifact == "RecycleBin":
-            #     return render_template(
-            #         "page/results/table_recyclebin.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
-            # elif forensic_artifact.artifact == "Prefetch":
-            #     return render_template(
-            #         "page/results/table_prefetch.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
-            # elif forensic_artifact.artifact == "JumpList":
-            #     return render_template(
-            #         "page/results/table_jumplist.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
-            # elif forensic_artifact.artifact == "LogonEvent":
-            #     return render_template(
-            #         "page/results/table_logonevent.html",
-            #         artifact_name=artifact_name,
-            #         records=records,
-            #     )
-            # if forensic_artifact.artifact == "USB(EventLog)":
-            #     session["artifact_name"] = records
-            # elif forensic_artifact.artifact == "WLAN":
-            #     session["artifact_name"] = records
-                
     return redirect(url_for("dashboard.statistics"))
 
 
@@ -78,9 +35,83 @@ def statistics():
     return render_template("page/dashboard/table_statistics.jinja-html")
 
 
+@bp.route("/recyclebin", methods=["GET"])
+def recyclebin():
+    title = "Recyclebin History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("recyclebin", "{}")
+    ]
 
-@bp.route("/usb", methods=["GET"])
-def usb():
+    return render_template(
+        "page/dashboard/table_recyclebin.jinja-html",
+        title = title,
+        records=records
+    )
+
+
+@bp.route("/prefetch", methods=["GET"])
+def prefetch():
+    title = "Program History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("prefetch", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_prefetch.jinja-html",
+        title = title,
+        records=records
+    )
+
+
+@bp.route("/jumplist", methods=["GET"])
+def jumplist():
+    title = "File History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("jumplist", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_jumplist.jinja-html",
+        title = title,
+        records=records
+    )
+
+@bp.route("/logon_event", methods=["GET"])
+def logon_event():
+    title = "Logon History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("logon_event", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_event_logon.jinja-html",
+        title = title,
+        records=records
+    )
+
+
+@bp.route("/usb_event", methods=["GET"])
+def usb_event():
     title = "USB History"
     """
         'records' variable is list of str(json), which is a result of 'json.dumps()'.
@@ -92,7 +123,27 @@ def usb():
     ]
 
     return render_template(
-        "page/dashboard/table_usb.jinja-html",
+        "page/dashboard/table_event_usb.jinja-html",
         title = title,
         records=records
     )
+
+
+@bp.route("/wlan_event", methods=["GET"])
+def wlan_event():
+    title = "WIFI History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("wlan_event", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_wlan_event.jinja-html",
+        title = title,
+        records=records
+    )
+
