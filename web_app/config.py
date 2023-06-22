@@ -2,7 +2,7 @@ import os
 
 
 class BaseConfig:
-    SECRET_KEY = os.getenv('SECRET_KEY', 'REPLACE ME')
+    SECRET_KEY = os.getenv('SECRET_KEY', '40C8B34337CADF05A2CC16A41A68C115')
 
 
 class DevelopmentConfig(BaseConfig):
