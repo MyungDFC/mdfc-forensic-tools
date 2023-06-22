@@ -1,0 +1,164 @@
+{% extends "page/dashboard/base_table.jinja-html" %}
+
+{% block CardStates %}
+<div class="row g-6 mb-6">
+    <div class="col-xl-3 col-sm-6 col-12">
+    <div class="card">
+        <div class="card-body">
+        <div class="row">
+            <div class="col">
+            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Budget</span>
+            <span class="h3 font-bold mb-0">$750.90</span>
+            </div>
+            <div class="col-auto">
+            <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                <i class="bi bi-credit-card"></i>
+            </div>
+            </div>
+        </div>
+        <div class="mt-2 mb-0 text-sm">
+            <span class="badge badge-pill bg-opacity-30 bg-success text-success me-2">
+            <i class="bi bi-arrow-up me-1"></i>13%
+            </span>
+            <span class="text-nowrap text-xs text-muted">Since last month</span>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+    <div class="card">
+        <div class="card-body">
+        <div class="row">
+            <div class="col">
+            <span class="h6 font-semibold text-muted text-sm d-block mb-2">New projects</span>
+            <span class="h3 font-bold mb-0">215</span>
+            </div>
+            <div class="col-auto">
+            <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                <i class="bi bi-people"></i>
+            </div>
+            </div>
+        </div>
+        <div class="mt-2 mb-0 text-sm">
+            <span class="badge badge-pill bg-opacity-30 bg-success text-success me-2">
+            <i class="bi bi-arrow-up me-1"></i>30%
+            </span>
+            <span class="text-nowrap text-xs text-muted">Since last month</span>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+    <div class="card">
+        <div class="card-body">
+        <div class="row">
+            <div class="col">
+            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total hours</span>
+            <span class="h3 font-bold mb-0">1.400</span>
+            </div>
+            <div class="col-auto">
+            <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                <i class="bi bi-clock-history"></i>
+            </div>
+            </div>
+        </div>
+        <div class="mt-2 mb-0 text-sm">
+            <span class="badge badge-pill bg-opacity-30 bg-danger text-danger me-2">
+            <i class="bi bi-arrow-down me-1"></i>-5%
+            </span>
+            <span class="text-nowrap text-xs text-muted">Since last month</span>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 col-12">
+    <div class="card">
+        <div class="card-body">
+        <div class="row">
+            <div class="col">
+            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Work load</span>
+            <span class="h3 font-bold mb-0">95%</span>
+            </div>
+            <div class="col-auto">
+            <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                <i class="bi bi-minecart-loaded"></i>
+            </div>
+            </div>
+        </div>
+        <div class="mt-2 mb-0 text-sm">
+            <span class="badge badge-pill bg-opacity-30 bg-success text-success me-2">
+            <i class="bi bi-arrow-up me-1"></i>10%
+            </span>
+            <span class="text-nowrap text-xs text-muted">Since last month</span>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock CardStates %}
+
+{% block TableHeader %}
+<th scope="col">이벤트 시간</th>
+<th scope="col">이벤트 유형</th>
+<th scope="col">제조사</th>
+<th scope="col">모델명</th>
+<th scope="col">USB 일련번호</th>
+<th scope="col">저장매체 용량(GB)</th>
+{% endblock TableHeader %}
+
+{% block TableBody %}
+{% for record in records %}
+<tr>
+  <td class="text-lg" scope="col">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckRow1">
+      <label class="form-check-label" for="flexCheckRow1"></label>
+    </div>
+  </td>
+  <td>
+    <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png"
+      class="avatar avatar-xs rounded-circle me-2">
+    <a class="text-heading font-semibold" href="#">
+      {{ record["ts"] }}
+    </a>
+  </td>
+  <td>
+    <span>{{ record["task"] }}</span>
+  </td>
+  <td>
+    <a class="text-current" href="mailto:">{{ record["manufacturer"] }}</a>
+  </td>
+  <td>
+    <img alt="..."
+      src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+      class="avatar avatar-xs rounded-circle me-2">
+    <!-- Link -->
+    <a class="text-current" href="#">{{ record["model"] }}</a>
+  </td>
+  <td>
+    {{ record["serialnumber"] }}
+  </td>
+  <td>
+    {{ record["capacity_gb"] }}
+  </td>
+  <td class="text-end">
+    <div class="dropdown">
+      <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="bi bi-three-dots-vertical"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-end">
+        <a href="#!" class="dropdown-item">
+          Action
+        </a>
+        <a href="#!" class="dropdown-item">
+          Another action
+        </a>
+        <a href="#!" class="dropdown-item">
+          Something else here
+        </a>
+      </div>
+    </div>
+  </td>
+</tr>
+{% endfor %}
+{% endblock TableBody %}

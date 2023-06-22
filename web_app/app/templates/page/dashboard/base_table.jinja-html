@@ -7,7 +7,7 @@
       <div class="row align-items-center">
         <div class="col-sm-6 col-12 mb-4 mb-sm-0">
           <!-- Title -->
-          <h1 class="h2 mb-0 ls-tight">{{ artifact_name }}</h1>
+          <h1 class="h2 mb-0 ls-tight">{{ title }}</h1>
         </div>
         <!-- Actions -->
         <div class="col-sm-6 col-12 text-sm-end">
@@ -15,7 +15,7 @@
             <div class="dropdown">
               <button class="btn btn-sm btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                {{ artifact_name }}
+                {{ title }}
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item d-flex align-items-center">
@@ -25,8 +25,8 @@
                     </div>
                   </div>
                   <div class="flex-fill ms-3">
-                    <a href="{{ url_for('main.dashboard') }}" class="text-sm text-heading font-semibold mb-0">
-                      USB 연결정보
+                    <a href="{{ url_for('dashboard.usb') }}" class="text-sm text-heading font-semibold mb-0">
+                      {{ title }}
                     </a>
                   </div>
                 </div>
@@ -159,7 +159,7 @@
       <div class="card">
         <div class="card-header d-flex align-items-center">
           <!-- Title -->
-          <h3>{{ artifact_name }}</h3>
+          <h3>{{ title }}</h3>
           <!-- Button -->
           <div class="ms-auto">
             <a href="#" class="btn btn-sm btn-primary ms-auto">
