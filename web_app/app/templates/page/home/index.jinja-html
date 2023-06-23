@@ -1,4 +1,4 @@
-{% extends "base.jinja-html" %}
+{% extends "base/root.jinja-html" %}
 
 {% block Content %}
 

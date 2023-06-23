@@ -1,6 +1,4 @@
-{% extends "base.jinja-html" %}
-
-
+{% extends "base/root.jinja-html" %}
 
 <!-- Main Content -->
 {% block Content %}

@@ -1,4 +1,4 @@
-{% extends "base_media.jinja-html" %}
+{% extends "base/media.jinja-html" %}
 
 {% block Contents %}
 <div>

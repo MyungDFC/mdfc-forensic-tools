@@ -1,4 +1,4 @@
-{% extends "page/dashboard/base_table.jinja-html" %}
+{% extends "base/dashboard.jinja-html" %}
 
 {% block CardStates %}
 <div class="row g-6 mb-6">
