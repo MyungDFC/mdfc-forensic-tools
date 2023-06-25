@@ -19,22 +19,22 @@
     </div>
   </td>
   <td>
-    <span>{{ record["ts"] }}</span>
+    <span>{{ record.get("ts") }}</span>
   </td>
   <td>
-    <span>{{ record["task"] }}</span>
+    <span>{{ record.get("task") }}</span>
   </td>
   <td>
-    <span>{{ record["manufacturer"] }}</span>
+    <span>{{ record.get("manufacturer") }}</span>
   </td>
   <td>
-    <span>{{ record["model"] }}</span>
+    <span>{{ record.get("model") }}</span>
   </td>
   <td>
-    <span>{{ record["serialnumber"] }}</span>
+    <span>{{ record.get("serialnumber") }}</span>
   </td>
   <td>
-    <span>{{ record["capacity_gb"] }}</span>
+    <span>{{ record.get("capacity_gb") }}</span>
   </td>
 </tr>
 {% endfor %}

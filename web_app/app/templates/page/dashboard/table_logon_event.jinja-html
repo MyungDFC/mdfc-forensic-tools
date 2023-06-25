@@ -1,28 +1,37 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block body %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>이벤트 시간</th>
-                <th>이벤트 유형</th>
-                <th>로그온 대상 이름</th>
-                <th>로그온 유형</th>
-                <th>이벤트 ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for record in records %}
-                <tr>
-                    <th>{{ loop.index }}</th>
-                    <td>{{ record["ts"] }}</td>
-                    <td>{{ record["task"] }}</td>
-                    <td>{{ record["target_user_name"] }}</td>
-                    <td>{{ record["logon_type"] }}</td>
-                    <td>{{ record["event_id"] }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+{% extends "base/dashboard.jinja-html" %}
+
+{% block TableHeader %}
+<th scope="col">Timestamp</th>
+<th scope="col">Task</th>
+<th scope="col">Logon User SID</th>
+<th scope="col">Logon User Name</th>
+<th scope="col">Logon Type</th>
+{% endblock TableHeader %}
+
+{% block TableBody %}
+{% for record in records %}
+<tr>
+    <td class="text-lg" scope="col">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckRow{{ loop.index }}">
+            <label class="form-check-label" for="flexCheckRow{{ loop.index }}"></label>
+        </div>
+    </td>
+    <td>
+        <span>{{ record.get("ts") }}</span>
+    </td>
+    <td>
+        <span>{{ record.get("task") }}</span>
+    </td>
+    <td>
+        <span>{{ record.get("target_user_sid") }}</span>
+    </td>
+    <td>
+        <span>{{ record.get("target_user_name") }}</span>
+    </td>
+    <td>
+        <span>{{ record.get("logon_type") }}</span>
+    </td>
+</tr>
+{% endfor %}
+{% endblock TableBody %}

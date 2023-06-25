@@ -11,11 +11,11 @@ def process():
         # "Chrome",
         # "Edge",
         "RecycleBin",
-        # "Prefetch",
-        # "JumpList",
-        # "LogonEvent",
+        "Prefetch",
+        "JumpList",
+        "LogonEvent",
         "USB(EventLog)",
-        # "WLAN",
+        "WLAN",
     ]
     cm = CaseManager(_artifacts=artifacts)
     cm.parse_all()
@@ -38,6 +38,49 @@ def statistics():
         title=title
     )
 
+@bp.route("/Internet", methods=["GET"])
+def internet():
+    title = "Statistics"
+    return render_template(
+        "page/dashboard/table_internet.jinja-html",
+        title=title
+    )
+
+@bp.route("/logon_event", methods=["GET"])
+def logon_event():
+    title = "Logon History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("logon_event", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_logon_event.jinja-html",
+        title = title,
+        records=records
+    )
+
+@bp.route("/jumplist", methods=["GET"])
+def jumplist():
+    title = "File History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("jumplist", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_jumplist.jinja-html",
+        title = title,
+        records=records
+    )
 
 @bp.route("/recyclebin", methods=["GET"])
 def recyclebin():
@@ -57,6 +100,23 @@ def recyclebin():
         records=records
     )
 
+@bp.route("/usb_event", methods=["GET"])
+def usb_event():
+    title = "USB History"
+    """
+        'records' variable is list of str(json), which is a result of 'json.dumps()'.
+        So, you have to convert it to list of dict(json) using 'json.loads'.
+    """
+    records = [
+        json.loads(record)
+        for record in session.get("usb_event", "{}")
+    ]
+
+    return render_template(
+        "page/dashboard/table_usb_event.jinja-html",
+        title = title,
+        records=records
+    )
 
 @bp.route("/prefetch", methods=["GET"])
 def prefetch():
@@ -77,65 +137,10 @@ def prefetch():
     )
 
 
-@bp.route("/jumplist", methods=["GET"])
-def jumplist():
-    title = "File History"
-    """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        for record in session.get("jumplist", "{}")
-    ]
-
-    return render_template(
-        "page/dashboard/table_jumplist.jinja-html",
-        title = title,
-        records=records
-    )
-
-@bp.route("/logon_event", methods=["GET"])
-def logon_event():
-    title = "Logon History"
-    """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        for record in session.get("logon_event", "{}")
-    ]
-
-    return render_template(
-        "page/dashboard/table_event_logon.jinja-html",
-        title = title,
-        records=records
-    )
-
-
-@bp.route("/usb_event", methods=["GET"])
-def usb_event():
-    title = "USB History"
-    """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        for record in session.get("usb_event", "{}")
-    ]
-
-    return render_template(
-        "page/dashboard/table_usb_event.jinja-html",
-        title = title,
-        records=records
-    )
-
 
 @bp.route("/wlan_event", methods=["GET"])
 def wlan_event():
-    title = "WIFI History"
+    title = "Wi-Fi History"
     """
         'records' variable is list of str(json), which is a result of 'json.dumps()'.
         So, you have to convert it to list of dict(json) using 'json.loads'.

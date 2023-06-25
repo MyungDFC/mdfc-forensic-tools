@@ -1,12 +1,9 @@
 {% extends "base/dashboard.jinja-html" %}
 
 {% block TableHeader %}
-<th scope="col">Deleted Time</th>
+<th scope="col">Execution Time</th>
 <th scope="col">File Name</th>
-<th scope="col">Extension</th>
-<th scope="col">Size</th>
-<th scope="col">Original Path</th>
-<th scope="col">Deleted Path</th>
+<th scope="col">Run Count</th>
 {% endblock TableHeader %}
 
 {% block TableBody %}
@@ -25,16 +22,7 @@
     <span>{{ record.get("filename") }}</span>
   </td>
   <td>
-    <span>{{ record.get("fileext") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("filesize") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("path") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("deleted_path") }}</span>
+    <span>{{ record.get("runcount") }}</span>
   </td>
 </tr>
 {% endfor %}

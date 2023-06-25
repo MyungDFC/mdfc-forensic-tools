@@ -76,8 +76,18 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ url_for('dashboard.usb_event') }}" class="nav-link">
-                      USB History
+                    <a href="{{ url_for('dashboard.internet') }}" class="nav-link">
+                      Internet History
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url_for('dashboard.logon_event') }}" class="nav-link">
+                      Logon History
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ url_for('dashboard.jumplist') }}" class="nav-link">
+                      File Usage History
                     </a>
                   </li>
                   <li class="nav-item">
@@ -86,15 +96,21 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Board View
+                    <a href="{{ url_for('dashboard.usb_event') }}" class="nav-link">
+                      USB History
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Create Task
+                    <a href="{{ url_for('dashboard.prefetch') }}" class="nav-link">
+                      Program History
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{ url_for('dashboard.wlan_event') }}" class="nav-link">
+                      Wi-Fi History
+                    </a>
+                  </li>
+
                 </ul>
               </div>
             </li>
