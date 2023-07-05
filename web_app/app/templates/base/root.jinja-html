@@ -11,6 +11,7 @@
   {#
   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" /> #}
   <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -75,7 +76,7 @@
                       Statistics
                     </a>
                   </li>
-                  <li class="nav-item">
+                  {# <li class="nav-item">
                     <a href="{{ url_for('dashboard.internet') }}" class="nav-link">
                       Internet History
                     </a>
@@ -89,7 +90,7 @@
                     <a href="{{ url_for('dashboard.jumplist') }}" class="nav-link">
                       File Usage History
                     </a>
-                  </li>
+                  </li> #}
                   <li class="nav-item">
                     <a href="{{ url_for('dashboard.recyclebin') }}" class="nav-link">
                       Recyclebin History
@@ -100,7 +101,7 @@
                       USB History
                     </a>
                   </li>
-                  <li class="nav-item">
+                  {# <li class="nav-item">
                     <a href="{{ url_for('dashboard.prefetch') }}" class="nav-link">
                       Program History
                     </a>
@@ -109,7 +110,7 @@
                     <a href="{{ url_for('dashboard.wlan_event') }}" class="nav-link">
                       Wi-Fi History
                     </a>
-                  </li>
+                  </li> #}
 
                 </ul>
               </div>

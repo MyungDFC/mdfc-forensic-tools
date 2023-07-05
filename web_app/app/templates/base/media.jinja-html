@@ -15,10 +15,8 @@
           </h1>
           <!-- Text -->
           <p class="lead">
-            {% block ContentSectionTitle %}
             Plan, build and launch beautiful and consistent user interfaces for the web that drives meaningful
             engagement and growth for your brand.
-            {% endblock ContentSectionTitle %}
           </p>
         </div>
       </div>

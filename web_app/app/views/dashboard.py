@@ -11,11 +11,11 @@ def process():
         # "Chrome",
         # "Edge",
         "RecycleBin",
-        "Prefetch",
-        "JumpList",
-        "LogonEvent",
+        # "Prefetch",
+        # "JumpList",
+        # "LogonEvent",
         "USB(EventLog)",
-        "WLAN",
+        # "WLAN",
     ]
     cm = CaseManager(_artifacts=artifacts)
     cm.parse_all()

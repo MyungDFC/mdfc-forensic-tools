@@ -2,8 +2,6 @@ from flask import Flask, render_template
 import os
 import sys
 
-from .views import home
-
 def init_extensions(app: Flask):
     # use .init_app() on your extensions to register them on
     # the Flask instance

@@ -1,273 +1,54 @@
 {% extends "base/media.jinja-html" %}
 
+{% block SectionTitle %}
+<div class="row justify-content-center text-md-center mb-24">
+  <div class="col-lg-7">
+    <!-- Heading -->
+    <h1 class="ls-tight font-bolder mb-5">
+      Myung TV
+    </h1>
+    <!-- Text -->
+    <p class="lead">
+      안녕하세요~! 여러분의 행복비타민! 데이터복구 천사 명TV 수블리에요!ㅎㅎ
+      여러분들은 주말 잘 보내셨나요? 저는 주말에 노래방을 갔어요~! 노래방에서
+      노래를 많이 부르니까 목이 아파요ㅠㅠ 그래도 재밌었어요~! 여러분도 주말 잘 보내셨으면 좋겠어요~!
+      그럼 오늘도 함께 행복하게 보내요~! 안뇽~~~~~~
+    </p>
+  </div>
+</div>
+{% endblock SectionTitle %}
+
 {% block Contents %}
 <div>
   <div>
     <div class="row g-6" id="lightgallery">
-      <div class="col-xl-3 col-sm-6">
+      {% for video in videos %}
+      <div class="col-xl-6 col-sm-6">
         <div class="card border-0 shadow shadow-4-hover">
           <div class="p-2">
             <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1651984293033-4f3f465da333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=80" />
+              <div class="div-round" style="width: 100%">
+                <iframe class="youtube_frame" src="{{ video.get('url') }}" title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
             </a>
           </div>
           <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
+            <h6 class="font-semibold mb-2">{{ video.get('title') }}</h6>
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
+                <i class="bi bi-lock me-1"></i>{{ video.get('views') }} views
               </div>
               <div class="text-xs text-muted ms-auto">
-                3 hrs ago
+                {{ video.get('duration') }}
               </div>
             </div>
             <span class="d-block"></span>
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1664900527246-64a8b82c17b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1665161432319-500e5ea7b3fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1664979385835-ae4dba337f57?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1665073140507-0217983bf28a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw2NHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://plus.unsplash.com/premium_photo-1664648119182-ec15e2c3c272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3OXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1665084980975-b389e70894d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMzV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNzF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1665054546585-11413bcdfb52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1665021657505-3a680c9cf4b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card border-0 shadow shadow-4-hover">
-          <div class="p-2">
-            <a href="#" class="d-block">
-              <img class="img-fluid rounded-2" alt="..."
-                src="https://images.unsplash.com/photo-1664938731555-f22d3ddda0b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzODN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&h=800&q=60" />
-            </a>
-          </div>
-          <div class="px-4 pt-2 pb-4">
-            <h6 class="font-semibold mb-2">Website Redesign</h6>
-            <div class="d-flex align-items-center">
-              <div class="text-xs text-muted">
-                <i class="bi bi-lock me-1"></i>Private
-              </div>
-              <div class="text-xs text-muted ms-auto">
-                3 hrs ago
-              </div>
-            </div>
-            <span class="d-block"></span>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
