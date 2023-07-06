@@ -29,3 +29,44 @@ iframe.youtube_frame {
     min-height: 250px;
     width: 100%;
 }
+
+body::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+
+#wrapper {
+	overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+	min-height: 100vh;
+	margin-left: -15rem;
+	-webkit-transition: margin .25s ease-out;
+	-moz-transition: margin .25s ease-out;
+	-o-transition: margin .25s ease-out;
+	transition: margin .25s ease-out;
+}
+
+#wrapper:hover #sidebar-wrapper {
+	margin-left: 0;
+}
+
+#page-content-wrapper {
+	min-width: 100vw;
+}
+
+#wrapper:hover #page-content-wrapper {
+	min-width: 0;
+	width: 100%;
+}
+  
