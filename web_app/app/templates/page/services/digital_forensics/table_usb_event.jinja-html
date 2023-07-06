@@ -1,4 +1,4 @@
-{% extends "base/dashboard.jinja-html" %}
+{% extends "base/digital_forensics/table.jinja-html" %}
 
 {% block TableHeader %}
 <th scope="col">Timestamp</th>
