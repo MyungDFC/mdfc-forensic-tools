@@ -57,12 +57,12 @@
           <div class="collapse" id="sidebar-tasks">
             <ul class="nav nav-sm flex-column">
               <li class="nav-item">
-                <a href="{{ url_for('dashboard.statistics') }}" class="nav-link">
+                <a href="{{ url_for('dashboard.digital_forensics') }}" class="nav-link">
                   Digital Forensics
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url_for('dashboard.statistics') }}" class="nav-link">
+                <a href="{{ url_for('dashboard.data_recovery') }}" class="nav-link">
                   Data Recovery
                 </a>
               </li>
@@ -132,7 +132,7 @@
 
     <!-- Main Content -->
     {% block Content %}
-    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto" id="main-content">
       <!-- Header -->
       {% block ContentHeader %}
       {% endblock ContentHeader %}

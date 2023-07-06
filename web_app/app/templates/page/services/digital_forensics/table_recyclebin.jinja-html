@@ -1,0 +1,41 @@
+{% extends "base/dashboard.jinja-html" %}
+
+{% block TableHeader %}
+<th scope="col">Deleted Time</th>
+<th scope="col">File Name</th>
+<th scope="col">Extension</th>
+<th scope="col">Size</th>
+<th scope="col">Original Path</th>
+<th scope="col">Deleted Path</th>
+{% endblock TableHeader %}
+
+{% block TableBody %}
+{% for record in records %}
+<tr>
+  <td class="text-lg" scope="col">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckRow{{ loop.index }}">
+      <label class="form-check-label" for="flexCheckRow{{ loop.index }}"></label>
+    </div>
+  </td>
+  <td>
+    <span>{{ record.get("ts") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("filename") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("fileext") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("filesize") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("path") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("deleted_path") }}</span>
+  </td>
+</tr>
+{% endfor %}
+{% endblock TableBody %}

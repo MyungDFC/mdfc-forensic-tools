@@ -26,7 +26,7 @@
 }
 
 iframe.youtube_frame {
-    min-height: 250px;
+    min-height: 300px;
     width: 100%;
 }
 
@@ -39,6 +39,88 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+/* scroll bar: main content */
+#main-content::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+#main-content::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+#main-content::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+/* scroll bar: table */
+.table-responsive::-webkit-scrollbar {
+	width: 0.25rem;
+	height: 0.5rem;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+/* scroll bar: digital forensic dashboard */
+#dashboard-col-1::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+#dashboard-col-1::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+#dashboard-col-1::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+#dashboard-col-2::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+#dashboard-col-2::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+#dashboard-col-2::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+#dashboard-col-3::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+#dashboard-col-3::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+#dashboard-col-3::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 10px;
+}
+
+#dashboard-col-4::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+#dashboard-col-4::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+#dashboard-col-4::-webkit-scrollbar-thumb {
 	background: #888;
 	border-radius: 10px;
 }

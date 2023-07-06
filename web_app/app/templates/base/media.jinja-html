@@ -2,7 +2,7 @@
 
 <!-- Main Content -->
 {% block Content %}
-<div class="flex-lg-1 h-screen overflow-y-lg-auto">
+<div class="flex-lg-1 h-screen overflow-y-lg-auto" id="main-content">
   <div class=" pt-24 pb-24">
     <div class="container max-w-screen-xl">
       <!-- Section title -->

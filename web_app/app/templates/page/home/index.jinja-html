@@ -1,7 +1,7 @@
 {% extends "base/root.jinja-html" %}
 
 {% block Content %}
-<div class="h-screen flex-grow-1 overflow-y-lg-auto">
+<div class="h-screen flex-grow-1 overflow-y-lg-auto" id="main-content">
   {# CTA Section #}
   <div class="py-20 py-lg-32 bg-surface-secondary">
     <div class="container max-w-screen-xl">
@@ -23,7 +23,7 @@
           </p>
           <!-- Buttons -->
           <div class="mx-n2">
-            <a href="{{ url_for('dashboard.process') }}" class="btn btn-lg btn-primary shadow-sm mx-2 px-lg-8">
+            <a href="{{ url_for('artifact.process') }}" class="btn btn-lg btn-primary shadow-sm mx-2 px-lg-8">
               Get started
             </a>
           </div>

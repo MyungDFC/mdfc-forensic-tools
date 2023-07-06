@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, url_for, session
 from werkzeug.utils import redirect
 from app.engine.case_manager import CaseManager
 
-bp = Blueprint("dashboard", __name__, url_prefix="/dashboard")
+bp = Blueprint("artifact", __name__, url_prefix="/dashboard/digital_forensics")
 
 @bp.route("/", methods=["GET"])
 def process():
@@ -27,16 +27,8 @@ def process():
                 type: list[json]
             """
             session[artifact_name] = records 
-    return redirect(url_for("dashboard.statistics"))
+    return redirect(url_for("artifact.recyclebin"))
 
-
-@bp.route("/statistics", methods=["GET"])
-def statistics():
-    title = "Statistics"
-    return render_template(
-        "page/dashboard/table_statistics.jinja-html",
-        title=title
-    )
 
 @bp.route("/Internet", methods=["GET"])
 def internet():
@@ -95,7 +87,7 @@ def recyclebin():
     ]
 
     return render_template(
-        "page/dashboard/table_recyclebin.jinja-html",
+        "page/services/digital_forensics/table_recyclebin.jinja-html",
         title = title,
         records=records
     )
@@ -113,7 +105,7 @@ def usb_event():
     ]
 
     return render_template(
-        "page/dashboard/table_usb_event.jinja-html",
+        "page/services/digital_forensics/table_usb_event.jinja-html",
         title = title,
         records=records
     )

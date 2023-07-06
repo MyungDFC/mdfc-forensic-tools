@@ -1,0 +1,300 @@
+{% extends "base/root.jinja-html" %}
+
+{% block Title %}
+<title>FCM Desktop | {{ title }}</title>
+{% endblock Title %}
+
+{% block Content %}
+<div class="h-screen flex-grow-1 d-flex flex-column overflow-y-lg-auto">
+  <!-- Header -->
+  <header class="bg-surface-primary border-bottom py-6">
+    <div class="container-fluid">
+      <div>
+        <div class="row align-items-center">
+          <div class="col-md-6 col-12 d-flex align-items-center mb-5 mb-md-0">
+            <div class="col-auto">
+              <div class="w-20">
+                <img alt="..." class="img-fluid rounded-4"
+                  src="https://preview.webpixels.io/web/img/other/logos/logo-3.png">
+              </div>
+            </div>
+            <div class="ms-5">
+              <!-- Title -->
+              <h1 class="h2 mb-0">Digital Forensics</h1>
+              <!-- Subtitle -->
+              <p class="text-sm text-muted mt-1">
+                This is a small description of the project
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 text-md-end">
+            <!-- Avatar group -->
+            <div class="avatar-group">
+              <div class="avatar bg-soft-warning rounded-circle text-warning border border-2 border-solid border-body">
+                JM
+              </div>
+              <div class="avatar bg-soft-primary rounded-circle text-primary border border-2 border-solid border-body">
+                AE
+              </div>
+              <div class="avatar bg-warning rounded-circle text-white">
+                <img alt="..."
+                  src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+              </div>
+            </div>
+            <!-- Button -->
+            <button type="button"
+              class="btn btn-square btn-neutral border-2 border-dashed rounded-circle ms-4">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main -->
+  <main class="flex-grow-1 py-6 bg-surface-secondary overflow-auto">
+    <div class="container-fluid h-full">
+      <div class="d-flex h-full mx-n3">
+        <!-- column1: Data Leakage -->
+        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+          <div class="px-3 mb-6">
+            <span class="badge badge-lg badge-dot text-heading font-semibold">
+              <i class="bg-danger"></i>Data Leakage
+            </span>
+          </div>
+          <div class="flex-1 overflow-y-auto" id="dashboard-col-1">
+            <!-- USB History -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Files in External Devices -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- column2: Internet Usage -->
+        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+          <div class="px-3 mb-6">
+            <span class="badge badge-lg badge-dot text-heading font-semibold">
+              <i class="bg-warning"></i>Internet Usage
+            </span>
+          </div>
+          <div class="flex-1 overflow-y-auto" id="dashboard-col-2">
+            <!-- Website Visit History -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Download Files on the Internet -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Internet Search Results -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- column3: User Activity -->
+        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+          <div class="px-3 mb-6">
+            <span class="badge badge-lg badge-dot text-heading font-semibold">
+              <i class="bg-success"></i>User Activity
+            </span>
+          </div>
+          <div class="flex-1 overflow-y-auto" id="dashboard-col-3">
+            <!-- File Usages -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- User Logon -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Website Visit History</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- column4: File Deletion -->
+        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+          <div class="px-3 mb-6">
+            <span class="badge badge-lg badge-dot text-heading font-semibold">
+              <i class="bg-tertiary"></i>File Deletion
+            </span>
+          </div>
+          <div class="flex-1 overflow-y-auto" id="dashboard-col-4">
+            <!-- Deleted Files in Recycle Bin -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="{{ url_for('artifact.recyclebin') }}" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">Deleted Files</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="text-xs text-muted">
+                        <i class="bi bi-lock me-1"></i>Private
+                      </div>
+                      <div class="text-xs text-muted ms-auto">
+                        3 hrs ago
+                      </div>
+                    </div>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock Content %}
