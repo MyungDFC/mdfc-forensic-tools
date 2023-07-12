@@ -1,35 +1,5 @@
-.div-round {
-	overflow: hidden;
-	position: relative;
-	z-index: 10;
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
-}
 
-.div-round::before {
-	display: block;
-	content: "";
-}
-
-.iframe-round {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 10;
-	width: 100%;
-	height: 100%;
-	border: 0;
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
-}
-
-iframe.youtube_frame {
-    min-height: 300px;
-    width: 100%;
-}
-
+/* scroll bar: body */
 body::-webkit-scrollbar {
 	width: 0.25rem;
 }
@@ -45,7 +15,8 @@ body::-webkit-scrollbar-thumb {
 
 /* scroll bar: main content */
 #main-content::-webkit-scrollbar {
-	width: 0.5rem;
+	width: 0rem;
+	height: 0rem;
 }
 
 #main-content::-webkit-scrollbar-track {
@@ -123,32 +94,83 @@ body::-webkit-scrollbar-thumb {
 #dashboard-col-4::-webkit-scrollbar-thumb {
 	background: #888;
 	border-radius: 10px;
+} 
+
+/* navbar */
+.navbar {
+	--x-navbar-padding-x: 0rem;
+	--x-navbar-padding-y: 0rem;
+}
+
+.navbar header {
+	position: relative;
+	padding: 16px 20px;
+}
+
+.navbar .image {
+	min-width: 60px;
+	display: flex;
+	align-items: center;
+}
+
+.navbar .image-text img{
+	width: 45px;
+	height: 45px;
+}
+
+.navbar header .image-text {
+	display: flex;
+	align-items: center;
+}
+
+header .image-text .header-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.header-text .name {
+	font-weight: 600;
+}
+
+.header-text .profession {
+	font-size: 0.8rem;
+	margin-top: -2px;
+}
+
+.list_name {
+	margin-left: 10px;
 }
 
 
-#wrapper {
-	overflow-x: hidden;
+/* Youtube */
+.div-round {
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
 }
 
-#sidebar-wrapper {
-	min-height: 100vh;
-	margin-left: -15rem;
-	-webkit-transition: margin .25s ease-out;
-	-moz-transition: margin .25s ease-out;
-	-o-transition: margin .25s ease-out;
-	transition: margin .25s ease-out;
+.div-round::before {
+	display: block;
+	content: "";
 }
 
-#wrapper:hover #sidebar-wrapper {
-	margin-left: 0;
-}
-
-#page-content-wrapper {
-	min-width: 100vw;
-}
-
-#wrapper:hover #page-content-wrapper {
-	min-width: 0;
+.iframe-round {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
 	width: 100%;
+	height: 100%;
+	border: 0;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
 }
-  
+
+iframe.youtube_frame {
+    min-height: 300px;
+    width: 100%;
+}
