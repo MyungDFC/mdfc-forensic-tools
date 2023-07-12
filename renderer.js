@@ -1,7 +1,8 @@
 "use strict";
 
-const { app, BrowserWindow } = require("electron");
-const path = require("path");
+const { app, BrowserWindow, ipcMain } = require('electron')
+const path = require('path')
+const ipc = ipcMain
 
 // Keep a global reference of the mainWindowdow object, if you don't, the mainWindowdow will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -75,15 +76,47 @@ const createMainWindow = () => {
     height: 600,
     // transparent: true, // transparent header bar
     icon: __dirname + "/icon.png",
-    // fullscreen: true,
     // opacity:0.8,
     // darkTheme: true,
-    // frame: false,
+    frame: false,
     resizeable: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      devTools: true,
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
   // Load the index page
   mainWindow.loadURL("http://localhost:4040/");
+
+  //// CLOSE APP
+  ipc.on('minimizeApp', ()=>{
+    mainWindow.minimize()
+  })
+
+  //// MAXIMIZE RESTORE APP
+  ipc.on('maximizeRestoreApp', ()=>{
+      if(mainWindow.isMaximized()){
+          mainWindow.restore()
+      } else {
+          mainWindow.maximize()
+      }
+  })
+  // Check if is Maximized
+  mainWindow.on('maximize', ()=>{
+      mainWindow.webContents.send('isMaximized')
+  })
+  // Check if is Restored
+  mainWindow.on('unmaximize', ()=>{
+      mainWindow.webContents.send('isRestored')
+  })
+
+  //// CLOSE APP
+  ipc.on('closeApp', ()=>{
+      mainWindow.close()
+  })
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -93,6 +126,10 @@ const createMainWindow = () => {
     // Dereference the mainWindow object
     mainWindow = null;
   });
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.maximize()
+  })
 };
 
 // This method will be called when Electron has finished

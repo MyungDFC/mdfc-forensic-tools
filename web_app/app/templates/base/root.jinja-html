@@ -14,142 +14,159 @@
 </head>
 
 <body>
-  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
-    <!-- Vertical Navbar -->
-    <!-- Vertical Navbar -->
-    <nav
-      class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-lg-0 navbar-light bg-light border-end-lg">
-      <div class="container-fluid">
-        <!-- Toggler -->
-        <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse"
-          aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <header>
-          <div class="image-text">
-            <span class="image">
-              <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
-            </span>
-            <div class="text header-text">
-              <span class="name">(주)명정보기술</span>
-              <span class="profession">디지털포렌식센터</span>
-            </div>
-          </div>
-        </header>
-        <!-- Collapse -->
-        <div class="collapse navbar-collapse" id="sidebarCollapse">
-          <!-- Form -->
-          <form class="mt-4 mb-3 d-none">
-            <div x-data="{focused: false}" :class="{ 'focused': focused }">
-              <div class="input-group input-group-sm">
-                <span class="input-group-text border-end-0 rounded-left-pill" id="basic-addon1">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-                    <path fill-rule="evenodd"
-                      d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-                  </svg>
-                </span>
-                <input type="text" class="form-control border-left-0 ps-0 rounded-end-pill" placeholder="Search"
-                  aria-label="Username" aria-describedby="basic-addon1" @focus="focused = !focused"
-                  @click.away="focused = false">
-              </div>
-            </div>
-          </form>
-          <!-- Navigation -->
-          <ul class="navbar-nav">
-            {# Nav-Item: Home #}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('home.index') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                  <path
-                    d="m21.743 12.331-9-10c-.379-.422-1.107-.422-1.486 0l-9 10a.998.998 0 0 0-.17 1.076c.16.361.518.593.913.593h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a.998.998 0 0 0 .743-1.669z">
-                  </path>
-                </svg>
-                <span class="list_name">Home</span>
-              </a>
-            </li>
-            {# Nav-Item: Service #}
-            <li class="nav-item">
-              <a class="nav-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
-                aria-controls="sidebarPages">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                  <path
-                    d="M20 4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h4l-1.8 2.4 1.6 1.2 2.7-3.6h3l2.7 3.6 1.6-1.2L16 18h4c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM5 13h4v2H5v-2z">
-                  </path>
-                </svg>
-                <span class="list_name">Service</span>
-              </a>
-              <div class="collapse" id="sidebarPages">
-                <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a href="{{ url_for('dashboard.digital_forensics') }}" class="nav-link">
-                      Digital Forensics
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ url_for('dashboard.data_recovery') }}" class="nav-link">
-                      Data Recovery
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('blog.main') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                  <path
-                    d="M20.954 10.667c-.072-.322-.272-.621-.502-.745-.07-.039-.522-.088-1.004-.109-.809-.036-.898-.052-1.152-.201-.405-.237-.516-.493-.518-1.187-.002-1.327-.554-2.559-1.646-3.67-.776-.793-1.645-1.329-2.634-1.629-.236-.072-.768-.097-2.545-.118-2.787-.033-3.405.024-4.356.402-1.748.697-3.008 2.166-3.465 4.05-.087.353-.103.92-.124 4.177-.025 4.08.004 4.68.258 5.488.212.668.425 1.077.861 1.657.835 1.108 2.083 1.907 3.334 2.133.595.107 7.931.135 8.683.032 1.306-.178 2.331-.702 3.293-1.684.694-.71 1.129-1.479 1.414-2.499.117-.424.127-.63.149-3.117.017-1.878.002-2.758-.046-2.98zM8.007 8.108c.313-.316.399-.329 2.364-.329 1.764 0 1.822.004 2.081.134.375.189.538.456.538.88 0 .384-.153.653-.493.869-.184.115-.293.123-2.021.133-1.067.007-1.916-.013-2.043-.048-.669-.184-.918-1.143-.426-1.639zm7.706 8.037-.597.098-3.114.035c-2.736.033-3.511-.018-3.652-.08-.288-.124-.554-.472-.602-.78-.042-.292.104-.696.33-.9.285-.257.409-.266 3.911-.27 3.602-.002 3.583-.003 3.925.315.482.45.381 1.251-.201 1.582z">
-                  </path>
-                </svg>
-                <span class="list_name">Blog</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('youtube.main') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                  <path
-                    d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z">
-                  </path>
-                </svg>
-                <span class="list_name">Youtube</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
-                  <path
-                    d="M6 22h13a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h1zm6-17.001c1.647 0 3 1.351 3 3C15 9.647 13.647 11 12 11S9 9.647 9 7.999c0-1.649 1.353-3 3-3zM6 17.25c0-2.219 2.705-4.5 6-4.5s6 2.281 6 4.5V18H6v-.75z">
-                  </path>
-                </svg>
-                <span class="list_name">People</span>
-              </a>
-            </li>
-          </ul>
+  <div class="mainApp">
+    <div class="topBar">
+      <div class="titleBar">
+        <button id="showHideMenus" class="toggleButton"></button>
+        <img src="{{ url_for('static', filename='img/icon_top_bar.png') }}" alt="">
+        <div class="title">
+          Myung Digital Forenic Center
         </div>
       </div>
-    </nav>
-    <!-- Main Content -->
-    {% block Content %}
-    <div class="h-screen flex-grow-1 overflow-y-lg-auto" id="main-content">
-      <!-- Header -->
-      {% block ContentHeader %}
-      {% endblock ContentHeader %}
-      <!-- Main -->
-      {% block ContentMain %}
-      {% endblock ContentMain %}
+      <div class="titleBarBtns">
+        <button id="minimizeBtn" class="topBtn minimizeBtn" title="Minimize"></button>
+        <button id="maxResBtn" class="topBtn maximizeBtn" title="Maximize"></button>
+        <button id="closeBtn" class="topBtn closeBtn" title="Close"></button>
+      </div>
     </div>
-    {% endblock Content %}
+
+    <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+      <!-- Vertical Navbar -->
+      <nav
+        class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-lg-0 navbar-light bg-light border-end-lg">
+        <div class="container-fluid">
+          <!-- Toggler -->
+          <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse"
+            aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <header>
+            <div class="image-text">
+              <span class="image">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+              </span>
+              <div class="text header-text">
+                <span class="name">(주)명정보기술</span>
+                <span class="profession">디지털포렌식센터</span>
+              </div>
+            </div>
+          </header>
+          <!-- Collapse -->
+          <div class="collapse navbar-collapse" id="sidebarCollapse">
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-none">
+              <div x-data="{focused: false}" :class="{ 'focused': focused }">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text border-end-0 rounded-left-pill" id="basic-addon1">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                      <path fill-rule="evenodd"
+                        d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    </svg>
+                  </span>
+                  <input type="text" class="form-control border-left-0 ps-0 rounded-end-pill" placeholder="Search"
+                    aria-label="Username" aria-describedby="basic-addon1" @focus="focused = !focused"
+                    @click.away="focused = false">
+                </div>
+              </div>
+            </form>
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+              {# Nav-Item: Home #}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home.index') }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                    <path
+                      d="m21.743 12.331-9-10c-.379-.422-1.107-.422-1.486 0l-9 10a.998.998 0 0 0-.17 1.076c.16.361.518.593.913.593h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a.998.998 0 0 0 .743-1.669z">
+                    </path>
+                  </svg>
+                  <span class="list_name">Home</span>
+                </a>
+              </li>
+              {# Nav-Item: Service #}
+              <li class="nav-item">
+                <a class="nav-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                  aria-controls="sidebarPages">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                    <path
+                      d="M20 4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h4l-1.8 2.4 1.6 1.2 2.7-3.6h3l2.7 3.6 1.6-1.2L16 18h4c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zM5 13h4v2H5v-2z">
+                    </path>
+                  </svg>
+                  <span class="list_name">Service</span>
+                </a>
+                <div class="collapse" id="sidebarPages">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{ url_for('dashboard.digital_forensics') }}" class="nav-link">
+                        Digital Forensics
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{ url_for('dashboard.data_recovery') }}" class="nav-link">
+                        Data Recovery
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('blog.main') }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                    <path
+                      d="M20.954 10.667c-.072-.322-.272-.621-.502-.745-.07-.039-.522-.088-1.004-.109-.809-.036-.898-.052-1.152-.201-.405-.237-.516-.493-.518-1.187-.002-1.327-.554-2.559-1.646-3.67-.776-.793-1.645-1.329-2.634-1.629-.236-.072-.768-.097-2.545-.118-2.787-.033-3.405.024-4.356.402-1.748.697-3.008 2.166-3.465 4.05-.087.353-.103.92-.124 4.177-.025 4.08.004 4.68.258 5.488.212.668.425 1.077.861 1.657.835 1.108 2.083 1.907 3.334 2.133.595.107 7.931.135 8.683.032 1.306-.178 2.331-.702 3.293-1.684.694-.71 1.129-1.479 1.414-2.499.117-.424.127-.63.149-3.117.017-1.878.002-2.758-.046-2.98zM8.007 8.108c.313-.316.399-.329 2.364-.329 1.764 0 1.822.004 2.081.134.375.189.538.456.538.88 0 .384-.153.653-.493.869-.184.115-.293.123-2.021.133-1.067.007-1.916-.013-2.043-.048-.669-.184-.918-1.143-.426-1.639zm7.706 8.037-.597.098-3.114.035c-2.736.033-3.511-.018-3.652-.08-.288-.124-.554-.472-.602-.78-.042-.292.104-.696.33-.9.285-.257.409-.266 3.911-.27 3.602-.002 3.583-.003 3.925.315.482.45.381 1.251-.201 1.582z">
+                    </path>
+                  </svg>
+                  <span class="list_name">Blog</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('youtube.main') }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                    <path
+                      d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z">
+                    </path>
+                  </svg>
+                  <span class="list_name">Youtube</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                    <path
+                      d="M6 22h13a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h1zm6-17.001c1.647 0 3 1.351 3 3C15 9.647 13.647 11 12 11S9 9.647 9 7.999c0-1.649 1.353-3 3-3zM6 17.25c0-2.219 2.705-4.5 6-4.5s6 2.281 6 4.5V18H6v-.75z">
+                    </path>
+                  </svg>
+                  <span class="list_name">People</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Main Content -->
+      {% block Content %}
+      <div class="h-screen flex-grow-1 overflow-y-lg-auto" id="main-content">
+        <!-- Header -->
+        {% block ContentHeader %}
+        {% endblock ContentHeader %}
+        <!-- Main -->
+        {% block ContentMain %}
+        {% endblock ContentMain %}
+      </div>
+      {% endblock Content %}
+    </div>
   </div>
   <!-- App script -->
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/titlebar.js') }}"></script>
 </body>
 
 </html>

@@ -23,7 +23,8 @@
           </p>
           <!-- Buttons -->
           <div class="mx-n2">
-            <a href="{{ url_for('artifact.process') }}" class="btn btn-lg btn-primary shadow-sm mx-2 px-lg-8">
+            <a href="{{ url_for('dashboard.digital_forensics') }}"
+              class="btn btn-lg btn-primary shadow-sm mx-2 px-lg-8">
               Get started
             </a>
           </div>
