@@ -7,6 +7,7 @@ const ipc = ipcMain
 // Keep a global reference of the mainWindowdow object, if you don't, the mainWindowdow will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null;
+let loadingScreen = null;
 let subpy = null;
 
 const PY_DIST_FOLDER = "dist-python"; // python distributable folder
@@ -69,15 +70,31 @@ const killPythonSubprocesses = (main_pid) => {
   });
 };
 
+// Loading Screen
+function createLoadingScreen() {
+  loadingScreen = new BrowserWindow({
+    width: 800,
+    height: 600,
+    frame: false,
+    resizable: false,
+  })
+
+  loadingScreen.loadFile('splash/index.html')
+
+  loadingScreen.on('closed', () => {
+    loadingScreen = null
+  })
+  
+  loadingScreen.webContents.on('did-finish-load', () => {
+    loadingScreen.show()
+  })
+}
+
+// Main Window
 const createMainWindow = () => {
   // Create the browser mainWindow
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    // transparent: true, // transparent header bar
-    icon: __dirname + "/icon.png",
-    // opacity:0.8,
-    // darkTheme: true,
+    show: false,
     frame: false,
     resizeable: true,
     webPreferences: {
@@ -127,9 +144,14 @@ const createMainWindow = () => {
     mainWindow = null;
   });
 
-  mainWindow.once('ready-to-show', () => {
+  mainWindow.on('ready-to-show', () => {
+    mainWindow.show()
     mainWindow.maximize()
   })
+
+  // mainWindow.once('ready-to-show', () => {
+  //   mainWindow.maximize()
+  // })
 };
 
 // This method will be called when Electron has finished
@@ -138,7 +160,16 @@ const createMainWindow = () => {
 app.on("ready", function () {
   // start the backend server
   startPythonSubprocess();
-  createMainWindow();
+  createLoadingScreen()
+  setTimeout(() => {
+    if (loadingScreen) {
+      loadingScreen.close()
+    }
+    createMainWindow()
+    mainWindow.show()
+  }, 5000);
+
+  // createMainWindow();
 });
 
 // disable menu

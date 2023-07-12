@@ -1,4 +1,5 @@
 
+
 /* scroll bar: body */
 body::-webkit-scrollbar {
 	width: 0.25rem;
@@ -105,6 +106,7 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     overflow: hidden;
     border: 1px solid #343B48;
+	border-radius: 10px;
     -webkit-box-sizing: border-box
 }
 
