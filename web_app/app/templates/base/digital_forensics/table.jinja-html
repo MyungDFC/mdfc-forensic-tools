@@ -11,7 +11,7 @@
       <div class="row align-items-center">
         <div class="col-sm-6 col-12 mb-4 mb-sm-0">
           <!-- Title -->
-          <h1 class="h2 mb-0 ls-tight">Dashboard</h1>
+          <h1 class="h2 mb-0 ls-tight">디지털 포렌식 분석 결과</h1>
         </div>
         <!-- Actions -->
         <div class="col-sm-6 col-12 text-sm-end">
@@ -24,34 +24,35 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
-                    <div class="avatar avatar-sm bg-tertiary rounded-circle text-white">
-                      RF
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-item d-flex align-items-center">
-                  <div>
                     <div class="avatar avatar-sm rounded-circle">
-                      <img alt="..."
-                        src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path
+                          d="M16 10h1v2h-4V6h2l-3-4-3 4h2v8H7v-2.277c.596-.347 1-.985 1-1.723a2 2 0 0 0-4 0c0 .738.404 1.376 1 1.723V14c0 1.103.897 2 2 2h4v2.277A1.99 1.99 0 0 0 10 20a2 2 0 0 0 4 0c0-.738-.404-1.376-1-1.723V14h4c1.103 0 2-.897 2-2v-2h1V6h-4v4z">
+                        </path>
+                      </svg>
                     </div>
                   </div>
                   <div class="flex-fill ms-3">
                     <a href="{{ url_for('artifact.usb_event') }}" class="text-sm text-heading font-semibold mb-0">
-                      USB History
+                      USB 연결 이벤트
                     </a>
                   </div>
                 </div>
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
                     <div class="avatar avatar-sm rounded-circle">
-                      <img alt="..."
-                        src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path
+                          d="m21.224 15.543-.813-1.464-1.748.972.812 1.461c.048.085.082.173.104.264a1.024 1.024 0 0 1-.014.5.988.988 0 0 1-.104.235 1 1 0 0 1-.347.352.978.978 0 0 1-.513.137H14v-2l-4 3 4 3v-2h4.601c.278 0 .552-.037.811-.109a2.948 2.948 0 0 0 1.319-.776c.178-.179.332-.38.456-.593a2.992 2.992 0 0 0 .336-2.215 3.163 3.163 0 0 0-.299-.764zM5.862 11.039l-2.31 4.62a3.06 3.06 0 0 0-.261.755 2.997 2.997 0 0 0 .851 2.735c.178.174.376.326.595.453A3.022 3.022 0 0 0 6.236 20H8v-2H6.236a1.016 1.016 0 0 1-.5-.13.974.974 0 0 1-.353-.349 1 1 0 0 1-.149-.468.933.933 0 0 1 .018-.245c.018-.087.048-.173.089-.256l2.256-4.512 1.599.923L8.598 8 4 9.964l1.862 1.075zm12.736 1.925L19.196 8l-1.638.945-2.843-5.117a2.95 2.95 0 0 0-1.913-1.459 3.227 3.227 0 0 0-.772-.083 3.003 3.003 0 0 0-1.498.433A2.967 2.967 0 0 0 9.41 3.944l-.732 1.464 1.789.895.732-1.465c.045-.09.101-.171.166-.242a.933.933 0 0 1 .443-.27 1.053 1.053 0 0 1 .53-.011.963.963 0 0 1 .63.485l2.858 5.146L14 11l4.598 1.964z">
+                        </path>
+                      </svg>
                     </div>
                   </div>
                   <div class="flex-fill ms-3">
                     <a href="{{ url_for('artifact.recyclebin') }}" class="text-sm text-heading font-semibold mb-0">
-                      Recyclebin History
+                      휴지통 분석 기록
                     </a>
                   </div>
                 </div>
@@ -76,53 +77,9 @@
     <div class="card">
       <div class="p-2">
         <a href="#">
-          <img
-            src="https://images.unsplash.com/photo-1611095971113-9f7542655338?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&h=600&q=80"
-            alt="..." class="card-img">
+          <img sr0c="{{ url_for('static', filename='img/dashboard/test3.jpg') }}" alt="..." class="card-img"
+            id="table-card-img">
         </a>
-      </div>
-      <div class="card-body">
-        <!-- Title -->
-        <h5 class="mb-2">Landing Page Redesign</h5>
-        <!-- Text -->
-        <p class="text-sm text-muted mb-3">
-          I need 5 examples of the logo
-        </p>
-        <!-- Actions -->
-        <div class="mx-n1 my-5">
-          <a href="#" class="btn btn-square btn-sm btn-secondary rounded-circle mx-1">
-            <span class="svg-icon">
-              <i class="bi bi-paperclip"></i>
-            </span>
-          </a>
-          <a href="#" class="btn btn-square btn-sm btn-secondary rounded-circle mx-1">
-            <span class="svg-icon">
-              <i class="bi bi-kanban"></i>
-            </span>
-          </a>
-          <a href="#" class="btn btn-square btn-sm btn-secondary rounded-circle mx-1">
-            <span class="svg-icon">
-              <i class="bi bi-check-square"></i>
-            </span>
-          </a>
-        </div>
-        <div class="d-flex align-items-center">
-          <div class="mx-n2">
-            <a href="#" class="px-2 text-sm text-muted">
-              <span class="svg-icon svg-align-baseline me-1">
-                <i class="bi bi-chat-square"></i>
-              </span>
-              4 comments
-            </a>
-          </div>
-          <div class="ms-auto me-n2">
-            <a href="#" class="px-2 text-danger">
-              <span class="svg-icon svg-align-baseline me-2">
-                <i class="bi bi-heart-fill"></i>
-              </span>
-            </a>
-          </div>
-        </div>
       </div>
     </div>
     {% endblock CardStates %}
@@ -136,11 +93,11 @@
           <h3>{{ title }}</h3>
           <!-- Button -->
           <div class="ms-auto">
-            <a href="#" class="btn btn-sm btn-primary ms-auto">
-              Reload
-            </a>
             <a href="#" class="btn btn-sm btn-neutral ms-2">
-              Export
+              다시 분석하기
+            </a>
+            <a href="#" class="btn btn-sm btn-primary ms-auto">
+              CSV 내보내기
             </a>
             {# <div class="input-group input-group-sm input-group-inline">
               <span class="input-group-text pe-2">

@@ -15,35 +15,17 @@
             <div class="col-auto">
               <div class="w-20">
                 <img alt="..." class="img-fluid rounded-4"
-                  src="https://preview.webpixels.io/web/img/other/logos/logo-3.png">
+                  src="{{ url_for('static', filename='img/logo/digital_forensics.jpg') }}">
               </div>
             </div>
             <div class="ms-5">
               <!-- Title -->
-              <h1 class="h2 mb-0">Digital Forensics</h1>
+              <h1 class="h2 mb-0">디지털 포렌식</h1>
               <!-- Subtitle -->
               <p class="text-sm text-muted mt-1">
-                This is a small description of the project
+                기업의 데이터 유출 및 사용자 활동기록 확인
               </p>
             </div>
-          </div>
-          <div class="col-md-6 col-12 text-md-end">
-            <!-- Avatar group -->
-            <div class="avatar-group">
-              <div class="avatar bg-soft-warning rounded-circle text-warning border border-2 border-solid border-body">
-                JM
-              </div>
-              <div class="avatar bg-soft-primary rounded-circle text-primary border border-2 border-solid border-body">
-                AE
-              </div>
-              <div class="avatar bg-warning rounded-circle text-white">
-                <img alt="..."
-                  src="https://images.unsplash.com/photo-1579463148228-138296ac3b98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
-              </div>
-            </div>
-            <!-- Button -->
-            <button type="button"
-              class="btn btn-square btn-neutral border-2 border-dashed rounded-circle ms-4">+</button>
           </div>
         </div>
       </div>
@@ -57,7 +39,7 @@
         <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
           <div class="px-3 mb-6">
             <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-danger"></i>Data Leakage
+              <i class="bg-danger"></i>데이터 유출
             </span>
           </div>
           <div class="flex-1 overflow-y-auto" id="dashboard-col-1">
@@ -68,44 +50,27 @@
                   <div class="p-2">
                     <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/banner.png') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">USB 연결 이벤트</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Files in External Devices -->
             <div class="px-5 mb-4">
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/banner.png') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">외부데이터 열람 기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
@@ -117,7 +82,7 @@
         <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
           <div class="px-3 mb-6">
             <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-warning"></i>Internet Usage
+              <i class="bg-warning"></i>인터넷 사용기록
             </span>
           </div>
           <div class="flex-1 overflow-y-auto" id="dashboard-col-2">
@@ -128,19 +93,11 @@
                   <div class="p-2">
                     <a href="#" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/internet_visit_history.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">웹사이트 방문기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
@@ -153,19 +110,11 @@
                   <div class="p-2">
                     <a href="#" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/internet_download.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">파일 다운로드 기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
@@ -178,19 +127,11 @@
                   <div class="p-2">
                     <a href="#" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">인터넷 검색 기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
@@ -202,7 +143,7 @@
         <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
           <div class="px-3 mb-6">
             <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-success"></i>User Activity
+              <i class="bg-success"></i>사용자 활동
             </span>
           </div>
           <div class="flex-1 overflow-y-auto" id="dashboard-col-3">
@@ -213,19 +154,11 @@
                   <div class="p-2">
                     <a href="#" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/file_usage.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">파일 사용기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
@@ -238,19 +171,28 @@
                   <div class="p-2">
                     <a href="#" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/logon_event.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Website Visit History</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">컴퓨터 로그온 기록</h5>
+                    <span class="d-block"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Program Execution -->
+            <div class="px-5 mb-4">
+              <div class="card shadow border-0">
+                <div class="card border-0 shadow shadow-4-hover">
+                  <div class="p-2">
+                    <a href="#" class="d-block">
+                      <img class="img-fluid rounded-2" alt="..."
+                        src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}" />
+                    </a>
+                  </div>
+                  <div class="px-4 pt-2 pb-4">
+                    <h5 class="font-semibold mb-2">프로그램 실행 기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>
@@ -262,7 +204,7 @@
         <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
           <div class="px-3 mb-6">
             <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-tertiary"></i>File Deletion
+              <i class="bg-tertiary"></i>데이터 삭제
             </span>
           </div>
           <div class="flex-1 overflow-y-auto" id="dashboard-col-4">
@@ -273,19 +215,11 @@
                   <div class="p-2">
                     <a href="{{ url_for('artifact.recyclebin') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800&q=60" />
+                        src="{{ url_for('static', filename='img/dashboard/recyclebin.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">Deleted Files</h5>
-                    <div class="d-flex align-items-center">
-                      <div class="text-xs text-muted">
-                        <i class="bi bi-lock me-1"></i>Private
-                      </div>
-                      <div class="text-xs text-muted ms-auto">
-                        3 hrs ago
-                      </div>
-                    </div>
+                    <h5 class="font-semibold mb-2">휴지통 분석 기록</h5>
                     <span class="d-block"></span>
                   </div>
                 </div>

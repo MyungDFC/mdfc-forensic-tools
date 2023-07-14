@@ -18,7 +18,7 @@
     <div class="topBar">
       <div class="titleBar">
         <button id="showHideMenus" class="toggleButton"></button>
-        <img src="{{ url_for('static', filename='img/icon_top_bar.png') }}" alt="">
+        <img src="{{ url_for('static', filename='img/titlebar/icon_top_bar.png') }}" alt="">
         <div class="title">
           Myung Digital Forenic Center
         </div>
@@ -43,7 +43,7 @@
           <header>
             <div class="image-text">
               <span class="image">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+                <img src="{{ url_for('static', filename='img/logo/home.png') }}" alt="">
               </span>
               <div class="text header-text">
                 <span class="name">(주)명정보기술</span>
@@ -136,7 +136,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ url_for('people.main') }}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                     <path

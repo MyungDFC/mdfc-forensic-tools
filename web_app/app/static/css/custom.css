@@ -139,7 +139,7 @@ body::-webkit-scrollbar-thumb {
     border: none;
     outline: none;
     background-color: transparent;
-    background-image: url('../icons/icon_menu.png');
+    background-image: url('../icons/titlebar/icon_menu.png');
     background-repeat: no-repeat;
     background-position: center;
     transition: 0.2s;
@@ -189,17 +189,32 @@ body::-webkit-scrollbar-thumb {
     background-color: #4F9FEE;
 }
 .titleBarBtns > .minimizeBtn{
-    background-image: url('../img/icon_minimize.png');
+    background-image: url('../img/titlebar/icon_minimize.png');
 }
 .titleBarBtns > .maximizeBtn{
-    background-image: url('../img/icon_maximize.png');
+    background-image: url('../img/titlebar/icon_maximize.png');
 }
 .titleBarBtns > .restoreBtn{
-    background-image: url('../img/icon_restore.png');
+    background-image: url('../img/titlebar/icon_restore.png');
 }
 .titleBarBtns > .closeBtn{
-    background-image: url('../img/icon_close.png');
+    background-image: url('../img/titlebar/icon_close.png');
 }
+
+/* home */
+.py-20 .container .row {
+    --x-gutter-x: -11rem;
+}
+
+#cta-heading-1 {
+    font-size: 2rem;
+}
+
+#cta-text {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 
 /* navbar */
 .navbar {
@@ -246,6 +261,14 @@ header .image-text .header-text {
 	margin-left: 10px;
 }
 
+/* service table */
+.py-6 .container-fluid {
+    width: 95%;
+}
+
+#table-card-img {
+    height: 550px;
+}
 
 /* Youtube */
 .div-round {

@@ -26,8 +26,9 @@ def process():
                 'records' variable is already serialized by 'json.dumps()'
                 type: list[json]
             """
-            session[artifact_name] = records 
-    return redirect(url_for("artifact.recyclebin"))
+
+            session[artifact_name] = records
+    return redirect(url_for("dashboard.digital_forensics"))
 
 
 @bp.route("/Internet", methods=["GET"])
