@@ -11,13 +11,13 @@
         <div class="col-lg-7">
           <!-- Heading -->
           <h1 class="ls-tight font-bolder mb-5">
-            From the Blog
+            명디지털 포렌식센터 BLOG
           </h1>
           <!-- Text -->
-          <p class="lead">
+          {# <p class="lead">
             Plan, build and launch beautiful and consistent user interfaces for the web that drives meaningful
             engagement and growth for your brand.
-          </p>
+          </p> #}
         </div>
       </div>
       {% endblock SectionTitle %}

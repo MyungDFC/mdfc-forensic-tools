@@ -4,7 +4,7 @@
 <div class="card">
   <div class="p-2">
     <a href="#">
-      <img src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}" alt="..." class="card-img"
+      <img src="{{ url_for('static', filename='img/dashboard/logon_event.jpg') }}" alt="..." class="card-img"
         id="table-card-img">
     </a>
   </div>

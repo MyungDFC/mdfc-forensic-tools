@@ -100,26 +100,28 @@
     <div class="container">
       <!-- Section title -->
       <div class="row justify-content-center text-center mb-20">
-        <div class="col-lg-7">
+        <div class="col-lg-8">
           <!-- Surtitle -->
           <h5 class="h5 mb-5 text-uppercase text-primary">
             Service
           </h5>
           <!-- Heading -->
           <h1 class="ls-tight font-bolder mb-5">
-            데이터복구/포렌식 名家 - (주)명정보기술
+            데이터복구&디지털 포렌식 名家
           </h1>
           <!-- Text -->
           <p class="lead text-muted">
-            (주)명정보기술은 손상된 증거물에 대한 초기 진단 및 신속한 정밀 데이터 복구,<br>그리고 모든 것을 찾아낸는 디지털 포렌식 분석까지 일원화된 서비스로 최상의 결과를 제공합니다.
+            (주)명정보기술은 손상된 증거물에 대한 초기 진단 및 신속한 정밀 데이터 복구,<br>그리고 모든 것을 찾아내는 디지털 포렌식 분석까지<br>일원화된 서비스로 최상의 결과를 제공합니다.
           </p>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-xl-8">
           <div class="position-relative">
-            <video src="{{ url_for('static', filename='video/myung_service.mp4') }}" autoplay loop muted
-              type="video/mp4"></video>
+            <div class="div-round" style="width: 100%">
+              <video src="{{ url_for('static', filename='video/myung_service.mp4') }}" autoplay loop muted
+                type="video/mp4"></video>
+            </div>
           </div>
         </div>
       </div>
@@ -166,42 +168,35 @@
   {# Features Section 2 #}
   <div class=" pt-24 pb-24">
     <div class="container max-w-screen-xl">
-      <div class="row align-items-center justify-content-between">
+      <div class="row align-items-center justify-content-between" id="feature-2">
         <div class="col-12 col-md-6 mb-5 mb-md-0">
           <!-- Images -->
           <div class="row mx-n2">
             <div class="col-6 px-2">
-              <img
-                src="https://images.unsplash.com/photo-1519160558534-579f5106e43f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=700&q=80"
-                alt="..." class="img-fluid mb-4 rounded">
-              <img
-                src="https://images.unsplash.com/photo-1618439453478-3699ad66cb97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=400&q=80"
-                alt="..." class="img-fluid rounded">
+              <img src="{{ url_for('static', filename='img/home/feature1.png') }}" alt="..."
+                class="img-fluid mb-4 rounded">
+              <img src="{{ url_for('static', filename='img/home/feature3.png') }}" alt="..." class="img-fluid rounded">
             </div>
             <div class="col-6 mt-6 px-2">
-              <img
-                src="https://images.unsplash.com/photo-1556908153-c0e609dda194?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=400&q=80"
-                alt="..." class="img-fluid mb-4 rounded">
-              <img
-                src="https://images.unsplash.com/photo-1587554801471-37976a256db0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&h=700&q=80"
-                alt="..." class="img-fluid rounded">
+              <img src="{{ url_for('static', filename='img/home/feature2.png') }}" alt="..."
+                class="img-fluid mb-4 rounded">
+              <img src="{{ url_for('static', filename='img/home/feature1.png') }}" alt="..." class="img-fluid rounded">
             </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-5 aos-init aos-animate" data-aos="fade-left">
           <!-- Heading -->
           <h1 class="ls-tight font-bolder mb-5">
-            Our friendly team will help you <span class="text-primary">with anything</span>
+            국가적 디지털 재난<br>긴급대응 기업
           </h1>
           <!-- Text -->
           <p class="lead text-muted mb-10">
-            With this premium component library you will start building modern user interfaces faster and more
-            consistent than ever before.
+            세월호, 천안함, 320전산 대란 등<br>각종 위기 상황에 (주)명정보기술의 독보적인 기술력을 제공하여 국가적 헌신을 하고 있습니다.
           </p>
-          <!-- Link -->
+          {# <!-- Link -->
           <a href="#!" class="link-primary font-semibold">
             Learn more <i class="bi bi-arrow-right ms-1"></i>
-          </a>
+          </a> #}
         </div>
       </div>
     </div>
@@ -214,61 +209,27 @@
         <div class="col-12 col-md-10 col-lg-8 text-center">
           <!-- Quote sign -->
           <div class="mb-8 text-heading" style='font-size: 60px'>
-            <i class="bi bi-chat-square-quote"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+              class="bi bi-chat-square-quote" viewBox="0 0 16 16">
+              <path
+                d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path
+                d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z" />
+            </svg>
           </div>
           <!-- Text -->
           <p class="text-xl text-heading lh-relaxed">
-            명성(名聲)이 널리 알려진 데는 그럴만한 이유가 있다.<br>(주)명정보기술은 데이터 재난에 맞서 국내외 50만건 이상의 데이터를 복구해 오고 있습니다.<br>데이터에는 기업/사람의 모든
+            (주)명정보기술은 데이터 재난에 맞서 국내외 50만건 이상의 데이터를 복구해 오고 있습니다.<br>데이터에는 기업/사람의 모든
             희로애락이 담겨 있습니다.<br>우리 (주)명정보기술은 데이터에 담긴 귀하의 소중한 추억을 지켜드립니다.
           </p>
           <!-- Logo -->
           <div class="d-inline-block w-32 svg-fluid mt-16 mb-6">
-            <svg width="246" height="70" viewBox="0 0 246 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M44.9474 6.26317C43.9649 3.07019 40.5263 1.35089 37.3333 2.33335C34.1403 3.31581 32.4211 6.7544 33.4035 9.94738L49 57.9649C50.1053 60.9123 53.2982 62.6316 56.3684 61.6491C59.5614 60.6667 61.5263 57.3509 60.5439 54.1579C60.421 54.1579 44.9474 6.26317 44.9474 6.26317Z"
-                fill="#DFA22F" />
-              <path
-                d="M20.7544 14.1228C19.6491 10.9298 16.3333 9.21054 13.1403 10.193C9.94736 11.1755 8.22806 14.6141 9.21052 17.807L24.807 65.8246C25.9123 68.7719 29.1053 70.4912 32.1754 69.5088C35.3684 68.5263 37.3333 65.2105 36.3509 62.0176C36.2281 62.0176 20.7544 14.1228 20.7544 14.1228Z"
-                fill="#3CB187" />
-              <path
-                d="M64.5965 45.9298C67.7895 44.9474 69.5088 41.5088 68.5263 38.3158C67.5438 35.1228 64.1053 33.4035 60.9123 34.386L12.7719 50.1053C9.82456 51.2105 8.10526 54.4035 9.08771 57.4737C10.0702 60.6667 13.386 62.6316 16.5789 61.6491C16.7017 61.5263 64.5965 45.9298 64.5965 45.9298Z"
-                fill="#CE1E5B" />
-              <path
-                d="M22.8422 59.5614C25.9123 58.5789 29.965 57.2281 34.2632 55.8772C33.2808 52.807 31.9299 48.7544 30.579 44.4561L19.158 48.1404L22.8422 59.5614Z"
-                fill="#392538" />
-              <path
-                d="M47.0352 51.7017C51.3334 50.3509 55.386 49 58.4562 48.0175C57.4738 44.9474 56.1229 40.8947 54.772 36.5965L43.351 40.2807L47.0352 51.7017Z"
-                fill="#BB242A" />
-              <path
-                d="M56.7369 21.7368C59.9298 20.7544 61.6491 17.3158 60.6667 14.1228C59.6842 10.9298 56.2456 9.21053 53.0527 10.193L4.91231 25.9123C1.96494 27.0175 0.245638 30.2105 1.22809 33.2807C2.21055 36.4737 5.52634 38.4386 8.71932 37.4561C8.84213 37.3333 56.7369 21.7368 56.7369 21.7368Z"
-                fill="#72C5CD" />
-              <path
-                d="M14.9824 35.3684C18.0526 34.386 22.1052 33.0351 26.4035 31.6842C25.0526 27.386 23.7017 23.3333 22.7193 20.2632L11.2982 23.9474L14.9824 35.3684Z"
-                fill="#238C73" />
-              <path
-                d="M39.1754 27.5088C43.4737 26.1579 47.5263 24.807 50.5965 23.8246C49.2456 19.5263 47.8947 15.4737 46.9123 12.4035L35.4912 16.0877L39.1754 27.5088Z"
-                fill="#62803A" />
-              <path
-                d="M113.228 18.7895C115.316 19.7719 115.561 20.386 113.842 23.5789C112.123 26.7719 111.754 27.0175 109.667 26.1579C107.088 25.0526 103.649 24.193 101.561 24.193C98 24.193 95.6667 25.421 95.6667 27.386C95.6667 33.7719 116.053 30.3333 116.053 43.9649C116.053 50.8421 110.158 55.386 101.439 55.386C96.772 55.386 91.1228 53.7895 87.193 51.8246C85.2281 50.8421 85.1053 50.2281 86.8246 47.0351C88.2983 44.2105 88.7895 43.8421 90.8772 44.7017C94.193 46.1754 98.4913 47.2807 101.316 47.2807C104.509 47.2807 106.719 45.9298 106.719 44.0877C106.719 37.9474 85.965 40.8947 85.965 27.6316C85.965 20.6316 91.7369 15.9649 100.579 15.9649C104.509 15.9649 109.667 17.193 113.228 18.7895Z"
-                fill="#373D40" />
-              <path
-                d="M129.684 2.70175V53.2983C129.684 54.0351 128.825 54.8947 127.719 54.8947H122.439C121.333 54.8947 120.474 54.0351 120.474 53.2983V2.70175C120.474 0.245614 121.211 0 125.14 0C129.439 0 129.684 0.245614 129.684 2.70175Z"
-                fill="#373D40" />
-              <path
-                d="M142.947 43.8421C142.947 46.4211 145.158 48.1404 148.474 48.1404C152.526 48.1404 156.088 46.1754 158.298 42.9825V39.5439C156.21 38.6842 153.632 38.3158 151.298 38.3158C146.263 38.3158 142.947 40.6491 142.947 43.8421ZM167.509 31.193V53.0526C167.509 54.1579 166.649 55.0175 165.544 55.0175H160.263C159.035 55.0175 158.175 54.1579 158.298 52.9298L158.421 50.5965C155.596 53.7895 151.421 55.386 147.368 55.386C139.386 55.386 134.105 50.8421 134.105 43.9649C134.105 36.7193 140.123 31.807 149.21 31.6842C152.649 31.6842 155.719 32.2982 158.298 33.4035V30.9474C158.298 26.8947 155.105 24.5614 149.825 24.5614C147.368 24.5614 144.175 25.5439 141.719 27.0175C139.877 28.1228 139.386 28 137.298 24.9298C135.333 21.8596 135.333 21.2456 137.298 20.0175C140.982 17.6842 146.018 16.0877 150.684 16.0877C161 15.9649 167.509 21.614 167.509 31.193Z"
-                fill="#373D40" />
-              <path
-                d="M203.614 18.9123C205.579 20.0175 205.579 20.6316 203.491 23.9474C201.526 27.0175 201.158 27.2631 199.07 26.1579C197.474 25.2982 194.895 24.5614 192.684 24.5614C186.053 24.5614 181.509 28.9824 181.509 35.614C181.509 42.4912 185.93 47.1579 192.684 47.1579C195.018 47.1579 197.842 46.2982 199.807 45.193C201.772 44.0877 202.14 44.2105 204.228 47.1579C206.07 49.9824 206.07 50.5965 204.351 51.7017C201.404 53.7895 196.614 55.386 192.561 55.386C180.158 55.386 171.93 47.5263 171.93 35.614C171.93 23.8246 180.158 15.9649 192.684 15.9649C196.491 15.9649 200.912 17.3158 203.614 18.9123Z"
-                fill="#373D40" />
-              <path
-                d="M244.018 50.1053C245.614 52.0702 245 52.807 241.07 54.1579C237.14 55.6316 236.649 55.5088 235.175 53.6667L224.123 38.9298L219.211 43.7193V53.2982C219.211 54.0351 218.351 54.8947 217.246 54.8947H211.965C210.86 54.8947 210 54.0351 210 53.2982V2.70175C210 0.245614 210.737 0 214.667 0C219.088 0 219.333 0.368421 219.333 2.70175V31.5614L234.439 17.0702C236.158 15.4737 237.018 15.5965 239.965 17.5614C243.281 19.6491 243.526 20.2632 241.93 21.8596L230.632 32.7895L244.018 50.1053Z"
-                fill="#373D40" />
-            </svg>
+            <img src="{{ url_for('static', filename='img/home/signature.png') }}" class="h-10" alt="...">
           </div>
           <!-- Name -->
-          <span class="d-block h5 mb-1">Michal Cayne, CEO</span>
+          <span class="d-block h5 mb-1">Myung-Jae Lee</span>
           <!-- Job title -->
-          <span class="d-block text-sm text-muted mb-5">Graphic Designer</span>
+          <span class="d-block text-sm text-muted mb-5">CEO</span>
         </div>
       </div>
     </div>
@@ -278,7 +239,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-auto">
-          <img src="https://preview.webpixels.io/web/img/logos/clever-dark.svg" class="h-10" alt="...">
+          <img src="{{ url_for('static', filename='img/logo/myung_logo.png') }}" class="h-10" alt="...">
         </div>
       </div>
       <div class="row mt-10 mb-7">

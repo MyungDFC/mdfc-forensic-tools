@@ -13,17 +13,16 @@
         </h5>
         <!-- Title -->
         <h1 class="ls-tight font-bolder display-5 mb-5">
-          명정보기술의 전문가들을<br>소개합니다
-        </h1>
+          명정보기술의 전문가들을소개합니다 </h1>
         <!-- Text -->
         <p class="lead text-muted">
-          (주)명정보기술의 전문가들은 각자의 위치에서 최고의 실력을 자랑하는 스페셜리스트입니다. 모두가 고객의 성공을 위해 최선을 다하고 있습니다.
+          (주)명정보기술의 전문가들은 각자의 위치에서 최고의 실력을 자랑하는 스페셜리스트입니다.
         </p>
       </div>
     </div>
     <!-- Team -->
     <div class="row g-8">
-      {# Kim Donggun #}
+      {# Kim Donggeon #}
       <div class="col-lg-3 col-sm-6 mb-5">
         <a href="#">
           <img alt="..." class="img-fluid rounded shadow"
@@ -31,7 +30,7 @@
         </a>
         <div class="mt-5">
           <!-- Name -->
-          <span class="people_name">Kim Donggun</span>
+          <span class="people_name">Kim Donggeon</span>
           <!-- Job Title -->
           <p class="text-muted text-sm">Digital Forensic Team Leader</p>
           <!-- Social Links -->
@@ -54,8 +53,7 @@
                 </path>
               </svg>
             </a>
-            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
-              href="https://www.instagram.com/epdrjsdl77/" target="_blank">
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
               <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
                 class="svg-inline--fa fa-instagram fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512">
@@ -67,16 +65,17 @@
           </div>
         </div>
       </div>
+      {# Kim Joonyoung #}
       <div class="col-lg-3 col-sm-6 mb-5">
         <a href="#">
           <img alt="..." class="img-fluid rounded shadow"
-            src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=500&h=500&q=80">
+            src="{{ url_for('static', filename='img/people/kim_joonyoung.jpg') }}">
         </a>
         <div class="mt-5">
           <!-- Name -->
-          <a href="#" class="h5 d-block mb-1">Heather Wright</a>
+          <a href="#" class="h5 d-block mb-1">Kim Joonyoung</a>
           <!-- Job Title -->
-          <p class="text-muted text-sm">Web Developer</p>
+          <p class="text-muted text-sm">Memory Recovery Team Leader</p>
           <!-- Social Links -->
           <div class="mx-n1 mt-3">
             <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">

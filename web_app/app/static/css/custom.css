@@ -1,4 +1,7 @@
-
+/* background color */
+/* .bg-surface-secondary {
+    background-color: #7e92cd !important;
+} */
 
 /* scroll bar: body */
 body::-webkit-scrollbar {
@@ -213,6 +216,10 @@ body::-webkit-scrollbar-thumb {
 #cta-text {
     font-size: 1rem;
     font-weight: 500;
+}
+
+#feature-2 {
+    --x-gutter-x: -7rem;
 }
 
 

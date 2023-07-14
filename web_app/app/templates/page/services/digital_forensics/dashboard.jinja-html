@@ -50,7 +50,7 @@
                   <div class="p-2">
                     <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/banner.png') }}" />
+                        src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
@@ -64,9 +64,9 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
+                    <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/banner.png') }}" />
+                        src="{{ url_for('static', filename='img/dashboard/data_leakage.jpg') }}" />
                     </a>
                   </div>
                   <div class="px-4 pt-2 pb-4">
@@ -91,7 +91,7 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.internet') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
                         src="{{ url_for('static', filename='img/dashboard/internet_visit_history.jpg') }}" />
                     </a>
@@ -108,7 +108,7 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.internet') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
                         src="{{ url_for('static', filename='img/dashboard/internet_download.jpg') }}" />
                     </a>
@@ -125,7 +125,7 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.internet') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
                         src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}" />
                     </a>
@@ -152,7 +152,7 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
                         src="{{ url_for('static', filename='img/dashboard/file_usage.jpg') }}" />
                     </a>
@@ -169,7 +169,7 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.logon_event') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
                         src="{{ url_for('static', filename='img/dashboard/logon_event.jpg') }}" />
                     </a>
@@ -186,7 +186,7 @@
               <div class="card shadow border-0">
                 <div class="card border-0 shadow shadow-4-hover">
                   <div class="p-2">
-                    <a href="#" class="d-block">
+                    <a href="{{ url_for('artifact.prefetch') }}" class="d-block">
                       <img class="img-fluid rounded-2" alt="..."
                         src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}" />
                     </a>

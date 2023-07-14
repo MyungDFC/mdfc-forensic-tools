@@ -1,12 +1,24 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
+{% block CardStates %}
+<div class="card">
+  <div class="p-2">
+    <a href="#">
+      <img src="{{ url_for('static', filename='img/dashboard/recyclebin.jpg') }}" alt="..." class="card-img"
+        id="table-card-img">
+    </a>
+  </div>
+</div>
+{% endblock CardStates %}
+
+
 {% block TableHeader %}
-<th scope="col">Deleted Time</th>
-<th scope="col">File Name</th>
-<th scope="col">Extension</th>
-<th scope="col">Size</th>
-<th scope="col">Original Path</th>
-<th scope="col">Deleted Path</th>
+<th scope="col">데이터 삭제 시간</th>
+<th scope="col">파일 이름</th>
+<th scope="col">확장자</th>
+<th scope="col">파일 크기</th>
+<th scope="col">삭제되기 이전 경로</th>
+<th scope="col">현재 경로</th>
 {% endblock TableHeader %}
 
 {% block TableBody %}

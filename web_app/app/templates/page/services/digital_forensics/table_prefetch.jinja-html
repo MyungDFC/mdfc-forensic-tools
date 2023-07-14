@@ -4,13 +4,12 @@
 <div class="card">
   <div class="p-2">
     <a href="#">
-      <img src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}" alt="..." class="card-img"
+      <img src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}" alt="..." class="card-img"
         id="table-card-img">
     </a>
   </div>
 </div>
 {% endblock CardStates %}
-
 
 {% block TableHeader %}
 <th scope="col">데이터 삭제 시간</th>
