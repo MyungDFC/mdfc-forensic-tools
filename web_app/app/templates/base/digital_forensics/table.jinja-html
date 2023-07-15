@@ -1,10 +1,7 @@
-{% extends "base/root.jinja-html" %}
+{% extends "base/digital_forensics/dashboard.jinja-html" %}
 
-{% block Title %}
-<title>FCM Desktop | {{ title }}</title>
-{% endblock Title %}
 
-{% block ContentHeader %}
+{# {% block ContentHeader %}
 <header class="bg-surface-primary border-bottom pt-6">
   <div class="container-fluid">
     <div class="mb-npx">
@@ -67,7 +64,7 @@
     </div>
   </div>
 </header>
-{% endblock ContentHeader %}
+{% endblock ContentHeader %} #}
 
 {% block ContentMain %}
 <main class="py-6 bg-surface-secondary">
