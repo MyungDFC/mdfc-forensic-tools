@@ -1,7 +1,8 @@
 import re
+import math
 from datetime import datetime, timedelta
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from googleapiclient.discovery import build
 
 from config import youtube_api_key, youtube_channel_id
@@ -11,12 +12,6 @@ bp = Blueprint("youtube", __name__, url_prefix="/youtube")
 @bp.route("/")
 def main():
     youtube = build("youtube", "v3", developerKey=youtube_api_key)
-
-    channel_request = youtube.channels().list(
-        part="statistics",
-        id=youtube_channel_id
-    )
-    channel_response = channel_request.execute()
 
     videos = []
     nextPageToken = None
@@ -28,7 +23,7 @@ def main():
     while True:
         pl_request = youtube.playlistItems().list(
             part="contentDetails",
-            playlistId="PLQQ1DxVUSynHVkxkV3CYrl3F5qsZjw89E",
+            playlistId="PLQQ1DxVUSynEX6k953Mo-V711SOyndaug",
             maxResults=50,
             pageToken=nextPageToken
         )
@@ -98,5 +93,30 @@ def main():
 
     videos.sort(key=lambda video: video["published"], reverse=True)
 
+    # Pagination
+    page = request.args.get('page', 1, type=int)
+    per_page = 10  # number of items per page
+    start = (page - 1) * per_page  # first item to display on this page
+    end = start + per_page  # last item to display on this page
+    items_on_page = videos[start:end]  # items to display on this page
+
+    total = len(videos)  # total number of items in the list
+    last_page = math.ceil(total / per_page)  # last page number
+    block_size = 5  # number of pages in the navigation block
+    block_num = int((page - 1) / block_size)  # current block number
+    block_start = int((block_size * block_num) + 1)  # first page number in the block (1, 6, 11, ...
+    block_end = math.ceil(block_start + (block_size - 1))  # last page number in the block
+
+    if block_end > last_page:
+        block_end = last_page
+
     return render_template(
-        "page/youtube/main.jinja-html", videos=videos)
+        "page/youtube/main.jinja-html", 
+        videos=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
+        )

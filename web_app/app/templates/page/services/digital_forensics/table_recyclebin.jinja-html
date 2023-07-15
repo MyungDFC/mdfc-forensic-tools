@@ -31,7 +31,7 @@
     </div>
   </td>
   <td>
-    <span>{{ record.get("ts") }}</span>
+    <span>{{ record.get("ts")|format_datetime}}</span>
   </td>
   <td>
     <span>{{ record.get("filename") }}</span>

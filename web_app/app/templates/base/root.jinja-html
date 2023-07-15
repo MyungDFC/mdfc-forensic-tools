@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <div class="mainApp">
+  <header id="app-header">
     <div class="topBar">
       <div class="titleBar">
         <button id="showHideMenus" class="toggleButton"></button>
@@ -29,7 +29,8 @@
         <button id="closeBtn" class="topBtn closeBtn" title="Close"></button>
       </div>
     </div>
-
+  </header>
+  <div class="app-body">
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
       <!-- Vertical Navbar -->
       <nav
@@ -46,8 +47,8 @@
                 <img src="{{ url_for('static', filename='img/logo/home.png') }}" alt="">
               </span>
               <div class="text header-text">
-                <span class="name">(주)명정보기술</span>
-                <span class="profession">Myung Infotech Ltd.</span>
+                <a href="{{ url_for('home.index') }}" class="name">(주)명정보기술</a>
+                <a href="{{ url_for('home.index') }}" class="profession">Myung Infotech Ltd.</a>
               </div>
             </div>
           </header>

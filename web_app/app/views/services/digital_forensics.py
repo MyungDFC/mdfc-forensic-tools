@@ -1,9 +1,20 @@
 import json
+from datetime import datetime
 from flask import Blueprint, render_template, url_for, session, request
 from werkzeug.utils import redirect
 from app.engine.case_manager import CaseManager
 
 bp = Blueprint("artifact", __name__, url_prefix="/dashboard/digital_forensics")
+
+@bp.app_template_filter("format_datetime")
+def format_datetime(value):
+    # Parsing the string into a datetime object
+    dt = datetime.fromisoformat(value)
+
+    # Formatting the datetime object into a string with the desired format
+    formatted_time_str = dt.strftime("%Y-%m-%d %H:%M:%S")
+
+    return formatted_time_str
 
 @bp.route("/", methods=["GET"])
 def process():
