@@ -1,5 +1,7 @@
+import os
+import json
 from pathlib import Path
-from datetime import timedelta, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Generator
 from dataclasses import dataclass, field
 
@@ -59,3 +61,22 @@ class ForensicArtifact:
         # It can be parsed back into a Python object using the 'json.loads()'.
         """
         raise NotImplementedError
+    
+    def export(self, output_dir: Path) -> list[dict]:
+        if not output_dir.exists():
+            os.makedirs(output_dir, 0o777)
+            
+        result_files = []
+        for name, data in self.result.items():
+            result = "[" + ",\n".join(data) + "]"
+            output_path = output_dir / f"{name}.json"
+            with open(output_path, 'w+', encoding='utf-8') as f:
+                f.write(result)
+
+            result_file = {
+                "artifact": self.artifact,
+                "record": name,
+                "result": output_path
+            }
+            result_files.append(json.dumps(result_file, indent=2, default=str, ensure_ascii=False))
+        return result_files
