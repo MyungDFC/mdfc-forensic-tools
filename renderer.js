@@ -79,7 +79,7 @@ function createLoadingScreen() {
     resizable: false,
   })
 
-  loadingScreen.loadFile('splash/index.html')
+  loadingScreen.loadURL("http://localhost:4040/loading");
 
   loadingScreen.on('closed', () => {
     loadingScreen = null
@@ -167,7 +167,7 @@ app.on("ready", function () {
     }
     createMainWindow()
     mainWindow.show()
-  }, 1000);
+  }, 3000);
 });
 
 // disable menu
