@@ -324,3 +324,7 @@ iframe.youtube_frame {
     max-height: 200px;
 }
 
+/* faq */
+.pt-24 .container {
+    --x-gutter-x: 9rem;
+}

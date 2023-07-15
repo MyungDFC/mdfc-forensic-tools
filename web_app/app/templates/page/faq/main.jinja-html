@@ -1,0 +1,135 @@
+{% extends "base/root.jinja-html" %}
+
+<!-- Main Content -->
+{% block Content %}
+<div class="h-screen flex-grow-1 overflow-y-lg-auto py-0" id="main-content">
+  <div class=" pt-24 pb-24">
+    <div class="container max-w-screen-xl">
+      <div class="row g-10 g-lg-32">
+        <div class="col-lg-4 mb-10 mb-lg-0">
+          <h1 class="lh-tight ls-tight display-6 mb-7">
+            Frequently asked questions
+          </h1>
+          <p class="lead">
+            Here are some of the most frequent questions we get from our customer.<br><br>If you have any further
+            questions, get in touch with our friendly team 😃
+          </p>
+        </div>
+        <div class="col-lg-7 ms-auto">
+          <div id="faqs" class="accordion accordion-flush mb-0">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_1">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_1" aria-expanded="false" aria-controls="collapse_faq_1">
+                  <span class="h5">What version of Bootstrap is used?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_1" class="accordion-collapse collapse" aria-labelledby="heading_faq_1"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_2">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_2" aria-expanded="false" aria-controls="collapse_faq_2">
+                  <span class="h5">What browsers are supported?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_2" class="accordion-collapse collapse" aria-labelledby="heading_faq_2"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_3">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_3" aria-expanded="false" aria-controls="collapse_faq_3">
+                  <span class="h5">How often do you make updates?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_3" class="accordion-collapse collapse" aria-labelledby="heading_faq_3"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_4">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_4" aria-expanded="false" aria-controls="collapse_faq_4">
+                  <span class="h5">Can I build my own commercial projects?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_4" class="accordion-collapse collapse" aria-labelledby="heading_faq_4"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_5">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_5" aria-expanded="false" aria-controls="collapse_faq_5">
+                  <span class="h5">How can I request a refund?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_5" class="accordion-collapse collapse" aria-labelledby="heading_faq_5"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_6">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_6" aria-expanded="false" aria-controls="collapse_faq_6">
+                  <span class="h5">What if I have a question that isn&#39;t answered here?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_6" class="accordion-collapse collapse" aria-labelledby="heading_faq_6"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock Content %}

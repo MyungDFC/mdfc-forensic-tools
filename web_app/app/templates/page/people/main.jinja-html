@@ -130,7 +130,7 @@
             </a>
             {# github #}
             <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
-              href="https://github.com/changjoon-park">
+              href="https://github.com/changjoon-park" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -139,7 +139,8 @@
               </svg>
             </a>
             {# instagram #}
-            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
+              href="https://www.instagram.com/__.jjooon/" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                 <path
