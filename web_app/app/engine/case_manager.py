@@ -27,7 +27,6 @@ class CaseManager:
     def session_time(self) -> str:
         return datetime.now().strftime("%Y%m%dT%H%M%S")
 
-
     def parse_all(self) -> None:
         for entry in self.forensic_artifacts:
             entry.parse(descending=False)
@@ -46,4 +45,4 @@ class CaseManager:
         session_file = self.session_dir / f"session_{self.session_time}.json"
         with open(session_file, 'w+', encoding='utf-8') as f:
             f.write(session)
-        return session
+            

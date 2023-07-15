@@ -30,6 +30,4 @@ if __name__ == '__main__':
         root_directory=root_directory
     )
     case.parse_all()
-    session = case.export_all()
-
-    print(case.forensic_artifacts[0].result)
+    case.export_all()
