@@ -167,7 +167,7 @@ app.on("ready", function () {
     }
     createMainWindow()
     mainWindow.show()
-  }, 3000);
+  }, 1000);
 });
 
 // disable menu

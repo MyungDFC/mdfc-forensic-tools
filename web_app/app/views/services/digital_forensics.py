@@ -85,8 +85,7 @@ def logon_event():
 def jumplist():
     title = "파일 열람기록"
     
-    root_directory = Path(session.get("root_directory", None))
-    artifact_path = root_directory / "jumplist.json"
+    artifact_path = Path(session.get("root_directory", None)) / "jumplist.json"
 
     with open(artifact_path, "r", encoding="utf-8") as f:
         records = json.load(f)
@@ -105,8 +104,7 @@ def jumplist():
 def jumplist_external():
     title = "외부 데이터 열람기록"
     
-    root_directory = Path(session.get("root_directory", None))
-    artifact_path = root_directory / "jumplist.json"
+    artifact_path = Path(session.get("root_directory", None)) / "jumplist.json"
 
     with open(artifact_path, "r", encoding="utf-8") as f:
         records = json.load(f)
@@ -123,10 +121,9 @@ def jumplist_external():
 
 @bp.route("/recyclebin", methods=["GET"])
 def recyclebin():
-    title = "휴지통 데이터 목록"
-
-    root_directory = Path(session.get("root_directory", None))
-    artifact_path = root_directory / "recyclebin.json"
+    title = '휴지통 데이터 목록'
+    artifact_page = "artifact.recyclebin"
+    artifact_path = Path(session.get("root_directory", None)) / "recyclebin.json"
 
     with open(artifact_path, "r", encoding="utf-8") as f:
         records = json.load(f)
@@ -151,6 +148,7 @@ def recyclebin():
     return render_template(
         "page/services/digital_forensics/table_recyclebin.jinja-html",
         title = title,
+        artifact_page=artifact_page,
         records=items_on_page,
         page=page,
         per_page=per_page,
