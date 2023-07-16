@@ -20,7 +20,7 @@
           </p>
           <!-- Buttons -->
           <div class="mx-n2">
-            <a href="{{ url_for('artifact.process') }}" class="btn btn-lg btn-dark shadow-sm mx-2 px-lg-8">
+            <a href="{{ url_for('dashboard.digital_forensics') }}" class="btn btn-lg btn-dark shadow-sm mx-2 px-lg-8">
               시작하기
             </a>
             <a href="https://www.myung.co.kr/" class="btn btn-lg btn-neutral mx-2 px-lg-8" target="_blank">

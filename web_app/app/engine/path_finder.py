@@ -38,7 +38,7 @@ ARTIFACT_PATH = {
     "RecycleBin": ArtifactPath(directory=ARTIFACT_DIRECTORY_RECYCLEBIN, entry="$I*"),  # Windows
     "Prefetch": ArtifactPath(directory=ARTIFACT_DIRECTORY_PREFETCH, entry="*.pf"),
     "JumpList": ArtifactPath(directory=ARTIFACT_DIRECTORY_JUMPLIST, entry="*.automaticDestinations-ms"),
-    "LogonEvent": ArtifactPath(directory=ARTIFACT_DIRECTORY_EVENTLOG, entry=None),  # ! EventLog
+    "LogonEvent": ArtifactPath(directory=ARTIFACT_DIRECTORY_EVENTLOG, entry=None),  # EventLog
     "USB(EventLog)": ArtifactPath(directory=ARTIFACT_DIRECTORY_EVENTLOG, entry=None),
     "WLAN": ArtifactPath(directory=ARTIFACT_DIRECTORY_EVENTLOG, entry=None),    
 }

@@ -20,11 +20,15 @@
             </div>
             <div class="ms-5">
               <!-- Title -->
-              <h1 class="h2 mb-0">디지털 포렌식</h1>
+              <a href="{{ url_for('dashboard.digital_forensics') }}">
+                <h1 class="h2 mb-0">디지털 포렌식</h1>
+              </a>
               <!-- Subtitle -->
-              <p class="text-sm text-muted mt-1">
-                기업의 데이터 유출 및 사용자 활동기록 확인
-              </p>
+              <a href="{{ url_for('dashboard.digital_forensics') }}">
+                <p class="text-sm text-muted mt-1">
+                  기업의 데이터 유출 및 사용자 활동기록 확인
+                </p>
+              </a>
             </div>
           </div>
         </div>

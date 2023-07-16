@@ -1,7 +1,10 @@
+import re
 import json
+import math
+from pathlib import Path
 from datetime import datetime
-from flask import Blueprint, render_template, url_for, session, request
-from werkzeug.utils import redirect
+from flask import Blueprint, render_template, session, request
+
 from app.engine.case_manager import CaseManager
 
 bp = Blueprint("artifact", __name__, url_prefix="/dashboard/digital_forensics")
@@ -9,38 +12,36 @@ bp = Blueprint("artifact", __name__, url_prefix="/dashboard/digital_forensics")
 @bp.app_template_filter("format_datetime")
 def format_datetime(value):
     # Parsing the string into a datetime object
-    dt = datetime.fromisoformat(value)
+    try:
+        dt = datetime.fromisoformat(value)
+    except ValueError:
+        return value
 
     # Formatting the datetime object into a string with the desired format
     formatted_time_str = dt.strftime("%Y-%m-%d %H:%M:%S")
 
     return formatted_time_str
 
-@bp.route("/", methods=["GET"])
-def process():
-    artifacts = [
-        # "Chrome",
-        # "Edge",
-        "RecycleBin",
-        # "Prefetch",
-        # "JumpList",
-        # "LogonEvent",
-        # "USB(EventLog)",
-        # "WLAN",
-    ]
-    cm = CaseManager(_artifacts=artifacts)
-    cm.parse_all()
+def pagination(records: list[dict], page: int, per_page: int, block_size: int = 5):
+    """
+        This function returns a list of dict(json) data for the current page.
+        :param records: list of dict(json) data
+        :param page: current page number
+        :param per_page: number of items per page
+    """
+    # Pagination
+    page = request.args.get('page', default=1, type=int)  # current page number
+    start = (page - 1) * per_page  # first item to display on this page
+    end = start + per_page  # last item to display on this page
+    items_on_page = records[start:end]  # items to display on this page
 
-    for forensic_artifact in cm.forensic_artifacts:
-        for artifact_name, records in forensic_artifact.result.items():
-            """
-                'records' variable is already serialized by 'json.dumps()'
-                type: list[json]
-            """
+    total = len(records)  # total number of items in the list
+    last_page = math.ceil(total / per_page)  # last page number
+    block_num = int((page - 1) / block_size)  # current block number
+    block_start = int((block_size * block_num) + 1)  # first page number in the block (1, 6, 11, ...
+    block_end = math.ceil(block_start + (block_size - 1))  # last page number in the block
 
-            session[artifact_name] = records
-    return redirect(url_for("dashboard.digital_forensics"))
-
+    return items_on_page
 
 @bp.route("/internet", methods=["GET"])
 def internet():
@@ -83,15 +84,16 @@ def logon_event():
 @bp.route("/jumplist", methods=["GET"])
 def jumplist():
     title = "파일 열람기록"
-    """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        # for record in session.get("jumplist", "{}")
-        for record in session.get("recyclebin", "{}")
-    ]
+    
+    root_directory = Path(session.get("root_directory", None))
+    artifact_path = root_directory / "jumplist.json"
+
+    with open(artifact_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    drive_pattern = r"^[A-Z]:\\"
+
+    records = [record for record in records if re.match(drive_pattern, record["path"])]
 
     return render_template(
         "page/services/digital_forensics/table_jumplist.jinja-html",
@@ -99,22 +101,63 @@ def jumplist():
         records=records
     )
 
+@bp.route("/jumplist_external", methods=["GET"])
+def jumplist_external():
+    title = "외부 데이터 열람기록"
+    
+    root_directory = Path(session.get("root_directory", None))
+    artifact_path = root_directory / "jumplist.json"
+
+    with open(artifact_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    drive_pattern = r"^[A-Z]:\\"
+
+    records = [record for record in records if re.match(drive_pattern, record["path"])]
+
+    return render_template(
+        "page/services/digital_forensics/table_jumplist_external.jinja-html",
+        title = title,
+        records=records
+    )
+
 @bp.route("/recyclebin", methods=["GET"])
 def recyclebin():
     title = "휴지통 데이터 목록"
-    """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        for record in session.get("recyclebin", "{}")
-    ]
+
+    root_directory = Path(session.get("root_directory", None))
+    artifact_path = root_directory / "recyclebin.json"
+
+    with open(artifact_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    # Pagination
+    page = request.args.get('page', 1, type=int)
+    per_page = 10  # number of items per page
+    start = (page - 1) * per_page  # first item to display on this page
+    end = start + per_page  # last item to display on this page
+    items_on_page = records[start:end]  # items to display on this page
+
+    total = len(records)  # total number of items in the list
+    last_page = math.ceil(total / per_page)  # last page number
+    block_size = 5  # number of pages in the navigation block
+    block_num = int((page - 1) / block_size)  # current block number
+    block_start = int((block_size * block_num) + 1)  # first page number in the block (1, 6, 11, ...
+    block_end = math.ceil(block_start + (block_size - 1))  # last page number in the block
+
+    if block_end > last_page:
+        block_end = last_page
 
     return render_template(
         "page/services/digital_forensics/table_recyclebin.jinja-html",
         title = title,
-        records=records
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
     )
 
 @bp.route("/usb_event", methods=["GET"])

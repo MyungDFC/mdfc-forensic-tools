@@ -94,7 +94,7 @@ def main():
     videos.sort(key=lambda video: video["published"], reverse=True)
 
     # Pagination
-    page = request.args.get('page', 1, type=int)
+    page = request.args.get('page', default=1, type=int)
     per_page = 10  # number of items per page
     start = (page - 1) * per_page  # first item to display on this page
     end = start + per_page  # last item to display on this page

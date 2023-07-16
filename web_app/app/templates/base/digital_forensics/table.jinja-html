@@ -127,46 +127,8 @@
           </tbody>
         </table>
       </div> <!-- Footer -->
-      <div class="card-footer border-0 py-5">
-        <div class="d-flex align-items-center justify-content-between">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="bi bi-arrow-left me-2"></i>Previous
-              </a>
-            </li>
-          </ul>
-          <nav aria-label="Page navigation example">
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">3</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">...</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">9</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">10</a>
-              </li>
-            </ul>
-          </nav>
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Next<i class="bi bi-arrow-right ms-2"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      {% block Footer %}
+      {% endblock Footer %}
     </div>
   </div>
 </main>
