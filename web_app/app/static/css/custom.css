@@ -278,6 +278,36 @@ header .image-text .header-text {
     height: 550px;
 }
 
+#dropdown-perpage {
+    --x-dropdown-min-width: 1rem;
+}
+
+.form-check-input {
+    position: relative;
+}
+
+#form_check-label-header {
+    position: relative;
+    top: -3px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #525f7f;
+}
+
+#form_check-label-row {
+    position: relative;
+    top: -3px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #525f7f;
+}
+
+.table thead th {
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+
 /* Youtube */
 .div-round {
 	overflow: hidden;

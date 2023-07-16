@@ -14,7 +14,9 @@
   <td class="text-lg" scope="col">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="flexCheckRow{{ loop.index }}">
-      <label class="form-check-label" for="flexCheckRow{{ loop.index }}"></label>
+      <label class="form-check-label" for="flexCheckRow{{ loop.index }}" id="form_check-label-row">
+        {{ loop.index + ((page - 1) * per_page) }}
+      </label>
     </div>
   </td>
   <td>

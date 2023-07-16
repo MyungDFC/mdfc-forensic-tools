@@ -22,26 +22,31 @@ def format_datetime(value):
 
     return formatted_time_str
 
-def pagination(records: list[dict], page: int, per_page: int, block_size: int = 5):
+def pagination(records: list[dict], page: int, per_page: int):
     """
         This function returns a list of dict(json) data for the current page.
         :param records: list of dict(json) data
         :param page: current page number
         :param per_page: number of items per page
     """
+    BLOCK_SIZE = 5  # number of pages in the navigation block
+
     # Pagination
-    page = request.args.get('page', default=1, type=int)  # current page number
     start = (page - 1) * per_page  # first item to display on this page
     end = start + per_page  # last item to display on this page
     items_on_page = records[start:end]  # items to display on this page
 
     total = len(records)  # total number of items in the list
     last_page = math.ceil(total / per_page)  # last page number
-    block_num = int((page - 1) / block_size)  # current block number
-    block_start = int((block_size * block_num) + 1)  # first page number in the block (1, 6, 11, ...
-    block_end = math.ceil(block_start + (block_size - 1))  # last page number in the block
 
-    return items_on_page
+    block_num = int((page - 1) / BLOCK_SIZE)  # current block number
+    block_start = int((BLOCK_SIZE * block_num) + 1)  # first page number in the block (1, 6, 11, ...
+    block_end = math.ceil(block_start + (BLOCK_SIZE - 1))  # last page number in the block
+
+    if block_end > last_page:
+        block_end = last_page
+
+    return items_on_page, total, last_page, block_start, block_end
 
 @bp.route("/internet", methods=["GET"])
 def internet():
@@ -84,7 +89,7 @@ def logon_event():
 @bp.route("/jumplist", methods=["GET"])
 def jumplist():
     title = "파일 열람기록"
-    
+    artifact_page = "artifact.jumplist"
     artifact_path = Path(session.get("root_directory", None)) / "jumplist.json"
 
     with open(artifact_path, "r", encoding="utf-8") as f:
@@ -94,10 +99,24 @@ def jumplist():
 
     records = [record for record in records if re.match(drive_pattern, record["path"])]
 
+    # Pagination variables
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', default=10, type=int)
+
+    # Pagination
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
+
     return render_template(
         "page/services/digital_forensics/table_jumplist.jinja-html",
         title = title,
-        records=records
+        artifact_page=artifact_page,
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
     )
 
 @bp.route("/jumplist_external", methods=["GET"])
@@ -112,6 +131,10 @@ def jumplist_external():
     drive_pattern = r"^[A-Z]:\\"
 
     records = [record for record in records if re.match(drive_pattern, record["path"])]
+    records = [record for record in records if re.match(drive_pattern, record["path"])]
+
+
+    # Fixed (Hard disk)
 
     return render_template(
         "page/services/digital_forensics/table_jumplist_external.jinja-html",
@@ -128,22 +151,12 @@ def recyclebin():
     with open(artifact_path, "r", encoding="utf-8") as f:
         records = json.load(f)
 
+    # Pagination variables
+    page = request.args.get('page', default=1, type=int)
+    per_page = request.args.get('per_page', default=10, type=int)
+
     # Pagination
-    page = request.args.get('page', 1, type=int)
-    per_page = 10  # number of items per page
-    start = (page - 1) * per_page  # first item to display on this page
-    end = start + per_page  # last item to display on this page
-    items_on_page = records[start:end]  # items to display on this page
-
-    total = len(records)  # total number of items in the list
-    last_page = math.ceil(total / per_page)  # last page number
-    block_size = 5  # number of pages in the navigation block
-    block_num = int((page - 1) / block_size)  # current block number
-    block_start = int((block_size * block_num) + 1)  # first page number in the block (1, 6, 11, ...
-    block_end = math.ceil(block_start + (block_size - 1))  # last page number in the block
-
-    if block_end > last_page:
-        block_end = last_page
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
 
     return render_template(
         "page/services/digital_forensics/table_recyclebin.jinja-html",
