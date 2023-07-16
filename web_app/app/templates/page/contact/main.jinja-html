@@ -1,0 +1,37 @@
+{% extends "base/root.jinja-html" %}
+
+<!-- Main Content -->
+{% block Content %}
+<div class="h-screen flex-grow-1 overflow-y-lg-auto py-0" id="main-content">
+  <div class=" pt-24 pb-24" id="contact-main">
+    <div class="container max-w-screen-xl">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-lg-5">
+          <!-- Heading -->
+          <h1 class="ls-tight font-bolder h2 mb-5">
+            충북 청주시 청원구 오창읍 과학산업3로 168
+          </h1>
+          <!-- Email -->
+          <p class="my-6">
+            E: <a href="mailto:cs@myung.co.kr">cs@myung.co.kr</a>
+            <br>
+            T: (043) 218-8400
+          </p>
+          <!-- Text -->
+          <p>
+            피드백을 공유하거나, 기술적인 문제를 보고하거나, 문의사항이 있으신가요?<br>언제든지 문의해 주시면 빠른 시일 내로 연락드리겠습니다.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <div class="rounded-4 overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198.738879985218!2d127.42407847569476!3d36.704812173070955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3564d7cb222004c1%3A0xeffd0bcaa72b8331!2z7Lap7LKt67aB64-EIOyyreyjvOyLnCDssq3sm5Dqtawg7Jik7LC97J2NIOqzvO2VmeyCsOyXhTProZwgMTY4!5e0!3m2!1sko!2skr!4v1689527551003!5m2!1sko!2skr"
+              width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock Content %}

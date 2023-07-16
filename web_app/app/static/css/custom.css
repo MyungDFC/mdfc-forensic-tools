@@ -367,3 +367,8 @@ iframe.youtube_frame {
 #faq-main .container {
     --x-gutter-x: 8rem;
 }
+
+/* faq */
+#contact-main .container {
+    --x-gutter-x: 8rem;
+}

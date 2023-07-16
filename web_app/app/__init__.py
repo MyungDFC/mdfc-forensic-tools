@@ -40,7 +40,7 @@ def create_app(config_object_name) -> Flask:
 
     with app.app_context():
         # Register Blueprints
-        from .views import home, blog, youtube, people, faq
+        from .views import home, blog, youtube, people, faq, contact
         from .views.services import dashboard, digital_forensics
         app.register_blueprint(home.bp)
         app.register_blueprint(dashboard.bp)
@@ -49,6 +49,7 @@ def create_app(config_object_name) -> Flask:
         app.register_blueprint(youtube.bp)
         app.register_blueprint(people.bp)
         app.register_blueprint(faq.bp)
+        app.register_blueprint(contact.bp)
 
         @app.errorhandler(404)
         def page_not_found(error):
