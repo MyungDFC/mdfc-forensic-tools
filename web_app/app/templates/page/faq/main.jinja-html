@@ -3,7 +3,7 @@
 <!-- Main Content -->
 {% block Content %}
 <div class="h-screen flex-grow-1 overflow-y-lg-auto py-0" id="main-content">
-  <div class=" pt-24 pb-24">
+  <div class=" pt-24 pb-24" id="faq-main">
     <div class="container max-w-screen-xl">
       <div class="row g-10 g-lg-32">
         <div class="col-lg-4 mb-10 mb-lg-0">

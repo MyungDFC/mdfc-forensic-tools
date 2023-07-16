@@ -1,0 +1,36 @@
+{% extends "base/root.jinja-html" %}
+
+<!-- Main Content -->
+{% block Content %}
+<div class="flex-lg-1 h-screen overflow-y-lg-auto" id="main-content">
+  <div class=" pt-24 pb-24">
+    <div class="container max-w-screen-xl">
+      <!-- Section title -->
+      {% block SectionTitle %}
+      <div class="row justify-content-center text-md-center mb-24">
+        <div class="col-lg-7">
+          <!-- Heading -->
+          <h1 class="ls-tight font-bolder mb-5">
+            {{ post_title }}
+          </h1>
+          <!-- Text -->
+          <p class="lead">
+            <a href="{{ post_url }}" target="_blank">{{ post_url }}</a>
+          </p>
+        </div>
+      </div>
+      {% endblock SectionTitle %}
+      <!-- Body -->
+      {% block Body %}
+      <main class="py-6 bg-surface-secondary" id="blog-content">
+        <div class="container-fluid">
+          <div class="vstack gap-6">
+            {{ post_content }}
+          </div>
+        </div>
+      </main>
+      {% endblock Body %}
+    </div>
+  </div>
+</div>
+{% endblock Content %}

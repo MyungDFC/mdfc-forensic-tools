@@ -21,26 +21,26 @@ def main():
     seconds_pattern = re.compile(r"(\d+)S")
 
     while True:
-        pl_request = youtube.playlistItems().list(
+        playlist_request = youtube.playlistItems().list(
             part="contentDetails",
             playlistId="PLQQ1DxVUSynEX6k953Mo-V711SOyndaug",
             maxResults=50,
             pageToken=nextPageToken
         )
-        pl_response = pl_request.execute()
+        playlist_response = playlist_request.execute()
 
         video_ids = []
 
-        for item in pl_response["items"]:
+        for item in playlist_response["items"]:
             video_ids.append(item["contentDetails"]["videoId"])
 
-        vid_request = youtube.videos().list(
+        video_request = youtube.videos().list(
             part="snippet, statistics, contentDetails",
             id=",".join(video_ids)
         )
-        vid_response = vid_request.execute()
+        video_response = video_request.execute()
 
-        for item in vid_response["items"]:
+        for item in video_response["items"]:
             # items
             vid_title = item["snippet"]["title"]
             vid_views = item["statistics"]["viewCount"]
@@ -86,7 +86,7 @@ def main():
                 }
             )
 
-        nextPageToken = pl_response.get("nextPageToken")
+        nextPageToken = playlist_response.get("nextPageToken")
 
         if not nextPageToken:
             break

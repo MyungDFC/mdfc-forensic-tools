@@ -270,7 +270,7 @@ header .image-text .header-text {
 }
 
 /* service table */
-.py-6 .container-fluid {
+#service-table-main .container-fluid {
     width: 95%;
 }
 
@@ -307,6 +307,15 @@ header .image-text .header-text {
     font-weight: 900;
 }
 
+/* media */
+#media-main .container-fluid {
+    --x-gutter-x: 3rem;
+}
+
+/* blog */
+#blog-content .container-fluid {
+    --x-gutter-x: 13rem;
+}
 
 /* Youtube */
 .div-round {
@@ -355,6 +364,6 @@ iframe.youtube_frame {
 }
 
 /* faq */
-.pt-24 .container {
-    --x-gutter-x: 9rem;
+#faq-main .container {
+    --x-gutter-x: 8rem;
 }

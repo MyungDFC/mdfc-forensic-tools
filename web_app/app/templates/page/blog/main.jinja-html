@@ -1,11 +1,16 @@
 {% extends "base/media.jinja-html" %}
 
+{# [{'id': '25', 'postUrl': 'https://myung-dfc.tistory.com/25', 'title': '기업기술보호 포렌식 프로그램 개발 및 배포 [feat. 무료 포렌식 프로그램
+Ver.2]', 'date': '2023-04-05 11:18:52'}, {'id': '23', 'postUrl': 'https://myung-dfc.tistory.com/23', 'title': '반드시 알아야
+하는 PowerShell 7.x 변경사항', 'date': '2022-03-23 17:02:12'}] #}
+
 {% block Contents %}
 <div class="row g-10">
+  {% for post in posts %}
   <div class="col-12 col-md-6 col-lg-4 d-flex">
     <div class="card border-0 shadow-3">
       <!-- Image -->
-      <a class="card-img-top" href="#">
+      <a class="card-img-top" href="{{ url_for('blog.post', post_id=post['id']) }}">
         <img
           src="https://images.unsplash.com/photo-1623191850733-a95797744b67?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=600&q=80"
           alt="..." class="card-img-top">
@@ -13,12 +18,12 @@
       <!-- Body -->
       <div class="px-7 pt-7 flex-none mt-auto position-relative overlap-10">
         <!-- Heading -->
-        <a href="#" class="d-inline-block h3 mb-3 stretched-link">
-          Using Unsplash to improve your listing visibility
+        <a href="{{ url_for('blog.post', post_id=post['id']) }}" class="d-inline-block h3 mb-3">
+          {{ post.title }}
         </a>
         <!-- Text -->
         <p class="mb-0">
-          Using free stock photos of your surrounding areas can skyrocket your popularity.
+          Original Post: <a href="{{ post['postUrl'] }}" target="_blank">{{ post["postUrl"] }}</a>
         </p>
       </div>
       <hr class="mx-7 my-7" />
@@ -31,88 +36,16 @@
             alt="..." class="avatar-img rounded-circle">
         </div>
         <!-- Author -->
-        <a href="#" class="h6 font-semibold text-muted ms-2 stretched-link">
-          Casey Fyfe
+        <a href="http://mdfc-myung.co.kr/" class="h6 font-semibold text-muted ms-2 stretched-link" target="_blank">
+          MyungDFC
         </a>
         <!-- Date -->
         <p class="text-sm text-muted mb-0 ms-auto">
-          <time datetime="2019-05-02">May 02</time>
+          <time datetime="2019-05-02">{{ post["date"].split(" ")[0] }}</time>
         </p>
       </div>
     </div>
   </div>
-  <div class="col-12 col-md-6 col-lg-4 d-flex">
-    <div class="card border-0 shadow-3 pt-14 bg-cover overflow-hidden"
-      style="background-image: url(https://images.unsplash.com/photo-1623261598404-fc2635980c8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=600&q=80);">
-      <!-- Overlay -->
-      <span class="d-block position-absolute start-0 top-0 pe-none w-full h-full bg-dark opacity-30"></span>
-      <!-- Body -->
-      <a class="px-7 pt-7 flex-none mt-auto position-relative overlap-10" href="#">
-        <!-- Heading -->
-        <h3 class="text-white mb-3">
-          Using Unsplash to improve your listing visibility
-        </h3>
-        <!-- Text -->
-        <p class="mb-0 text-white">
-          Using free stock photos of your surrounding areas can skyrocket your popularity.
-        </p>
-      </a>
-      <hr class="opacity-10 mx-7 my-7" />
-      <!-- Meta -->
-      <a class="px-7 pb-7 border-0 d-flex align-items-center w-full" href="#">
-        <!-- Avatar -->
-        <div class="avatar avatar-sm me-2">
-          <img src="https://landkit.goodthemes.co/assets/img/avatars/avatar-1.jpg" alt="..."
-            class="avatar-img rounded-circle">
-        </div>
-        <!-- Author -->
-        <h6 class="font-semibold text-white text-opacity-75 ms-2">
-          Casey Fyfe
-        </h6>
-        <!-- Date -->
-        <p class="text-sm text-white text-opacity-75 mb-0 ms-auto">
-          <time datetime="2019-05-02">May 02</time>
-        </p>
-      </a>
-    </div>
-  </div>
-  <div class="col-12 col-md-6 col-lg-4 d-flex">
-    <div class="card border-0 shadow-3">
-      <!-- Image -->
-      <a class="card-img-top" href="#">
-        <img
-          src="https://images.unsplash.com/photo-1519160558534-579f5106e43f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=600&q=80"
-          alt="..." class="card-img-top">
-      </a>
-      <!-- Body -->
-      <div class="px-7 pt-7 flex-none mt-auto position-relative overlap-10">
-        <!-- Heading -->
-        <a href="#" class="d-inline-block h3 mb-3 stretched-link">
-          Using Unsplash to improve your listing visibility
-        </a>
-        <!-- Text -->
-        <p class="mb-0">
-          Using free stock photos of your surrounding areas can skyrocket your popularity.
-        </p>
-      </div>
-      <hr class="mx-7 my-7" />
-      <!-- Meta -->
-      <div class="px-7 pb-7 border-0 d-flex align-items-center w-full position-relative">
-        <!-- Avatar -->
-        <div class="avatar avatar-sm me-2">
-          <img src="https://landkit.goodthemes.co/assets/img/avatars/avatar-1.jpg" alt="..."
-            class="avatar-img rounded-circle">
-        </div>
-        <!-- Author -->
-        <a href="#" class="h6 font-semibold text-muted ms-2 stretched-link">
-          Casey Fyfe
-        </a>
-        <!-- Date -->
-        <p class="text-sm text-muted mb-0 ms-auto">
-          <time datetime="2019-05-02">May 02</time>
-        </p>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 {% endblock Contents %}

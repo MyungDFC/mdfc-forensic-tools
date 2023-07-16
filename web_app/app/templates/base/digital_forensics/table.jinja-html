@@ -67,7 +67,7 @@
 {% endblock ContentHeader %} #}
 
 {% block ContentMain %}
-<main class="py-6 bg-surface-secondary">
+<main class="py-6 bg-surface-secondary" id="service-table-main">
   <div class="container-fluid">
     <!-- Card Stats -->
     {% block CardStates %}
