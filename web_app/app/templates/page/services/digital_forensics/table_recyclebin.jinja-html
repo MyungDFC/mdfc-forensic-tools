@@ -1,16 +1,16 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
-{% block CardStates %}
-<div class="card">
-  <div class="p-2">
-    <a href="#">
-      <img src="{{ url_for('static', filename='img/dashboard/recyclebin.jpg') }}" alt="..." class="card-img"
-        id="table-card-img">
-    </a>
-  </div>
-</div>
-{% endblock CardStates %}
+{% block ContentImage %}
+<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/recyclebin.jpg') }}">
+{% endblock ContentImage %}
 
+{% block ResultCardTitle %}
+{{ title }}
+{% endblock ResultCardTitle %}
+
+{% block ResultCardSurTitle %}
+사용자의 컴퓨터에서 삭제된 데이터를 확인합니다
+{% endblock ResultCardSurTitle %}
 
 {% block TableHeader %}
 <th scope="col">데이터 삭제 시간</th>

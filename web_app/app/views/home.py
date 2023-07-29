@@ -14,7 +14,7 @@ def process():
         # "Prefetch",
         "JumpList",
         # "LogonEvent",
-        # "USB(EventLog)",
+        "USB(EventLog)",
         # "WLAN",
     ]
 

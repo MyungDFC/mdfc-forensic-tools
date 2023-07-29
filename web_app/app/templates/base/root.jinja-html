@@ -16,7 +16,7 @@
   <header id="app-header">
     <div class="topBar">
       <div class="titleBar">
-        <button id="showHideMenus" class="toggleButton"></button>
+        {# <button id="showHideMenus" class="toggleButton"></button> #}
         <img src="{{ url_for('static', filename='img/titlebar/icon_top_bar.png') }}" alt="">
         <div class="title">
           Myung Digital Forenic Center
@@ -43,7 +43,9 @@
           <header>
             <div class="image-text">
               <span class="image">
-                <img src="{{ url_for('static', filename='img/logo/home.png') }}" alt="">
+                <a href="{{ url_for('home.index') }}">
+                  <img src="{{ url_for('static', filename='img/logo/home.png') }}" alt="">
+                </a>
               </span>
               <div class="text header-text">
                 <a href="{{ url_for('home.index') }}" class="name">(주)명정보기술</a>
@@ -137,6 +139,14 @@
                   <span class="list_name">Youtube</span>
                 </a>
               </li>
+              <!-- Divider -->
+              <hr class="navbar-divider my-4 opacity-70">
+              {# About #}
+              <li>
+                <span class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide">
+                  About
+                </span>
+              </li>
               {# People #}
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('people.main') }}">
@@ -177,6 +187,7 @@
           </div>
         </div>
       </nav>
+
       <!-- Main Content -->
       {% block Content %}
       <div class="h-screen flex-grow-1 overflow-y-lg-auto" id="main-content">
@@ -193,8 +204,10 @@
   <!-- App script -->
   {# Basic #}
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/titlebar.js') }}"></script>
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/titlebar.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/scrollTo.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/forensicTable.js') }}"></script>
   {# ModuleScript #}
   {% block ModuleScript %}
   {% endblock ModuleScript %}

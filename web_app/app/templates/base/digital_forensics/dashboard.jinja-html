@@ -5,13 +5,16 @@
 {% endblock Title %}
 
 {% block Content %}
+{% block ContentHeader %}
+
+{% endblock ContentHeader %}
 <div class="h-screen flex-grow-1 d-flex flex-column overflow-y-lg-auto" id="main-content">
   <!-- Header -->
   <header class="bg-surface-primary border-bottom py-6">
     <div class="container-fluid">
       <div>
         <div class="row align-items-center">
-          <div class="col-md-6 col-12 d-flex align-items-center mb-5 mb-md-0">
+          <div class="col-md-6 col-12 d-flex align-items-center mb-5 mb-md-0" style="padding-left: 1.25rem;">
             <div class="col-auto">
               <div class="w-20">
                 <img alt="..." class="img-fluid rounded-4"
@@ -42,9 +45,9 @@
       <div class="d-flex h-full mx-n3">
         <!-- column1: Data Leakage -->
         <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
-          <div class="px-3 mb-6">
+          <div class="px-5 mb-6">
             <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-danger"></i>데이터 유출
+              <i class="bg-secondary"></i>데이터 유출
             </span>
           </div>
           <div class="flex-1 overflow-y-auto" id="dashboard-col-1">

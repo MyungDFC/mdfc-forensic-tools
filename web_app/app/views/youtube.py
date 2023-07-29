@@ -9,9 +9,35 @@ from config import youtube_api_key, youtube_channel_id
 
 bp = Blueprint("youtube", __name__, url_prefix="/youtube")
 
+@bp.app_template_filter("format_count")
+def format_count(count):
+    return format(int(count), ",d")
+
 @bp.route("/")
 def main():
     youtube = build("youtube", "v3", developerKey=youtube_api_key)
+
+    channels_request = youtube.channels().list(
+        part="statistics, snippet",
+        id=youtube_channel_id
+    )
+    channels_response = channels_request.execute()
+    channel_statistics = channels_response["items"][0]["statistics"]
+    channel_snippet = channels_response["items"][0]["snippet"]
+
+    playlists_request = youtube.playlists().list(
+        part="contentDetails, snippet",
+        channelId=youtube_channel_id,
+        maxResults=50
+    )
+    playlists_response = playlists_request.execute()
+    playlists = playlists_response["items"]
+    """
+    playlists: list[dict]
+    playlists[0]: dict
+        - contentDetails: dict
+        - snippet: dict
+    """
 
     videos = []
     nextPageToken = None
@@ -21,17 +47,17 @@ def main():
     seconds_pattern = re.compile(r"(\d+)S")
 
     while True:
-        playlist_request = youtube.playlistItems().list(
+        playlistItems_request = youtube.playlistItems().list(
             part="contentDetails",
             playlistId="PLQQ1DxVUSynEX6k953Mo-V711SOyndaug",
             maxResults=50,
             pageToken=nextPageToken
         )
-        playlist_response = playlist_request.execute()
+        playlistItems_response = playlistItems_request.execute()
 
         video_ids = []
 
-        for item in playlist_response["items"]:
+        for item in playlistItems_response["items"]:
             video_ids.append(item["contentDetails"]["videoId"])
 
         video_request = youtube.videos().list(
@@ -79,14 +105,14 @@ def main():
             videos.append(
                 {
                     "title": vid_title,
-                    "published": vid_published,
+                    "published": str(vid_published),
                     "url": vid_url,
-                    "views": format(int(vid_views), ",d"),
+                    "views": vid_views,
                     "duration": vid_duration,
                 }
             )
 
-        nextPageToken = playlist_response.get("nextPageToken")
+        nextPageToken = playlistItems_response.get("nextPageToken")
 
         if not nextPageToken:
             break
@@ -111,7 +137,10 @@ def main():
         block_end = last_page
 
     return render_template(
-        "page/youtube/main.jinja-html", 
+        "page/youtube/main.jinja-html",
+        channel_statistics=channel_statistics,
+        channel_snippet=channel_snippet,
+        playlists=playlists,
         videos=items_on_page,
         page=page,
         per_page=per_page,
@@ -119,4 +148,4 @@ def main():
         last_page=last_page,
         block_start=block_start,
         block_end=block_end,
-        )
+    )

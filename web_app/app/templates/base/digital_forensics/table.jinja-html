@@ -1,24 +1,48 @@
-{% extends "base/digital_forensics/dashboard.jinja-html" %}
+{% extends "base/root.jinja-html" %}
 
 
-{# {% block ContentHeader %}
-<header class="bg-surface-primary border-bottom pt-6">
+{% block ContentHeader %}
+<header class="bg-surface-primary border-bottom pt-6" id="table-page-header">
   <div class="container-fluid">
     <div class="mb-npx">
       <div class="row align-items-center">
-        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-          <!-- Title -->
-          <h1 class="h2 mb-0 ls-tight">디지털 포렌식 분석 결과</h1>
+        <div class="col-md-6 col-12 d-flex align-items-center">
+          <div class="me-3 d-xl-none">
+            <a class="text-muted" data-bs-toggle="collapse" href="#collapseSidebarLeft" role="button"
+              aria-expanded="false" aria-controls="collapseSidebarLeft">
+              <i class="bi bi-chevron-left"></i>
+            </a>
+          </div>
+          <div class="col-auto">
+            <div class="w-12">
+              <a href="{{ url_for('dashboard.digital_forensics') }}">
+                <img alt="..." class="img-fluid rounded-3"
+                  src="{{ url_for('static', filename='img/logo/digital_forensics.jpg') }}">
+              </a>
+            </div>
+          </div>
+          <div class="ms-3">
+            <!-- Title -->
+            <h5>디지털 포렌식 분석결과</h5>
+            <!-- Subtitle -->
+            <p class="text-sm text-muted mt-1">
+              <span class="badge badge-lg badge-dot text-heading font-semibold">
+                <i class="bg-danger"></i>{{ category }}
+              </span>
+            </p>
+          </div>
         </div>
-        <!-- Actions -->
-        <div class="col-sm-6 col-12 text-sm-end">
+        {# service header #}
+        <div class="col-md-6 col-12 text-md-end d-none d-md-block" id="service-header-button">
           <div class="mx-n1">
+            {# Artifact dropdown list #}
             <div class="dropdown">
               <button class="btn btn-sm btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                {{ title }}
+                {{ artifact_icon_html|safe }}<span>{{ title }}</span>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {# USB 연결 이벤트 #}
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
                     <div class="avatar avatar-sm rounded-circle">
@@ -36,6 +60,7 @@
                     </a>
                   </div>
                 </div>
+                {# 휴지통 분석 기록 #}
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
                     <div class="avatar avatar-sm rounded-circle">
@@ -55,6 +80,18 @@
                 </div>
               </div>
             </div>
+            {# Move back to the DF dahsboard #}
+            <a href="{{ url_for('dashboard.digital_forensics') }}" class="btn d-inline-flex btn-sm btn-primary mx-1">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-box-arrow-left"
+                  viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                  <path fill-rule="evenodd"
+                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
       </div>
@@ -64,57 +101,85 @@
     </div>
   </div>
 </header>
-{% endblock ContentHeader %} #}
+{% endblock ContentHeader %}
 
 {% block ContentMain %}
 <main class="py-6 bg-surface-secondary" id="service-table-main">
   <div class="container-fluid">
-    <!-- Card Stats -->
-    {% block CardStates %}
-    <div class="card">
-      <div class="p-2">
-        <a href="#">
-          <img src="{{ url_for('static', filename='img/dashboard/test3.jpg') }}" alt="..." class="card-img"
-            id="table-card-img">
-        </a>
-      </div>
-    </div>
-    {% endblock CardStates %}
-
     <!-- Card Body -->
     <div class="card mb-7">
       <!-- Header -->
       <div class="card">
-        <div class="card-header d-flex align-items-center">
-          <!-- Title -->
-          <h3>{{ title }}</h3>
-          <!-- Button -->
-          <div class="ms-auto">
-            <div class="dropdown">
-              <button class="btn btn-sm btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                {% if per_page == total %}
-                전체보기
-                {% else %}
-                {{ per_page }}개
-                {% endif %}
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-perpage">
-                <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=10) }}">10개</a></li>
-                <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=50) }}">50개</a></li>
-                <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=100) }}">100개</a></li>
-                <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=total) }}">전체보기</a></li>
-              </ul>
+        <div class="card-header">
+          <div>
+            <div class="row align-items-end">
+              <div class="col-md-8 col-12 d-flex align-items-center mb-4 mb-md-0">
+                <div class="col-auto">
+                  <div class="w-24 w-md-32">
+                    {% block ContentImage %}
+                    {% endblock ContentImage %}
+                  </div>
+                </div>
+                <div class="ms-5">
+                  <!-- Title -->
+                  <h1 class="h2 ls-tight" style="padding">
+                    {% block ResultCardTitle %}
+                    {% endblock ResultCardTitle %}
+                  </h1>
+                  <!-- Surtitle -->
+                  <h6 class="text-sm font-semibold mb-1 text-muted">
+                    {% block ResultCardSurTitle %}
+                    {% endblock ResultCardSurTitle %}
+                  </h6>
+                </div>
+              </div>
+              <!-- Actions -->
+              <div class="col-md-4 col-12 text-md-end" id="service-table-button">
+                <div class="mx-n1">
+                  {# Count dropdown list #}
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      {% if per_page == total %}
+                      전체보기
+                      {% else %}
+                      {{ per_page }}개
+                      {% endif %}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-perpage">
+                      <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=10) }}">10개</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=50) }}">50개</a></li>
+                      <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=100) }}">100개</a>
+                      </li>
+                      <li><a class="dropdown-item" href="{{ url_for(artifact_page, page=1, per_page=total) }}">전체보기</a>
+                      </li>
+                    </ul>
+                  </div>
+                  {# Reload #}
+                  <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+                        <path
+                          d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+                      </svg>
+                    </span>
+                  </a>
+                  {# Save to file #}
+                  <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path
+                          d="M18 22a2 2 0 0 0 2-2v-5l-5 4v-3H8v-2h7v-3l5 4V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12zM13 4l5 5h-5V4z">
+                        </path>
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
             </div>
-            <a href="#" class="btn btn-sm btn-primary ms-auto">
-              CSV 내보내기
-            </a>
-            {# <div class="input-group input-group-sm input-group-inline">
-              <span class="input-group-text pe-2">
-                <i class="bi bi-search"></i>
-              </span>
-              <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-            </div> #}
           </div>
         </div>
       </div>
@@ -125,7 +190,7 @@
             <tr>
               <th class="text-lg" scope="col">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckAll">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckAll" onclick="checkAll()">
                   <label class="form-check-label" for="flexCheckAll" id="form_check-label-header">번호</label>
                 </div>
               </th>
@@ -187,13 +252,14 @@
     </div>
   </div>
 </main>
-{% block ModuleScript %}
-<script>
-  $('#flexCheckAll').click(() => {
-    console.log("qweqwe")
-    $('#flexCheckRow').prop('checked', true);
-  });
 
-</script>
-{% endblock ModuleScript %}
+<div class="scrollToTop">
+  <a href="#" class="font-bold" onclick="scrollToElement('#table-page-header')">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-arrow-up-circle-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+    </svg>
+  </a>
+</div>
 {% endblock ContentMain %}

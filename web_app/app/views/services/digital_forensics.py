@@ -9,6 +9,17 @@ from app.engine.case_manager import CaseManager
 
 bp = Blueprint("artifact", __name__, url_prefix="/dashboard/digital_forensics")
 
+artifact_category = {
+    "internet": "인터넷 사용기록",
+    "logon_event": "사용자 활동",
+    "jumplist": "사용자 활동",
+    "jumplist_external": "데이터 유출",
+    "recyclebin": "데이터 삭제",
+    "usb_event": "데이터 유출",
+    "prefetch": "사용자 활동",
+    "wlan_event": "사용자 활동",
+}
+
 @bp.app_template_filter("format_datetime")
 def format_datetime(value):
     # Parsing the string into a datetime object
@@ -144,7 +155,17 @@ def jumplist_external():
 
 @bp.route("/recyclebin", methods=["GET"])
 def recyclebin():
-    title = '휴지통 데이터 목록'
+    title = "휴지통 분석 기록"
+    artifact_icon_html = """
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path
+                          d="m21.224 15.543-.813-1.464-1.748.972.812 1.461c.048.085.082.173.104.264a1.024 1.024 0 0 1-.014.5.988.988 0 0 1-.104.235 1 1 0 0 1-.347.352.978.978 0 0 1-.513.137H14v-2l-4 3 4 3v-2h4.601c.278 0 .552-.037.811-.109a2.948 2.948 0 0 0 1.319-.776c.178-.179.332-.38.456-.593a2.992 2.992 0 0 0 .336-2.215 3.163 3.163 0 0 0-.299-.764zM5.862 11.039l-2.31 4.62a3.06 3.06 0 0 0-.261.755 2.997 2.997 0 0 0 .851 2.735c.178.174.376.326.595.453A3.022 3.022 0 0 0 6.236 20H8v-2H6.236a1.016 1.016 0 0 1-.5-.13.974.974 0 0 1-.353-.349 1 1 0 0 1-.149-.468.933.933 0 0 1 .018-.245c.018-.087.048-.173.089-.256l2.256-4.512 1.599.923L8.598 8 4 9.964l1.862 1.075zm12.736 1.925L19.196 8l-1.638.945-2.843-5.117a2.95 2.95 0 0 0-1.913-1.459 3.227 3.227 0 0 0-.772-.083 3.003 3.003 0 0 0-1.498.433A2.967 2.967 0 0 0 9.41 3.944l-.732 1.464 1.789.895.732-1.465c.045-.09.101-.171.166-.242a.933.933 0 0 1 .443-.27 1.053 1.053 0 0 1 .53-.011.963.963 0 0 1 .63.485l2.858 5.146L14 11l4.598 1.964z">
+                        </path>
+                      </svg>
+                      """
+    category = artifact_category.get("recyclebin", None)
+    category_html = "<i class='bg-danger'></i>"
     artifact_page = "artifact.recyclebin"
     artifact_path = Path(session.get("root_directory", None)) / "recyclebin.json"
 
@@ -161,6 +182,9 @@ def recyclebin():
     return render_template(
         "page/services/digital_forensics/table_recyclebin.jinja-html",
         title = title,
+        category=category,
+        category_html=category_html,
+        artifact_icon_html=artifact_icon_html,
         artifact_page=artifact_page,
         records=items_on_page,
         page=page,
@@ -174,20 +198,43 @@ def recyclebin():
 @bp.route("/usb_event", methods=["GET"])
 def usb_event():
     title = "USB 연결 이벤트"
-    """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        # for record in session.get("usb_event", "{}")
-        for record in session.get("recyclebin", "{}")
-    ]
+    artifact_icon_html = """
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                        <path
+                          d="M16 10h1v2h-4V6h2l-3-4-3 4h2v8H7v-2.277c.596-.347 1-.985 1-1.723a2 2 0 0 0-4 0c0 .738.404 1.376 1 1.723V14c0 1.103.897 2 2 2h4v2.277A1.99 1.99 0 0 0 10 20a2 2 0 0 0 4 0c0-.738-.404-1.376-1-1.723V14h4c1.103 0 2-.897 2-2v-2h1V6h-4v4z">
+                        </path>
+                      </svg>
+                      """
+    category = artifact_category.get("usb_event", None)
+    category_html = "<i class='bg-secondary'></i>"
+    artifact_page = "artifact.usb_event"
+    artifact_path = Path(session.get("root_directory", None)) / "usb_event.json"
+
+    with open(artifact_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    # Pagination variables
+    page = request.args.get('page', default=1, type=int)
+    per_page = request.args.get('per_page', default=10, type=int)
+
+    # Pagination
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
 
     return render_template(
         "page/services/digital_forensics/table_usb_event.jinja-html",
         title = title,
-        records=records
+        category=category,
+        category_html=category_html,
+        artifact_icon_html=artifact_icon_html,
+        artifact_page=artifact_page,
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
     )
 
 @bp.route("/prefetch", methods=["GET"])

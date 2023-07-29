@@ -1,24 +1,24 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
-{% block CardStates %}
-<div class="card">
-  <div class="p-2">
-    <a href="#">
-      <img src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}" alt="..." class="card-img"
-        id="table-card-img">
-    </a>
-  </div>
-</div>
-{% endblock CardStates %}
+{% block ContentImage %}
+<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}">
+{% endblock ContentImage %}
 
+{% block ResultCardTitle %}
+{{ title }}
+{% endblock ResultCardTitle %}
+
+{% block ResultCardSurTitle %}
+사용자의 컴퓨터에에 연결된 USB 기록을 확인합니다
+{% endblock ResultCardSurTitle %}
 
 {% block TableHeader %}
-<th scope="col">데이터 삭제 시간</th>
-<th scope="col">파일 이름</th>
-<th scope="col">확장자</th>
-<th scope="col">파일 크기</th>
-<th scope="col">삭제되기 이전 경로</th>
-<th scope="col">현재 경로</th>
+<th scope="col">이벤트 시간</th>
+<th scope="col">연결 유형</th>
+<th scope="col">제조사 이름</th>
+<th scope="col">모델명</th>
+<th scope="col">시리얼 번호</th>
+<th scope="col">장치 용량(GB)</th>
 {% endblock TableHeader %}
 
 {% block TableBody %}
@@ -27,26 +27,28 @@
   <td class="text-lg" scope="col">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="flexCheckRow{{ loop.index }}">
-      <label class="form-check-label" for="flexCheckRow{{ loop.index }}"></label>
+      <label class="form-check-label" for="flexCheckRow{{ loop.index }}" id="form_check-label-row">
+        {{ loop.index + ((page - 1) * per_page) }}
+      </label>
     </div>
   </td>
   <td>
-    <span>{{ record.get("ts") }}</span>
+    <span>{{ record.get("ts", "")|format_datetime }}</span>
   </td>
   <td>
-    <span>{{ record.get("filename") }}</span>
+    <span>{{ record.get("task", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("fileext") }}</span>
+    <span>{{ record.get("manufacturer", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("filesize") }}</span>
+    <span>{{ record.get("model", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("path") }}</span>
+    <span>{{ record.get("serialnumber", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("deleted_path") }}</span>
+    <span>{{ record.get("capacity_gb", "") }}</span>
   </td>
 </tr>
 {% endfor %}

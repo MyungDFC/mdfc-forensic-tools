@@ -6,31 +6,35 @@
   <div class=" pt-24 pb-24" id="faq-main">
     <div class="container max-w-screen-xl">
       <div class="row g-10 g-lg-32">
-        <div class="col-lg-4 mb-10 mb-lg-0">
+        <div class="col-lg-4 mb-10 mb-lg-0" id="faq-main-title">
           <h1 class="lh-tight ls-tight display-6 mb-7">
             Frequently asked questions
           </h1>
           <p class="lead">
-            Here are some of the most frequent questions we get from our customer.<br><br>If you have any further
-            questions, get in touch with our friendly team 😃
+            다음은 고객으로부터 가장<br>자주 받는 몇 가지 질문입니다.<br><br>더 자세한 질의사항이<br>있으신 경우 고객센터로<br>문의 부탁드립니다😃
           </p>
         </div>
-        <div class="col-lg-7 ms-auto">
+        <div class="col-lg-7 ms-auto" id="faq-main-qna">
           <div id="faqs" class="accordion accordion-flush mb-0">
             <div class="accordion-item">
               <h2 class="accordion-header" id="heading_faq_1">
                 <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapse_faq_1" aria-expanded="false" aria-controls="collapse_faq_1">
-                  <span class="h5">What version of Bootstrap is used?</span>
+                  <span class="h5">디지털 포렌식이 무엇인가요?</span>
                 </button>
               </h2>
               <div id="collapse_faq_1" class="accordion-collapse collapse" aria-labelledby="heading_faq_1"
                 data-bs-parent="#faqs">
                 <div class="accordion-body px-0">
                   <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters
+                    PC나 노트북, 휴대폰 등 각종 저장매체 또는 인터넷상에 남아있는 디지털 정보를 분석해 범죄 단서를 찾는 수사기법입니다. 범죄수사에서 적용되고 있는 과학적 증거 수집 및 분석
+                    기법의 일종으로, 각종 디지털 데이터 및 통화기록, 이메일 접속기록 등의 정보를 수집·분석하여 범행과 관련된 증거를 확보하는 수사기법을 뜻합니다.<br><br>
+                  </p>
+                  <p>
+                    현대인들은 자신도 모르게 디지털 기기와 항상 접해 있어 상당 부분 개인에 대한 기록이 디지털 정보로 남아 있는 경우가 많습니다. 또한 디지털 기술의 발달로 범행을 숨기기 위해
+                    삭제한 자료 등도 복원이 가능한 경우가 많아 디지털 포렌식은 범죄수사에 널리 활용되고 있습니다.
+                    <br><br>
+                    실제 사례로, 침해 사고 분석, 영업기밀 유출, 데이터 은닉, 횡령 등 다양한 사건의 원인 파악 및 증거 확보에 활용됩니다.
                   </p>
                 </div>
               </div>
@@ -39,52 +43,18 @@
               <h2 class="accordion-header" id="heading_faq_2">
                 <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapse_faq_2" aria-expanded="false" aria-controls="collapse_faq_2">
-                  <span class="h5">What browsers are supported?</span>
+                  <span class="h5">디지털 포렌식과 데이터 복구는 어떤 차이가 있나요?</span>
                 </button>
               </h2>
               <div id="collapse_faq_2" class="accordion-collapse collapse" aria-labelledby="heading_faq_2"
                 data-bs-parent="#faqs">
                 <div class="accordion-body px-0">
                   <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters
+                    디지털 포렌식은 디지털 기기에 남아있는 정보를 분석해 범죄 단서를 찾는 수사기법입니다.<br>반면 데이터 복구는 사용자 삭제 또는 물리적인 손상으로 인해 저장매체로부터 데이터를
+                    손실했을 경우 데이터를 정상적으로 복원해 내는 것에 목적이 있습니다.<br><br>
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading_faq_3">
-                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapse_faq_3" aria-expanded="false" aria-controls="collapse_faq_3">
-                  <span class="h5">How often do you make updates?</span>
-                </button>
-              </h2>
-              <div id="collapse_faq_3" class="accordion-collapse collapse" aria-labelledby="heading_faq_3"
-                data-bs-parent="#faqs">
-                <div class="accordion-body px-0">
                   <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading_faq_4">
-                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapse_faq_4" aria-expanded="false" aria-controls="collapse_faq_4">
-                  <span class="h5">Can I build my own commercial projects?</span>
-                </button>
-              </h2>
-              <div id="collapse_faq_4" class="accordion-collapse collapse" aria-labelledby="heading_faq_4"
-                data-bs-parent="#faqs">
-                <div class="accordion-body px-0">
-                  <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters.
+                    따라서 디지털 포렌식과 데이터 복구는 분석 방식과 결과물이 다른 서비스입니다.
                   </p>
                 </div>
               </div>
@@ -93,16 +63,65 @@
               <h2 class="accordion-header" id="heading_faq_5">
                 <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapse_faq_5" aria-expanded="false" aria-controls="collapse_faq_5">
-                  <span class="h5">How can I request a refund?</span>
+                  <span class="h5">디지털 포렌식을 하면 데이터 복구율이 더 높나요?</span>
                 </button>
               </h2>
               <div id="collapse_faq_5" class="accordion-collapse collapse" aria-labelledby="heading_faq_5"
                 data-bs-parent="#faqs">
                 <div class="accordion-body px-0">
                   <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters
+                    일반 복구와 디지털포렌식은 다른 개념입니다. 따라서 일반복구로 복구불가 되었을 경우 디지털포렌식을 하더라도 복구가 되지 않을 확률이 높습니다.<br><br>
+                  </p>
+                  <p>
+                    일반 복구작업은 삭제된 데이터를 정상적으로 되살리는 작업이라고 한다면 디지털 포렌식은 컴퓨터나 스마트폰 등의 디지털 기록 매체에 남아있는 데이터를 수집·분석하여 범행과 관련된
+                    증거를 확보하는 수사기법입니다.<br><br>
+                    따라서, 일반 복구로 복구불가 되었을경우 디지털포렌식으로 의뢰를 하시면 삭제된 데이터의 흔적은 추가로 발견될 수 있지만 실제 데이터가 추가로 복구되지는 않습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_3">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_3" aria-expanded="false" aria-controls="collapse_faq_3">
+                  <span class="h5">직원이 퇴사 과정에서 내부자료 유출 등의 부정행위를 저질렀습니다. 디지털 포렌식으로 대응이 가능한가요?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_3" class="accordion-collapse collapse" aria-labelledby="heading_faq_3"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    최근 데이터의 중요성이 커지면서, 회사의 영업자료 및 기밀문서 등의 유출 사례 및 이에 따른 피해가 급증하고 있고 이에 따라 디지털 포렌식 의뢰 건 수도 증가하고
+                    있습니다.<br><br>
+                  </p>
+                  <p>
+                    저희 명디지털포렌식 센터에서는 [영업자료 및 기밀문서 유출] 사례에 대한 전담팀을 구성하여 운영하고 있으며, 실제 사례로 해당 사건에 대한 증거 수집 및 확인으로 재판에서 승소한
+                    경험이 많습니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading_faq_4">
+                <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse_faq_4" aria-expanded="false" aria-controls="collapse_faq_4">
+                  <span class="h5">명디지털 포렌식센터에서 제공하는 포렌식 분석 결과 자료가 법적 효력이 있나요?</span>
+                </button>
+              </h2>
+              <div id="collapse_faq_4" class="accordion-collapse collapse" aria-labelledby="heading_faq_4"
+                data-bs-parent="#faqs">
+                <div class="accordion-body px-0">
+                  <p>
+                    의뢰인의 분석대상물로부터 명디지털포렌식센터의 전문가들이 확보한 전자증거는 수사기관이나 사법기관에서 요구하는 형식의 문서로 가공되어 제공됩니다. 저희 명정보기술의 이름이 보증하는
+                    디지털 포렌식 분석보고서는 일반적으로 증거능력을 인정 받기 때문에 법적 효력이 있습니다.<br><br>
+                  </p>
+                  <p>
+                    저희 명 디지털포렌식센터는 국가공인 디지털포렌식 자격증을 보유한 분석관이 직접 상담부터 분석까지 진행해 드리고 있습니다. 30년간의 데이터 복구 경험을 토대로 국가 재난 시
+                    최우선으로 작업을 진행하는 검증되어 있는 업체입니다.<br><br>
+                  </p>
+                  <p>
+                    320전산대란·천암함 CCTV복구·세월호 CCTV복구 등 다수의 공공기관 협력 경력을 가지고 있으며, 국방부 디지털 포렌식 업무 협약·서울고등법원 디지털포렌식 검증 업체 등록 등
+                    대내외 적으로 높은 신뢰도를 쌓아가고 있습니다.
                   </p>
                 </div>
               </div>
@@ -111,16 +130,15 @@
               <h2 class="accordion-header" id="heading_faq_6">
                 <button class="accordion-button px-0 py-7 collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapse_faq_6" aria-expanded="false" aria-controls="collapse_faq_6">
-                  <span class="h5">What if I have a question that isn&#39;t answered here?</span>
+                  <span class="h5">분석 기간은 얼마나 걸리나요?</span>
                 </button>
               </h2>
               <div id="collapse_faq_6" class="accordion-collapse collapse" aria-labelledby="heading_faq_6"
                 data-bs-parent="#faqs">
                 <div class="accordion-body px-0">
                   <p>
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                    distribution of letters
+                    사건 및 분석 대상물의 상황, 상태, 요청 자료에 따라 상이합니다.
+                    명디지털포렌식 고객센터로 연락 주시면 상담을 통해 자세히 안내해 드리고 있습니다.
                   </p>
                 </div>
               </div>
