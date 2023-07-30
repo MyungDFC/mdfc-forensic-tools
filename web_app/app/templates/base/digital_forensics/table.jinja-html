@@ -252,7 +252,6 @@
     </div>
   </div>
 </main>
-
 <div class="scrollToTop">
   <a href="#" class="font-bold" onclick="scrollToElement('#table-page-header')">
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-arrow-up-circle-fill"

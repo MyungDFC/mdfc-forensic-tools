@@ -3,140 +3,143 @@
 <!-- Main Content -->
 {% block Content %}
 <div class="flex-lg-1 h-screen overflow-y-lg-auto" id="main-content">
-  <header class="bg-surface-secondary" id="youtube-header">
-    <!-- Cover -->
-    <div class="bg-cover"
-      style="background-image: url({{ url_for('static', filename='/img/youtube/myungtv_bg.png') }})">
-    </div>
-    <!-- Info -->
-    <div class="container-xl">
-      <div class="row g-0 align-items-end">
-        <div class="col-auto">
-          <!-- Avatar -->
-          <div class="avatar avatar-2xl border border-body border-4 mt-n10">
-            <img alt="..." src="{{ url_for('static', filename='/img/youtube/myungtv_logo.jpg') }}" class="rounded">
+  <div id="youtube">
+    <header class="bg-surface-secondary">
+      <!-- Cover -->
+      <div class="bg-cover"
+        style="background-image: url({{ url_for('static', filename='/img/youtube/myungtv_bg.png') }})">
+      </div>
+      <!-- Info -->
+      <div class="container-xl">
+        <div class="row g-0 align-items-end">
+          <div class="col-auto">
+            <!-- Avatar -->
+            <div class="avatar avatar-2xl border border-body border-4 mt-n10">
+              <img alt="..." src="{{ url_for('static', filename='/img/youtube/myungtv_logo.jpg') }}" class="rounded">
+            </div>
+          </div>
+          <div class="col ps-4 pt-4">
+            <!-- Pretitle -->
+            <h6 class="text-xs text-muted mb-1">
+              {{ channel_snippet["customUrl"] }} 구독자 {{ channel_statistics["subscriberCount"]|format_count }}명 동영상 {{
+              channel_statistics["videoCount"]|format_count }}개
+            </h6>
+            <!-- Title -->
+            <h1 class="h2">
+              {{ channel_snippet["title"] }}
+            </h1>
+          </div>
+          <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
+            <!-- Button -->
+            <a href="https://www.youtube.com/@myung_vely" class="btn btn-sm btn-primary d-block d-md-inline-block mx-2"
+              id="youtube-subcribe-button">
+              구독
+            </a>
           </div>
         </div>
-        <div class="col ps-4 pt-4">
-          <!-- Pretitle -->
-          <h6 class="text-xs text-muted mb-1">
-            {{ channel_snippet["customUrl"] }} 구독자 {{ channel_statistics["subscriberCount"]|format_count }}명 동영상 {{
-            channel_statistics["videoCount"]|format_count }}개
-          </h6>
-          <!-- Title -->
-          <h1 class="h2">
-            {{ channel_snippet["title"] }}
-          </h1>
-        </div>
-        <div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
-          <!-- Button -->
-          <a href="#" class="btn btn-sm btn-primary d-block d-md-inline-block mx-2" id="youtube-subcribe-button">
-            구독
-          </a>
-        </div>
+        <!-- Nav -->
+        <ul class="nav nav-tabs ms-1 mt-4 overflow-x border-0">
+          {% for playlist in playlists %}
+          <li class="nav-item">
+            <a href="#!" class="nav-link">
+              {{ playlist["snippet"].get("title", "") }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-      <!-- Nav -->
-      <ul class="nav nav-tabs ms-1 mt-4 overflow-x border-0">
-        {% for playlist in playlists %}
-        <li class="nav-item">
-          <a href="#!" class="nav-link">
-            {{ playlist["snippet"].get("title", "") }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </header>
-  <!-- Youtube Content -->
-  <main class="py-7 bg-surface-secondary" id="youtube-main">
-    <div class="container-xl">
-      <div class="bg-card rounded shadow-sm">
-        <div class="p-5">
-          <div
-            class="border border-4 border-dashed rounded d-flex flex-column justify-content-center align-items-center"
-            style="min-height: 400px;">
-            <div class="h4 font-semibold text-muted opacity-8">
-              <div>
+    </header>
+    <!-- Youtube Content -->
+    <main class="py-7 bg-surface-secondary">
+      <div class="container-xl">
+        <div class="bg-card rounded shadow-sm">
+          <div class="p-5">
+            <div
+              class="border border-4 border-dashed rounded d-flex flex-column justify-content-center align-items-center"
+              style="min-height: 400px;">
+              <div class="h4 font-semibold text-muted opacity-8">
                 <div>
-                  <div class="row g-6" id="lightgallery">
-                    {% for video in videos %}
-                    <div class="col-xl-6 col-sm-6">
-                      <div class="card border-0 shadow shadow-4-hover">
-                        <div class="p-2">
-                          <a href="#" class="d-block">
-                            <div class="youtube_frame" style="width: 100%">
-                              <iframe src="{{ video.get('url') }}" title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen="" loading="lazy"></iframe>
-                            </div>
-                          </a>
-                        </div>
-                        <div class="px-4 pt-2 pb-4">
-                          <h6 class="font-semibold mb-2" id="youtube-title">{{ video.get('title') }}</h6>
-                          <div class="d-flex align-items-center">
-                            <div class="text-xs text-muted">
-                              <i class="bi bi-lock me-1"></i>{{ video.get('views')|format_count }} views •
-                              {{ video.get('published').split("T")[0] }}
-                            </div>
-                            <div class="text-xs text-muted ms-auto">
-                              {{ video.get('duration') }}
-                            </div>
+                  <div>
+                    <div class="row g-6" id="lightgallery">
+                      {% for video in videos %}
+                      <div class="col-xl-6 col-sm-6">
+                        <div class="card border-0 shadow shadow-4-hover">
+                          <div class="p-2">
+                            <a href="#" class="d-block">
+                              <div class="youtube_frame" style="width: 100%">
+                                <iframe src="{{ video.get('url') }}" title="YouTube video player"
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                  allowfullscreen="" loading="lazy"></iframe>
+                              </div>
+                            </a>
                           </div>
-                          <span class="d-block"></span>
+                          <div class="px-4 pt-2 pb-4">
+                            <h6 class="font-semibold mb-2" id="youtube-title">{{ video.get('title') }}</h6>
+                            <div class="d-flex align-items-center">
+                              <div class="text-xs text-muted">
+                                <i class="bi bi-lock me-1"></i>{{ video.get('views')|format_count }} views •
+                                {{ video.get('published').split("T")[0] }}
+                              </div>
+                              <div class="text-xs text-muted ms-auto">
+                                {{ video.get('duration') }}
+                              </div>
+                            </div>
+                            <span class="d-block"></span>
+                          </div>
                         </div>
                       </div>
+                      {% endfor %}
                     </div>
-                    {% endfor %}
-                  </div>
-                  <div class="card-footer border-0 py-12">
-                    <div class="d-flex align-items-center justify-content-center">
-                      <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-spaced gap-2">
-                          {% if block_start - 1 > 0 %}
-                          <li class="page-item">
-                            <a class="page-link" href="{{ url_for('youtube.main', page=block_start - 1) }}">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                              </svg>
-                            </a>
-                          </li>
-                          {% endif %}
-                          {% for i in range(block_start, block_end + 1) %}
-                          {% if i > last_page %}
-
-                          {% else %}
-                          {% if i == page %}
-                          <li class="page-item"><b class="page-link" href="#">{{ i }}</b></li>
-                          {% else %}
-                          <li class="page-item"><a class="page-link" href="{{ url_for('youtube.main', page=i) }}">{{ i
-                              }}</a></li>
-                          {% endif %}
-                          {% endif %}
-                          {% endfor %}
-                          {% if block_end < last_page %} <li class="page-item">
-                            <a class="page-link" href="{{ url_for('youtube.main', page=block_end + 1) }}">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                              </svg>
-                            </a>
+                    <div class="card-footer border-0 py-12">
+                      <div class="d-flex align-items-center justify-content-center">
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination pagination-spaced gap-2">
+                            {% if block_start - 1 > 0 %}
+                            <li class="page-item">
+                              <a class="page-link" href="{{ url_for('youtube.main', page=block_start - 1) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                  class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                                </svg>
+                              </a>
                             </li>
                             {% endif %}
-                        </ul>
-                      </nav>
+                            {% for i in range(block_start, block_end + 1) %}
+                            {% if i > last_page %}
+
+                            {% else %}
+                            {% if i == page %}
+                            <li class="page-item"><b class="page-link" href="#">{{ i }}</b></li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="{{ url_for('youtube.main', page=i) }}">{{ i
+                                }}</a></li>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            {% if block_end < last_page %} <li class="page-item">
+                              <a class="page-link" href="{{ url_for('youtube.main', page=block_end + 1) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                  class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                  <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                </svg>
+                              </a>
+                              </li>
+                              {% endif %}
+                          </ul>
+                        </nav>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 </div>
 {% endblock Content %}

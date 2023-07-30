@@ -370,30 +370,37 @@ header .image-text .header-text {
     font-weight: 900;
 }
 
-/* media */
-#media-main .container-fluid {
-    --x-gutter-x: 3rem;
+/* blog */
+#blog header {
+    margin-right: 1rem;
+    margin-left: 1rem;
 }
 
-/* blog */
-#blog-content .container-fluid {
-    --x-gutter-x: 13rem;
+#blog main {
+    margin: 1rem;
 }
+
+#blog main .card-img-top img {
+    height: 220px;
+}
+
+#blog main .pagination {
+    margin: 2rem;
+}
+
 
 /* Youtube */
-/* #youtube-main {
 
-} */
-#youtube-header .bg-cover {
+#youtube header .bg-cover {
     height: 30vh;
     background-position: center center;
 }
 
-#youtube-header .container-xl {
+#youtube header .container-xl {
     --x-gutter-x: 4rem;
 }
 
-#youtube-main .container-xl {
+#youtube main .container-xl {
     --x-gutter-x: 4rem;
 }
 
