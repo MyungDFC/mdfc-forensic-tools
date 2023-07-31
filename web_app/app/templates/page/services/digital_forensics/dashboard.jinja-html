@@ -36,6 +36,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">USB 연결 이벤트</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ usb_event_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-usb-event">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -52,6 +77,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">외부데이터 열람 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ usb_event_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <a href="{{ url_for('dashboard.usb_event_reload') }}" class="dropdown-item">
+                      Reload
+                    </a>
+                    <a href="#!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -79,6 +129,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">웹사이트 방문 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ usb_event_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -96,6 +171,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">파일 다운로드 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ usb_event_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -113,6 +213,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">인터넷 검색 키워드 목록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ usb_event_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -140,6 +265,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">파일/폴더 열람 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ jumplist_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -157,6 +307,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">사용자 로그온 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ logon_event_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -174,6 +349,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">프로그램 실행 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ prefetch_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>
@@ -201,6 +401,31 @@
           </div>
           <div class="px-4 pt-2 pb-4">
             <h5 class="font-semibold mb-2">휴지통 분석 기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ recyclebin_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span class="d-block"></span>
           </div>
         </div>

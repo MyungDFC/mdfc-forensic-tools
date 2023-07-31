@@ -207,6 +207,7 @@
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/titlebar.js') }}"></script>
   <script src="{{ url_for('static', filename='js/scrollTo.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/reloadArtifact.js') }}"></script>
   <script src="{{ url_for('static', filename='js/forensicTable.js') }}"></script>
   {# ModuleScript #}
   {% block ModuleScript %}

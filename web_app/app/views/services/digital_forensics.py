@@ -139,10 +139,7 @@ def logon_event():
 @bp.route("/logon_event/reload", methods=["GET"])
 def logon_event_reload():
     artifacts = ["LogonEvent",]
-
-    ROOT_DIRECTORY_NAME = "_myungit"
-    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
-    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    root_directory = Path(session.get("root_directory", None))
     
     case = CaseManager(
         _artifacts=artifacts,
@@ -199,10 +196,7 @@ def jumplist():
 @bp.route("/jumplist/reload", methods=["GET"])
 def jumplist_reload():
     artifacts = ["JumpList",]
-
-    ROOT_DIRECTORY_NAME = "_myungit"
-    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
-    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    root_directory = Path(session.get("root_directory", None))
     
     case = CaseManager(
         _artifacts=artifacts,
@@ -282,10 +276,7 @@ def recyclebin():
 @bp.route("/recyclebin/reload", methods=["GET"])
 def recyclebin_reload():
     artifacts = ["RecycleBin",]
-
-    ROOT_DIRECTORY_NAME = "_myungit"
-    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
-    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    root_directory = Path(session.get("root_directory", None))
     
     case = CaseManager(
         _artifacts=artifacts,
@@ -342,10 +333,7 @@ def usb_event():
 @bp.route("/usb_event/reload", methods=["GET"])
 def usb_event_reload():
     artifacts = ["USB(EventLog)",]
-
-    ROOT_DIRECTORY_NAME = "_myungit"
-    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
-    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    root_directory = Path(session.get("root_directory", None))
     
     case = CaseManager(
         _artifacts=artifacts,
@@ -400,10 +388,7 @@ def prefetch():
 @bp.route("/prefetch/reload", methods=["GET"])
 def prefetch_reload():
     artifacts = ["Prefetch",]
-
-    ROOT_DIRECTORY_NAME = "_myungit"
-    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
-    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    root_directory = Path(session.get("root_directory", None))
     
     case = CaseManager(
         _artifacts=artifacts,
