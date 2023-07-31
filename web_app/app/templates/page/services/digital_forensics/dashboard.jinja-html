@@ -112,7 +112,7 @@
             </a>
           </div>
           <div class="px-4 pt-2 pb-4">
-            <h5 class="font-semibold mb-2">인터넷 검색 기록</h5>
+            <h5 class="font-semibold mb-2">인터넷 검색 키워드 목록</h5>
             <span class="d-block"></span>
           </div>
         </div>
@@ -156,7 +156,7 @@
             </a>
           </div>
           <div class="px-4 pt-2 pb-4">
-            <h5 class="font-semibold mb-2">컴퓨터 로그온 기록</h5>
+            <h5 class="font-semibold mb-2">사용자 로그온 기록</h5>
             <span class="d-block"></span>
           </div>
         </div>

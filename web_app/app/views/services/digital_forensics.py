@@ -96,32 +96,69 @@ def internet():
         records=records
     )
 
+
+## LogonEvent
 @bp.route("/logon_event", methods=["GET"])
 def logon_event():
     title = "사용자 로그온 기록"
+    artifact_icon_html = """
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-unlock" viewBox="0 0 16 16">
+    <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z"/>
+    </svg>
     """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        # for record in session.get("logon_event", "{}")
-        for record in session.get("recyclebin", "{}")
-    ]
+    category = artifact_category.get("logon_event", None)
+    artifact_page = "artifact.logon_event"
+    artifact_path = Path(session.get("root_directory", None)) / "logon_event.json"
+
+    with open(artifact_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    # Pagination variables
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
+
+    # Pagination
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
 
     return render_template(
         "page/services/digital_forensics/table_logon_event.jinja-html",
         title = title,
-        records=records
+        category=category,
+        artifact_icon_html=artifact_icon_html,
+        artifact_page=artifact_page,
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
+        reload_url=url_for("artifact.logon_event_reload"),
     )
 
+@bp.route("/logon_event/reload", methods=["GET"])
+def logon_event_reload():
+    artifacts = ["LogonEvent",]
+
+    ROOT_DIRECTORY_NAME = "_myungit"
+    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
+    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.logon_event")) 
 
 ## JumpList
 @bp.route("/jumplist", methods=["GET"])
 def jumplist():
-    title = "파일 열람기록"
+    title = "파일/폴더 열람 기록"
     artifact_icon_html = """
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-folder2-open" viewBox="0 0 16 16">
     <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z"/>
     </svg>
     """
@@ -325,7 +362,7 @@ def usb_event_reload():
 def prefetch():
     title = "프로그램 실행 기록"
     artifact_icon_html = """
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-terminal" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-terminal" viewBox="0 0 16 16">
     <path d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"/>
     <path d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z"/>
     </svg>

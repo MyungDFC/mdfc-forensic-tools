@@ -9,8 +9,8 @@ bp = Blueprint("home", __name__, url_prefix="/")
 @bp.route("/")
 def process():
     artifacts = [
-        # "Chrome",
-        # "Edge",
+        "Chrome",
+        "Edge",
         "RecycleBin",
         "Prefetch",
         "JumpList",
