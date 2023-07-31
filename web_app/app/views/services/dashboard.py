@@ -22,6 +22,11 @@ def digital_forensics():
     prefetch_path = root_directory / "prefetch.json"
     recyclebin_path = root_directory / "recyclebin.json"
 
+    # browser records
+    edge_history_path = Path(session.get("root_directory", None)) / "edge_history.json"
+    chrome_history_path = Path(session.get("root_directory", None)) / "chrome_history.json"
+
+
     with open(usb_event_path, "r", encoding="utf-8") as f:
         usb_event_records = json.load(f)
 
@@ -36,8 +41,13 @@ def digital_forensics():
     
     with open(recyclebin_path, "r", encoding="utf-8") as f:
         recyclebin_records = json.load(f)
+
+    # browser records
+    with open(edge_history_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
     
     usb_event_total = len(usb_event_records)
+    internet_visits_total = len(records)
     logon_event_total = len(logon_event_records)
     jumplist_total = len(jumplist_records)
     prefetch_total = len(prefetch_records)
@@ -46,6 +56,7 @@ def digital_forensics():
     return render_template(
         "page/services/digital_forensics/dashboard.jinja-html",
         usb_event_total=usb_event_total,
+        internet_visits_total=internet_visits_total,
         logon_event_total=logon_event_total,
         jumplist_total=jumplist_total,
         prefetch_total=prefetch_total,

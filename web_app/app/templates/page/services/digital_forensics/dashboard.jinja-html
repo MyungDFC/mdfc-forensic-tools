@@ -122,7 +122,7 @@
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
           <div class="p-2">
-            <a href="{{ url_for('artifact.internet') }}" class="d-block">
+            <a href="{{ url_for('artifact.internet_visits') }}" class="d-block">
               <img class="img-fluid rounded-2" alt="..."
                 src="{{ url_for('static', filename='img/dashboard/internet_visit_history.jpg') }}" />
             </a>
@@ -131,7 +131,7 @@
             <h5 class="font-semibold mb-2">웹사이트 방문 기록</h5>
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
-                {{ usb_event_total|format_count }} records
+                {{ internet_visits_total|format_count }} records
               </div>
               <div class="text-xs ms-auto">
                 <div class="dropdown">
@@ -164,7 +164,7 @@
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
           <div class="p-2">
-            <a href="{{ url_for('artifact.internet') }}" class="d-block">
+            <a href="{{ url_for('artifact.internet_visits') }}" class="d-block">
               <img class="img-fluid rounded-2" alt="..."
                 src="{{ url_for('static', filename='img/dashboard/internet_download.jpg') }}" />
             </a>
@@ -206,7 +206,7 @@
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
           <div class="p-2">
-            <a href="{{ url_for('artifact.internet') }}" class="d-block">
+            <a href="{{ url_for('artifact.internet_visits') }}" class="d-block">
               <img class="img-fluid rounded-2" alt="..."
                 src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}" />
             </a>

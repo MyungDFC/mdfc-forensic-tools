@@ -1,0 +1,56 @@
+{% extends "base/digital_forensics/table.jinja-html" %}
+
+{% block ContentImage %}
+<img alt="..." class="img-fluid rounded"
+  src="{{ url_for('static', filename='img/dashboard/internet_visit_history.jpg') }}">
+{% endblock ContentImage %}
+
+{% block ResultCardTitle %}
+<!-- Title -->
+<h1 class="h2 ls-tight" style="padding">
+  {{ title }}
+</h1>
+<!-- Surtitle -->
+<h6 class="text-sm font-semibold mb-1 text-muted">
+  사용자가 방문한 웹사이트 기록을 확인합니다
+  <br>[확인된 기록: 총 {{ total|format_count }} 건]
+</h6>
+{% endblock ResultCardTitle %}
+
+{% block TableHeader %}
+<th scope="col">방문 시간</th>
+<th scope="col">웹사이트 제목</th>
+<th scope="col">방문 횟수</th>
+<th scope="col">URL</th>
+<th scope="col">브라우저</th>
+{% endblock TableHeader %}
+
+{% block TableBody %}
+{% for record in records %}
+<tr>
+  <td class="text-lg" scope="col">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckRow{{ loop.index }}">
+      <label class="form-check-label" for="flexCheckRow{{ loop.index }}" id="form_check-label-row">
+        {{ loop.index + ((page - 1) * per_page) }}
+      </label>
+    </div>
+  </td>
+  <td>
+    <span>{{ record.get("ts", "")|format_datetime }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("title", "") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("visit_count", "") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("url", "") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("browser_type", "") }}</span>
+  </td>
+</tr>
+{% endfor %}
+{% endblock TableBody %}
