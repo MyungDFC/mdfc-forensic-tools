@@ -4,7 +4,7 @@ from typing import Generator
 from dissect.sql.sqlite3 import SQLite3
 from dissect.sql.exceptions import Error as SQLError
 
-from app.engine.util.extractor import extract_basename, extract_fileext
+from app.engine.util.extractor import extract_filename, extract_fileext
 from app.engine.forensic_artifact import ForensicArtifact
 
 
@@ -74,7 +74,7 @@ class ChromiumBrowser(ForensicArtifact):
 
                     for row in db.table("downloads").rows():
                         download_path = row.target_path
-                        file_name = extract_basename(download_path)
+                        file_name = extract_filename(download_path)
                         file_extension = extract_fileext(download_path)
 
                         if (download_chain := download_chains.get(row.id)):

@@ -26,6 +26,8 @@ def digital_forensics():
     edge_history_path = Path(session.get("root_directory", None)) / "edge_history.json"
     chrome_history_path = Path(session.get("root_directory", None)) / "chrome_history.json"
 
+    edge_downloads_path = Path(session.get("root_directory", None)) / "edge_downloads.json"
+    chrome_downloads_path = Path(session.get("root_directory", None)) / "chrome_downloads.json"
 
     with open(usb_event_path, "r", encoding="utf-8") as f:
         usb_event_records = json.load(f)
@@ -45,9 +47,13 @@ def digital_forensics():
     # browser records
     with open(edge_history_path, "r", encoding="utf-8") as f:
         records = json.load(f)
+
+    with open(edge_history_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
     
     usb_event_total = len(usb_event_records)
     internet_visits_total = len(records)
+    internet_downloads_total = len(records)
     logon_event_total = len(logon_event_records)
     jumplist_total = len(jumplist_records)
     prefetch_total = len(prefetch_records)
@@ -57,6 +63,7 @@ def digital_forensics():
         "page/services/digital_forensics/dashboard.jinja-html",
         usb_event_total=usb_event_total,
         internet_visits_total=internet_visits_total,
+        internet_downloads_total=internet_downloads_total,
         logon_event_total=logon_event_total,
         jumplist_total=jumplist_total,
         prefetch_total=prefetch_total,

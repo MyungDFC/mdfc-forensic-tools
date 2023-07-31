@@ -135,6 +135,62 @@ def internet_visits_reload():
     return redirect(url_for("artifact.internet_visits")) 
 
 
+
+## Internet Downloads
+@bp.route("/internet_downloads", methods=["GET"])
+def internet_downloads():
+    title = "파일 다운로드 기록"
+    artifact_icon_html = """
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-unlock" viewBox="0 0 16 16">
+    <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z"/>
+    </svg>
+    """
+    category = artifact_category.get("internet_downloads", None)
+    artifact_page = "artifact.internet_downloads"
+    edge_downloads_path = Path(session.get("root_directory", None)) / "edge_downloads.json"
+    chrome_downloads_path = Path(session.get("root_directory", None)) / "chrome_downloads.json"
+
+    with open(edge_downloads_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    # Pagination variables
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
+
+    # Pagination
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
+
+    return render_template(
+        "page/services/digital_forensics/table_internet_downloads.jinja-html",
+        title = title,
+        category=category,
+        artifact_icon_html=artifact_icon_html,
+        artifact_page=artifact_page,
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
+        reload_url=url_for("artifact.internet_downloads_reload"),
+    )
+
+@bp.route("/internet_downloads/reload", methods=["GET"])
+def internet_downloads_reload():
+    artifacts = ["Chrome", "Edge"]
+    root_directory = Path(session.get("root_directory", None))
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.internet_downloads")) 
+
+
 ## LogonEvent
 @bp.route("/logon_event", methods=["GET"])
 def logon_event():
