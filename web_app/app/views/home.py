@@ -12,7 +12,7 @@ def process():
         # "Chrome",
         # "Edge",
         "RecycleBin",
-        # "Prefetch",
+        "Prefetch",
         "JumpList",
         # "LogonEvent",
         "USB(EventLog)",

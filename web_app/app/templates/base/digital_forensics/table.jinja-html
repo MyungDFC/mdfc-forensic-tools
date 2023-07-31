@@ -42,10 +42,12 @@
             <div class="dropdown">
               <button class="btn btn-sm btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                {{ artifact_icon_html|safe }}<span>{{ title }}</span>
+                {{ artifact_icon_html|safe }} <span style="padding-top: 1px; padding-left: 3px;">{{ title }}</span>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {# USB 연결 이벤트 #}
+                {# Group1: 데이터 유출 #}
+                <h6 class="dropdown-header font-semibold">데이터 유출</h6>
+                <!-- USB 연결 이벤트 -->
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
                     <div class="avatar avatar-sm rounded-circle">
@@ -63,24 +65,49 @@
                     </a>
                   </div>
                 </div>
-                {# 파일 열람기록 #}
+                <hr class="dropdown-divider my-2">
+                {# Group3: 사용자 활동 #}
+                <h6 class="dropdown-header font-semibold">사용자 활동</h6>
+                <!-- 파일/폴더 열람 기록 -->
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
                     <div class="avatar avatar-sm rounded-circle">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-folder2-open" viewBox="0 0 16 16">
                         <path
-                          d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
+                          d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z" />
                       </svg>
                     </div>
                   </div>
                   <div class="flex-fill ms-3">
                     <a href="{{ url_for('artifact.jumplist') }}" class="text-sm text-heading font-semibold mb-0">
-                      파일 열람기록
+                      파일/폴더 열람 기록
                     </a>
                   </div>
                 </div>
-                {# 휴지통 분석 기록 #}
+                <!-- 프로그램 실행 기록 -->
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-terminal" viewBox="0 0 16 16">
+                        <path
+                          d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9zM3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z" />
+                        <path
+                          d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="{{ url_for('artifact.prefetch') }}" class="text-sm text-heading font-semibold mb-0">
+                      프로그램 실행 기록
+                    </a>
+                  </div>
+                </div>
+                <hr class="dropdown-divider my-2">
+                {# Group3: 데이터 삭제 #}
+                <h6 class="dropdown-header font-semibold">데이터 삭제</h6>
+                <!-- 휴지통 분석 기록 -->
                 <div class="dropdown-item d-flex align-items-center">
                   <div>
                     <div class="avatar avatar-sm rounded-circle">

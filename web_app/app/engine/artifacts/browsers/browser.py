@@ -17,7 +17,7 @@ class ChromiumBrowser(ForensicArtifact):
     def browser_type(self) -> str:
         raise NotImplementedError   
     
-    def parse(self, descending: bool = False) -> None:
+    def parse(self, descending: bool = True) -> None:
         raise NotImplementedError
     
     def history(self) -> Generator[dict, None, None]:

@@ -46,7 +46,7 @@ class ForensicArtifact:
             else:
                 yield from dir.glob(entry)
 
-    def parse(self, descending: bool = False) -> None:
+    def parse(self, descending: bool = True) -> None:
         """Parse artifact and update 'self.result' variable.
 
         Args:

@@ -12,7 +12,7 @@ class Edge(ChromiumBrowser):
     def browser_type(self) -> str:
         return "edge"
         
-    def parse(self, descending: bool = False) -> None:
+    def parse(self, descending: bool = True) -> None:
         history = sorted([
                 json.dumps(record, indent=2, default=str, ensure_ascii=False)
                 for record in self.history()], reverse=descending)

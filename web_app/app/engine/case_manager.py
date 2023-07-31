@@ -29,7 +29,7 @@ class CaseManager:
 
     def parse_all(self) -> None:
         for entry in self.forensic_artifacts:
-            entry.parse(descending=False)
+            entry.parse(descending=True)
 
     def export_all(self) -> list[dict]:
         result_files = []

@@ -1,24 +1,28 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
-{% block CardStates %}
-<div class="card">
-  <div class="p-2">
-    <a href="#">
-      <img src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}" alt="..." class="card-img"
-        id="table-card-img">
-    </a>
-  </div>
-</div>
-{% endblock CardStates %}
+{% block ContentImage %}
+<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}">
+{% endblock ContentImage %}
+
+{% block ResultCardTitle %}
+<!-- Title -->
+<h1 class="h2 ls-tight" style="padding">
+  {{ title }}
+</h1>
+<!-- Surtitle -->
+<h6 class="text-sm font-semibold mb-1 text-muted">
+  사용자의 컴퓨터에서 실행된 프로그램 목록을 확인합니다
+  <br>[확인된 기록: 총 {{ total|format_count }} 건]
+</h6>
+{% endblock ResultCardTitle %}
 
 {% block TableHeader %}
-<th scope="col">데이터 삭제 시간</th>
-<th scope="col">파일 이름</th>
-<th scope="col">확장자</th>
-<th scope="col">파일 크기</th>
-<th scope="col">삭제되기 이전 경로</th>
-<th scope="col">현재 경로</th>
+<th scope="col">마지막 실행 시간</th>
+<th scope="col">프로그램 이름</th>
+<th scope="col">실행파일 이름</th>
+<th scope="col">실행 횟수</th>
 {% endblock TableHeader %}
+
 
 {% block TableBody %}
 {% for record in records %}
@@ -26,26 +30,22 @@
   <td class="text-lg" scope="col">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="flexCheckRow{{ loop.index }}">
-      <label class="form-check-label" for="flexCheckRow{{ loop.index }}"></label>
+      <label class="form-check-label" for="flexCheckRow{{ loop.index }}" id="form_check-label-row">
+        {{ loop.index + ((page - 1) * per_page) }}
+      </label>
     </div>
   </td>
   <td>
-    <span>{{ record.get("ts") }}</span>
+    <span>{{ record.get("ts", "")|format_datetime }}</span>
   </td>
   <td>
-    <span>{{ record.get("filename") }}</span>
+    <span>{{ record.get("programme_name", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("fileext") }}</span>
+    <span>{{ record.get("filename", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("filesize") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("path") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("deleted_path") }}</span>
+    <span>{{ record.get("runcount", "") }}</span>
   </td>
 </tr>
 {% endfor %}

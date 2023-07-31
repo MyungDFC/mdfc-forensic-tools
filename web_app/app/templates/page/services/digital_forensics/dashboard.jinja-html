@@ -63,7 +63,7 @@
 <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
   <div class="px-5 mb-6">
     <span class="badge badge-lg badge-dot text-heading font-semibold">
-      <i class="bg-warning"></i>인터넷 사용기록
+      <i class="bg-warning"></i>인터넷 사용 기록
     </span>
   </div>
   <div class="flex-1 overflow-y-auto" id="dashboard-col-2">
@@ -78,7 +78,7 @@
             </a>
           </div>
           <div class="px-4 pt-2 pb-4">
-            <h5 class="font-semibold mb-2">웹사이트 방문기록</h5>
+            <h5 class="font-semibold mb-2">웹사이트 방문 기록</h5>
             <span class="d-block"></span>
           </div>
         </div>
@@ -139,7 +139,7 @@
             </a>
           </div>
           <div class="px-4 pt-2 pb-4">
-            <h5 class="font-semibold mb-2">파일 열람기록</h5>
+            <h5 class="font-semibold mb-2">파일/폴더 열람 기록</h5>
             <span class="d-block"></span>
           </div>
         </div>

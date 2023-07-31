@@ -1,3 +1,4 @@
+import os
 import json
 from typing import Generator, BinaryIO
 from pathlib import Path
@@ -214,7 +215,7 @@ class Prefetch(ForensicArtifact):
     def __init__(self, artifact: str):
         super().__init__(artifact=artifact)
         
-    def parse(self, descending: bool = False) -> Path:
+    def parse(self, descending: bool = True) -> Path:
         """Return the content of all prefetch files.
 
         Prefetch is a memory management feature in Windows. It contains information (for example run count and
@@ -246,15 +247,17 @@ class Prefetch(ForensicArtifact):
         for entry in self._iter_entry():
             try:
                 prefetch = PrefetchParser(fh=entry.open("rb"))
-                filename = prefetch.header.name.decode("utf-16-le", errors="ignore").split("\x00")[0]
                 ts = self.ts.wintimestamp(prefetch.latest_timestamp)
+                filename = prefetch.header.name.decode("utf-16-le", errors="ignore").split("\x00")[0]
+                programme_name = os.path.splitext(filename)[0].lower()
                 previousruns = [self.ts.wintimestamp(ts) for ts in prefetch.previous_timestamps]
 
                 yield {
                     "ts": ts,
                     "filename": filename,
+                    "programme_name": programme_name,
                     "prefetch": entry.name,
-                    "linkedfiles": prefetch.metrics,
+                    # "linkedfiles": prefetch.metrics,
                     "runcount": prefetch.fn.run_count,
                     "previousruns": previousruns,
                 }

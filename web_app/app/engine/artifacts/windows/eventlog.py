@@ -11,7 +11,7 @@ class ForensicEvent(ForensicArtifact):
     def __init__(self, artifact: str):
         super().__init__(artifact=artifact)
         
-    def parse(self, descending: bool = False):
+    def parse(self, descending: bool = True):
         if self.artifact == "LogonEvent":
             logon_event = sorted([
                 json.dumps(record, indent=2, default=str, ensure_ascii=False)

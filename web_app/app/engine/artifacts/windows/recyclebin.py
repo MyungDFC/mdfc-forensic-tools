@@ -67,7 +67,7 @@ class RecycleBin(ForensicArtifact):
     def __init__(self, artifact: str):
         super().__init__(artifact=artifact)
         
-    def parse(self, descending: bool = False) -> None:
+    def parse(self, descending: bool = True) -> None:
         """
         Return files located in the recycle bin ($Recycle.Bin).
         
