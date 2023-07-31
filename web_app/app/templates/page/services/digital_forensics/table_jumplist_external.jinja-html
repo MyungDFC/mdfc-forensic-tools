@@ -1,5 +1,17 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
+{% block ContentImage %}
+<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/file_usage.jpg') }}">
+{% endblock ContentImage %}
+
+{% block ResultCardTitle %}
+{{ title }}
+{% endblock ResultCardTitle %}
+
+{% block ResultCardSurTitle %}
+사용자의 컴퓨터에서 삭제된 데이터를 확인합니다
+{% endblock ResultCardSurTitle %}
+
 {% block TableHeader %}
 <th scope="col">마지막 열람시간</th>
 <th scope="col">파일 이름</th>

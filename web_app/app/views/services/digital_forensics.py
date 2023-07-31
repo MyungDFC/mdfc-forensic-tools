@@ -1,25 +1,36 @@
 import re
 import json
 import math
+from collections import namedtuple
 from pathlib import Path
 from datetime import datetime
-from flask import Blueprint, render_template, session, request
+
+from flask import Blueprint, render_template, session, request, redirect, url_for
 
 from app.engine.case_manager import CaseManager
 
 bp = Blueprint("artifact", __name__, url_prefix="/dashboard/digital_forensics")
 
+ArtifactCategory = namedtuple("ArtifactCategory", ["title", "icon_html"])
+
+
+icon_html_red = "<i class='bg-danger'></i>"
+icon_html_yellow = "<i class='bg-warning'></i>"
+icon_html_green = "<i class='bg-success'></i>"
+icon_html_pink = "<i class='bg-tertiary'></i>"
+
 artifact_category = {
-    "internet": "인터넷 사용기록",
-    "logon_event": "사용자 활동",
-    "jumplist": "사용자 활동",
-    "jumplist_external": "데이터 유출",
-    "recyclebin": "데이터 삭제",
-    "usb_event": "데이터 유출",
-    "prefetch": "사용자 활동",
-    "wlan_event": "사용자 활동",
+    "internet": ArtifactCategory(title="인터넷 사용기록", icon_html=icon_html_yellow),
+    "logon_event": ArtifactCategory(title="사용자 활동", icon_html=icon_html_green),
+    "jumplist": ArtifactCategory(title="사용자 활동", icon_html=icon_html_green),
+    "jumplist_external": ArtifactCategory(title="데이터 유출", icon_html=icon_html_red),
+    "recyclebin": ArtifactCategory(title="데이터 삭제", icon_html=icon_html_pink),
+    "usb_event": ArtifactCategory(title="데이터 유출", icon_html=icon_html_red),
+    "prefetch": ArtifactCategory(title="사용자 활동", icon_html=icon_html_green),
+    "wlan_event": ArtifactCategory(title="사용자 활동", icon_html=icon_html_green),
 }
 
+## Template Filters
 @bp.app_template_filter("format_datetime")
 def format_datetime(value):
     # Parsing the string into a datetime object
@@ -33,6 +44,13 @@ def format_datetime(value):
 
     return formatted_time_str
 
+
+@bp.app_template_filter("format_count")
+def format_count(count):
+    return format(int(count), ",d")
+
+
+## Pagination
 def pagination(records: list[dict], page: int, per_page: int):
     """
         This function returns a list of dict(json) data for the current page.
@@ -97,9 +115,17 @@ def logon_event():
         records=records
     )
 
+
+## JumpList
 @bp.route("/jumplist", methods=["GET"])
 def jumplist():
     title = "파일 열람기록"
+    artifact_icon_html = """
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+    </svg>
+    """
+    category = artifact_category.get("jumplist", None)
     artifact_page = "artifact.jumplist"
     artifact_path = Path(session.get("root_directory", None)) / "jumplist.json"
 
@@ -112,7 +138,7 @@ def jumplist():
 
     # Pagination variables
     page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', default=10, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
 
     # Pagination
     items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
@@ -120,6 +146,8 @@ def jumplist():
     return render_template(
         "page/services/digital_forensics/table_jumplist.jinja-html",
         title = title,
+        category=category,
+        artifact_icon_html=artifact_icon_html,
         artifact_page=artifact_page,
         records=items_on_page,
         page=page,
@@ -128,7 +156,26 @@ def jumplist():
         last_page=last_page,
         block_start=block_start,
         block_end=block_end,
+        reload_url=url_for("artifact.jumplist_reload"),
     )
+
+@bp.route("/jumplist/reload", methods=["GET"])
+def jumplist_reload():
+    artifacts = ["JumpList",]
+
+    ROOT_DIRECTORY_NAME = "_myungit"
+    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
+    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.jumplist")) 
+
 
 @bp.route("/jumplist_external", methods=["GET"])
 def jumplist_external():
@@ -153,6 +200,7 @@ def jumplist_external():
         records=records
     )
 
+## RecycleBin
 @bp.route("/recyclebin", methods=["GET"])
 def recyclebin():
     title = "휴지통 분석 기록"
@@ -165,7 +213,6 @@ def recyclebin():
                       </svg>
                       """
     category = artifact_category.get("recyclebin", None)
-    category_html = "<i class='bg-danger'></i>"
     artifact_page = "artifact.recyclebin"
     artifact_path = Path(session.get("root_directory", None)) / "recyclebin.json"
 
@@ -174,7 +221,7 @@ def recyclebin():
 
     # Pagination variables
     page = request.args.get('page', default=1, type=int)
-    per_page = request.args.get('per_page', default=10, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
 
     # Pagination
     items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
@@ -183,7 +230,6 @@ def recyclebin():
         "page/services/digital_forensics/table_recyclebin.jinja-html",
         title = title,
         category=category,
-        category_html=category_html,
         artifact_icon_html=artifact_icon_html,
         artifact_page=artifact_page,
         records=items_on_page,
@@ -193,8 +239,28 @@ def recyclebin():
         last_page=last_page,
         block_start=block_start,
         block_end=block_end,
+        reload_url=url_for("artifact.recyclebin_reload"),
     )
 
+@bp.route("/recyclebin/reload", methods=["GET"])
+def recyclebin_reload():
+    artifacts = ["RecycleBin",]
+
+    ROOT_DIRECTORY_NAME = "_myungit"
+    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
+    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.recyclebin"))    
+
+
+## USB(EventLog)
 @bp.route("/usb_event", methods=["GET"])
 def usb_event():
     title = "USB 연결 이벤트"
@@ -207,7 +273,6 @@ def usb_event():
                       </svg>
                       """
     category = artifact_category.get("usb_event", None)
-    category_html = "<i class='bg-secondary'></i>"
     artifact_page = "artifact.usb_event"
     artifact_path = Path(session.get("root_directory", None)) / "usb_event.json"
 
@@ -216,7 +281,7 @@ def usb_event():
 
     # Pagination variables
     page = request.args.get('page', default=1, type=int)
-    per_page = request.args.get('per_page', default=10, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
 
     # Pagination
     items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
@@ -225,7 +290,6 @@ def usb_event():
         "page/services/digital_forensics/table_usb_event.jinja-html",
         title = title,
         category=category,
-        category_html=category_html,
         artifact_icon_html=artifact_icon_html,
         artifact_page=artifact_page,
         records=items_on_page,
@@ -235,7 +299,26 @@ def usb_event():
         last_page=last_page,
         block_start=block_start,
         block_end=block_end,
+        reload_url=url_for("artifact.usb_event_reload"),
     )
+
+@bp.route("/usb_event/reload", methods=["GET"])
+def usb_event_reload():
+    artifacts = ["USB(EventLog)",]
+
+    ROOT_DIRECTORY_NAME = "_myungit"
+    temp_dir = Path.home() / "AppData" / "Local" / "Temp"
+    root_directory = temp_dir / ROOT_DIRECTORY_NAME
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.usb_event"))  
+
 
 @bp.route("/prefetch", methods=["GET"])
 def prefetch():

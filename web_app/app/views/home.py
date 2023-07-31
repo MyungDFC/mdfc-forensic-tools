@@ -1,6 +1,7 @@
 from pathlib import Path
 from flask import Blueprint, render_template, redirect, url_for, session
 
+from app import cache
 from app.engine.case_manager import CaseManager
 
 bp = Blueprint("home", __name__, url_prefix="/")
@@ -41,6 +42,6 @@ def loading():
 
 # NOTE: This is the main view of the application.
 @bp.route("/index/")
+@cache.cached(timeout=1800)
 def index():
-
     return render_template("page/home/index.jinja-html")

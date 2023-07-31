@@ -5,7 +5,9 @@ from datetime import datetime, timedelta
 from flask import Blueprint, render_template, request
 from googleapiclient.discovery import build
 
+from app import cache
 from config import youtube_api_key, youtube_channel_id
+
 
 bp = Blueprint("youtube", __name__, url_prefix="/youtube")
 
@@ -14,6 +16,7 @@ def format_count(count):
     return format(int(count), ",d")
 
 @bp.route("/")
+@cache.cached(timeout=1800)
 def main():
     youtube = build("youtube", "v3", developerKey=youtube_api_key)
 

@@ -23,11 +23,14 @@
           </div>
           <div class="ms-3">
             <!-- Title -->
-            <h5>디지털 포렌식 분석결과</h5>
+            <a href="{{ url_for('dashboard.digital_forensics') }}">
+              <h5>디지털 포렌식 분석결과</h5>
+            </a>
             <!-- Subtitle -->
             <p class="text-sm text-muted mt-1">
               <span class="badge badge-lg badge-dot text-heading font-semibold">
-                <i class="bg-danger"></i>{{ category }}
+                {{ category.icon_html|safe }}
+                {{ category.title }}
               </span>
             </p>
           </div>
@@ -57,6 +60,23 @@
                   <div class="flex-fill ms-3">
                     <a href="{{ url_for('artifact.usb_event') }}" class="text-sm text-heading font-semibold mb-0">
                       USB 연결 이벤트
+                    </a>
+                  </div>
+                </div>
+                {# 파일 열람기록 #}
+                <div class="dropdown-item d-flex align-items-center">
+                  <div>
+                    <div class="avatar avatar-sm rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex-fill ms-3">
+                    <a href="{{ url_for('artifact.jumplist') }}" class="text-sm text-heading font-semibold mb-0">
+                      파일 열람기록
                     </a>
                   </div>
                 </div>
@@ -113,7 +133,7 @@
         <div class="card-header">
           <div>
             <div class="row align-items-end">
-              <div class="col-md-8 col-12 d-flex align-items-center mb-4 mb-md-0">
+              <div class="col-md-8 col-12 d-flex align-items-center mb-4 mb-md-0" id="table-header">
                 <div class="col-auto">
                   <div class="w-24 w-md-32">
                     {% block ContentImage %}
@@ -121,16 +141,8 @@
                   </div>
                 </div>
                 <div class="ms-5">
-                  <!-- Title -->
-                  <h1 class="h2 ls-tight" style="padding">
-                    {% block ResultCardTitle %}
-                    {% endblock ResultCardTitle %}
-                  </h1>
-                  <!-- Surtitle -->
-                  <h6 class="text-sm font-semibold mb-1 text-muted">
-                    {% block ResultCardSurTitle %}
-                    {% endblock ResultCardSurTitle %}
-                  </h6>
+                  {% block ResultCardTitle %}
+                  {% endblock ResultCardTitle %}
                 </div>
               </div>
               <!-- Actions -->
@@ -156,7 +168,7 @@
                     </ul>
                   </div>
                   {# Reload #}
-                  <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                  <a href="{{ reload_url }}" class="btn d-inline-flex btn-sm btn-primary">
                     <span>
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
@@ -167,7 +179,7 @@
                     </span>
                   </a>
                   {# Save to file #}
-                  <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                  <a href="#" class="btn d-inline-flex btn-sm btn-primary">
                     <span>
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">

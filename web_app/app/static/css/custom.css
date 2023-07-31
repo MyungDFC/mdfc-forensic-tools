@@ -304,9 +304,10 @@ header .image-text .header-text {
 }
 
 /* service table */
+
 #table-page-header {
     padding-right: 2rem;
-    padding-left: 2rem;
+    padding-left: 1.25rem;
 }
 
 #service-header-button .btn {
@@ -321,8 +322,18 @@ header .image-text .header-text {
     height: 45px;
     background-color: white;
     align-items: center;
+    margin-left: 2px;
+    margin-right: 2px;
     --x-btn-border-color: black;
     --x-btn-hover-border-color: white;
+}
+
+#service-table-main #table-header img {
+    height: 100px;
+}
+
+#service-table-main #table-header h6 {
+    line-height: 1.4rem;
 }
 
 .card-header .mx-n1 {
@@ -334,7 +345,7 @@ header .image-text .header-text {
 }
 
 #service-table-main .container-fluid {
-    width: 95%;
+    width: 96%;
 }
 
 #table-card-img {

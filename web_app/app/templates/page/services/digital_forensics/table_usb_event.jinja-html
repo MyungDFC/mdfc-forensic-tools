@@ -5,12 +5,16 @@
 {% endblock ContentImage %}
 
 {% block ResultCardTitle %}
-{{ title }}
+<!-- Title -->
+<h1 class="h2 ls-tight" style="padding">
+  {{ title }}
+</h1>
+<!-- Surtitle -->
+<h6 class="text-sm font-semibold mb-1 text-muted">
+  사용자의 컴퓨터에 연결된 USB 기록을 확인합니다
+  <br>[확인된 기록: 총 {{ total|format_count }} 건]
+</h6>
 {% endblock ResultCardTitle %}
-
-{% block ResultCardSurTitle %}
-사용자의 컴퓨터에에 연결된 USB 기록을 확인합니다
-{% endblock ResultCardSurTitle %}
 
 {% block TableHeader %}
 <th scope="col">이벤트 시간</th>

@@ -1,234 +1,211 @@
-{% extends "base/root.jinja-html" %}
+{% extends "base/service.jinja-html" %}
 
-{% block Title %}
-<title>FCM Desktop | {{ title }}</title>
-{% endblock Title %}
+{% block ServiceLogo %}
+<img alt="..." class="img-fluid rounded-4" src="{{ url_for('static', filename='img/logo/digital_forensics.jpg') }}">
+{% endblock ServiceLogo %}
 
-{% block Content %}
-<div class="h-screen flex-grow-1 d-flex flex-column overflow-y-lg-auto">
-  <!-- Header -->
-  <header class="bg-surface-primary border-bottom py-6">
-    <div class="container-fluid">
-      <div>
-        <div class="row align-items-center">
-          <div class="col-md-6 col-12 d-flex align-items-center mb-5 mb-md-0">
-            <div class="col-auto">
-              <div class="w-20">
-                <img alt="..." class="img-fluid rounded-4"
-                  src="{{ url_for('static', filename='img/logo/digital_forensics.jpg') }}">
-              </div>
-            </div>
-            <div class="ms-5">
-              <!-- Title -->
-              <h1 class="h2 mb-0">디지털 포렌식</h1>
-              <!-- Subtitle -->
-              <p class="text-sm text-muted mt-1">
-                기업의 데이터 유출 및 사용자 활동기록 확인
-              </p>
-            </div>
+{% block ServiceTitle %}
+<a href="{{ url_for('dashboard.digital_forensics') }}">
+  <h1 class="h2 mb-0">디지털 포렌식</h1>
+</a>
+<a href="{{ url_for('dashboard.digital_forensics') }}">
+  <p class="text-sm text-muted mt-1">
+    기업의 데이터 유출 및 사용자 활동기록 확인
+  </p>
+</a>
+{% endblock ServiceTitle %}
+
+{% block ServiceDashboard %}
+<!-- column1: Data Leakage -->
+<div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+  <div class="px-5 mb-6">
+    <span class="badge badge-lg badge-dot text-heading font-semibold">
+      <i class="bg-danger"></i>데이터 유출
+    </span>
+  </div>
+  <div class="flex-1 overflow-y-auto" id="dashboard-col-1">
+    <!-- USB History -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">USB 연결 이벤트</h5>
+            <span class="d-block"></span>
           </div>
         </div>
       </div>
     </div>
-  </header>
-  <!-- Main -->
-  <main class="flex-grow-1 py-6 bg-surface-secondary overflow-auto">
-    <div class="container-fluid h-full">
-      <div class="d-flex h-full mx-n3">
-        <!-- column1: Data Leakage -->
-        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
-          <div class="px-3 mb-6">
-            <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-danger"></i>데이터 유출
-            </span>
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/data_leakage.jpg') }}" />
+            </a>
           </div>
-          <div class="flex-1 overflow-y-auto" id="dashboard-col-1">
-            <!-- USB History -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.usb_event') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/usb_event.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">USB 연결 이벤트</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/data_leakage.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">외부데이터 열람 기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- column2: Internet Usage -->
-        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
-          <div class="px-3 mb-6">
-            <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-warning"></i>인터넷 사용기록
-            </span>
-          </div>
-          <div class="flex-1 overflow-y-auto" id="dashboard-col-2">
-            <!-- Website Visit History -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.internet') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/internet_visit_history.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">웹사이트 방문기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Download Files on the Internet -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.internet') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/internet_download.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">파일 다운로드 기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Internet Search Results -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.internet') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">인터넷 검색 기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- column3: User Activity -->
-        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
-          <div class="px-3 mb-6">
-            <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-success"></i>사용자 활동
-            </span>
-          </div>
-          <div class="flex-1 overflow-y-auto" id="dashboard-col-3">
-            <!-- File Usages -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/file_usage.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">파일 사용기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- User Logon -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.logon_event') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/logon_event.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">컴퓨터 로그온 기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Program Execution -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.prefetch') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">프로그램 실행 기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- column4: File Deletion -->
-        <div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
-          <div class="px-3 mb-6">
-            <span class="badge badge-lg badge-dot text-heading font-semibold">
-              <i class="bg-tertiary"></i>데이터 삭제
-            </span>
-          </div>
-          <div class="flex-1 overflow-y-auto" id="dashboard-col-4">
-            <!-- Deleted Files in Recycle Bin -->
-            <div class="px-5 mb-4">
-              <div class="card shadow border-0">
-                <div class="card border-0 shadow shadow-4-hover">
-                  <div class="p-2">
-                    <a href="{{ url_for('artifact.recyclebin') }}" class="d-block">
-                      <img class="img-fluid rounded-2" alt="..."
-                        src="{{ url_for('static', filename='img/dashboard/recyclebin.jpg') }}" />
-                    </a>
-                  </div>
-                  <div class="px-4 pt-2 pb-4">
-                    <h5 class="font-semibold mb-2">휴지통 분석 기록</h5>
-                    <span class="d-block"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">외부데이터 열람 기록</h5>
+            <span class="d-block"></span>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </div>
-{% endblock Content %}
+<!-- column2: Internet Usage -->
+<div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+  <div class="px-5 mb-6">
+    <span class="badge badge-lg badge-dot text-heading font-semibold">
+      <i class="bg-warning"></i>인터넷 사용기록
+    </span>
+  </div>
+  <div class="flex-1 overflow-y-auto" id="dashboard-col-2">
+    <!-- Website Visit History -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.internet') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/internet_visit_history.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">웹사이트 방문기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Download Files on the Internet -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.internet') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/internet_download.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">파일 다운로드 기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Internet Search Results -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.internet') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">인터넷 검색 기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- column3: User Activity -->
+<div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+  <div class="px-5 mb-6">
+    <span class="badge badge-lg badge-dot text-heading font-semibold">
+      <i class="bg-success"></i>사용자 활동
+    </span>
+  </div>
+  <div class="flex-1 overflow-y-auto" id="dashboard-col-3">
+    <!-- File Usages -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/file_usage.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">파일 열람기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User Logon -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.logon_event') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/logon_event.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">컴퓨터 로그온 기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program Execution -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.prefetch') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/program_execution.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">프로그램 실행 기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- column4: File Deletion -->
+<div class="flex-shrink-0 flex-xl-fill d-flex flex-column w-80 h-full">
+  <div class="px-5 mb-6">
+    <span class="badge badge-lg badge-dot text-heading font-semibold">
+      <i class="bg-tertiary"></i>데이터 삭제
+    </span>
+  </div>
+  <div class="flex-1 overflow-y-auto" id="dashboard-col-4">
+    <!-- Deleted Files in Recycle Bin -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.recyclebin') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/recyclebin.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">휴지통 분석 기록</h5>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock ServiceDashboard %}

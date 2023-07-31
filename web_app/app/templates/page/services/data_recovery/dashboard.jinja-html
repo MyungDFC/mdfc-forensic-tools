@@ -1,0 +1,33 @@
+{% extends "base/service.jinja-html" %}
+
+{% block ServiceLogo %}
+<img alt="..." class="img-fluid rounded-4" src="{{ url_for('static', filename='img/logo/data_recovery.jpg') }}">
+{% endblock ServiceLogo %}
+
+{% block ServiceTitle %}
+<a href="{{ url_for('dashboard.data_recovery') }}">
+  <h1 class="h2 mb-0">데이터 복구</h1>
+</a>
+<a href="{{ url_for('dashboard.data_recovery') }}">
+  <p class="text-sm text-muted mt-1">
+    삭제된 데이터 확인 및 복원
+  </p>
+</a>
+{% endblock ServiceTitle %}
+
+{% block ServiceDashboard %}
+<main class="my-7">
+  <div class="container-xl">
+    <div class="bg-card rounded shadow-sm">
+      <div class="p-5" style="width: 60rem;">
+        <div class="border border-4 border-dashed rounded d-flex flex-column justify-content-center align-items-center"
+          style="min-height: 400px;">
+          <div class="h4 font-semibold text-muted opacity-8">
+            서비스 준비중입니다
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock ServiceDashboard %}

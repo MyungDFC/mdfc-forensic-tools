@@ -5,6 +5,7 @@ import math
 from flask import Blueprint, render_template, request
 from bs4 import BeautifulSoup
 
+from app import cache
 from config import tistory_api_token
 
 bp = Blueprint("blog", __name__, url_prefix="/blog")
@@ -36,6 +37,7 @@ def pagination(records: list[dict], page: int, per_page: int):
     return items_on_page, total, last_page, block_start, block_end
 
 @bp.route("/")
+@cache.cached(timeout=1800)
 def main():
     """
     [blog_info]
@@ -89,7 +91,7 @@ def main():
             
     # Pagination variables
     page = request.args.get('page', default=1, type=int)
-    per_page = request.args.get('per_page', default=6, type=int)
+    per_page = request.args.get('per_page', default=9, type=int)
 
     # Pagination
     items_on_page, total, last_page, block_start, block_end = pagination(posts, page, per_page)

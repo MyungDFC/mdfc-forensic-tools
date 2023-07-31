@@ -1,10 +1,15 @@
-from flask import Flask, render_template
 import os
 import sys
+
+from flask import Flask, render_template
+from flask_caching import Cache
+
+cache = Cache(config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300})
 
 def init_extensions(app: Flask):
     # use .init_app() on your extensions to register them on
     # the Flask instance
+    cache.init_app(app)
     pass
 
 
@@ -40,8 +45,8 @@ def create_app(config_object_name) -> Flask:
 
     with app.app_context():
         # Register Blueprints
-        from .views import home, blog, youtube, people, faq, contact
-        from .views.services import dashboard, digital_forensics
+        from app.views import home, blog, youtube, people, faq, contact
+        from app.views.services import dashboard, digital_forensics
         app.register_blueprint(home.bp)
         app.register_blueprint(dashboard.bp)
         app.register_blueprint(digital_forensics.bp)

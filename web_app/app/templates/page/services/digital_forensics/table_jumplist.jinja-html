@@ -1,5 +1,21 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
+{% block ContentImage %}
+<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/file_usage.jpg') }}">
+{% endblock ContentImage %}
+
+{% block ResultCardTitle %}
+<!-- Title -->
+<h1 class="h2 ls-tight" style="padding">
+  {{ title }}
+</h1>
+<!-- Surtitle -->
+<h6 class="text-sm font-semibold mb-1 text-muted">
+  사용자가 열어본 파일 및 폴더를 확인합니다
+  <br>[확인된 기록: 총 {{ total|format_count }} 건]
+</h6>
+{% endblock ResultCardTitle %}
+
 {% block TableHeader %}
 <th scope="col">마지막 열람시간</th>
 <th scope="col">파일 이름</th>

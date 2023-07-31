@@ -1,0 +1,40 @@
+{% extends "base/root.jinja-html" %}
+
+{% block Title %}
+<title>FCM Desktop | {{ title }}</title>
+{% endblock Title %}
+
+{% block Content %}
+<div class="h-screen flex-grow-1 d-flex flex-column overflow-y-lg-auto" id="main-content">
+  <!-- Header -->
+  <header class="bg-surface-primary border-bottom py-6" style="padding-left: 1.25rem">
+    <div class="container-fluid">
+      <div>
+        <div class="row align-items-center">
+          <div class="col-md-6 col-12 d-flex align-items-center mb-5 mb-md-0">
+            <div class="col-auto">
+              <div class="w-20">
+                {% block ServiceLogo %}
+                {% endblock ServiceLogo %}
+              </div>
+            </div>
+            <div class="ms-5">
+              {% block ServiceTitle %}
+              {% endblock ServiceTitle %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Main -->
+  <main class="flex-grow-1 py-6 bg-surface-secondary overflow-auto" style="margin-bottom: 25px;">
+    <div class="container-fluid h-full">
+      <div class="d-flex h-full">
+        {% block ServiceDashboard %}
+        {% endblock ServiceDashboard %}
+      </div>
+    </div>
+  </main>
+</div>
+{% endblock Content %}
