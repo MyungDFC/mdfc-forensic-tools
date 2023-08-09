@@ -22,7 +22,7 @@ icon_html_pink = "<i class='bg-tertiary'></i>"
 artifact_category = {
     "internet_visits": ArtifactCategory(title="인터넷 사용기록", icon_html=icon_html_yellow),
     "internet_downloads": ArtifactCategory(title="인터넷 사용기록", icon_html=icon_html_yellow),
-    "internet_keywordsearchs": ArtifactCategory(title="인터넷 사용기록", icon_html=icon_html_yellow),
+    "internet_keyword_search_terms": ArtifactCategory(title="인터넷 사용기록", icon_html=icon_html_yellow),
     "logon_event": ArtifactCategory(title="사용자 활동", icon_html=icon_html_green),
     "jumplist": ArtifactCategory(title="사용자 활동", icon_html=icon_html_green),
     "jumplist_external": ArtifactCategory(title="데이터 유출", icon_html=icon_html_red),
@@ -135,7 +135,6 @@ def internet_visits_reload():
     return redirect(url_for("artifact.internet_visits")) 
 
 
-
 ## Internet Downloads
 @bp.route("/internet_downloads", methods=["GET"])
 def internet_downloads():
@@ -189,6 +188,62 @@ def internet_downloads_reload():
     case.export_all()
     
     return redirect(url_for("artifact.internet_downloads")) 
+
+
+## Internet keyword search terms
+@bp.route("/internet_keyword_search_terms", methods=["GET"])
+def internet_keyword_search_terms():
+    title = "인터넷 키워드 검색 목록"
+    artifact_icon_html = """
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-unlock" viewBox="0 0 16 16">
+    <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2zM3 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1H3z"/>
+    </svg>
+    """
+    category = artifact_category.get("internet_keyword_search_terms", None)
+    artifact_page = "artifact.internet_keyword_search_terms"
+    edge_keyword_search_terms_path = Path(session.get("root_directory", None)) / "edge_keyword_search_terms.json"
+    chrome_keyword_search_terms_path = Path(session.get("root_directory", None)) / "chrome_keyword_search_terms.json"
+
+    with open(edge_keyword_search_terms_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    # Pagination variables
+    page = request.args.get('page', 1, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
+
+    # Pagination
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
+
+    return render_template(
+        "page/services/digital_forensics/table_internet_keyword_search_terms.jinja-html",
+        title = title,
+        category=category,
+        artifact_icon_html=artifact_icon_html,
+        artifact_page=artifact_page,
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
+        reload_url=url_for("artifact.internet_keyword_search_terms_reload"),
+    )
+
+@bp.route("/internet_keyword_search_terms/reload", methods=["GET"])
+def internet_keyword_search_terms_reload():
+    artifacts = ["Chrome", "Edge"]
+    root_directory = Path(session.get("root_directory", None))
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.internet_keyword_search_terms")) 
+
 
 
 ## LogonEvent

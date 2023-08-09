@@ -11,18 +11,18 @@
 </h1>
 <!-- Surtitle -->
 <h6 class="text-sm font-semibold mb-1 text-muted">
-  사용자가 인터넷에서 다운로드 받은 파일을 확인합니다
+  사용자가 인터넷에서 검색한 키워드를 확입합니다
   <br>[확인된 기록: 총 {{ total|format_count }} 건]
 </h6>
 {% endblock ResultCardTitle %}
 
 {% block TableHeader %}
-<th scope="col">다운로드 시간</th>
-<th scope="col">파일 이름</th>
-<th scope="col">파일 확장자</th>
-<th scope="col">파일 크기</th>
-<th scope="col">저장 위치</th>
-<th scope="col">다운로드 URL</th>
+<th scope="col">검색 시간</th>
+<th scope="col">검색어</th>
+<th scope="col">웹사이트 제목</th>
+<th scope="col">검색 엔진</th>
+<th scope="col">URL</th>
+<th scope="col">방문 횟수</th>
 <th scope="col">브라우저</th>
 {% endblock TableHeader %}
 
@@ -38,22 +38,22 @@
     </div>
   </td>
   <td>
-    <span>{{ record.get("ts_start", "")|format_datetime }}</span>
+    <span>{{ record.get("ts", "")|format_datetime }}</span>
   </td>
   <td>
-    <span>{{ record.get("file_name", "") }}</span>
+    <span>{{ record.get("term", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("file_extension", "") }}</span>
+    <span>{{ record.get("title", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("received_bytes", "") }}</span>
+    <span>{{ record.get("search_engine", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("download_path", "") }}</span>
+    <span>{{ record.get("url", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("download_url", "") }}</span>
+    <span>{{ record.get("visit_count", "") }}</span>
   </td>
   <td>
     <span>{{ record.get("browser_type", "") }}</span>

@@ -206,7 +206,7 @@
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
           <div class="p-2">
-            <a href="{{ url_for('artifact.internet_visits') }}" class="d-block">
+            <a href="{{ url_for('artifact.internet_keyword_search_terms') }}" class="d-block">
               <img class="img-fluid rounded-2" alt="..."
                 src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}" />
             </a>
@@ -215,7 +215,7 @@
             <h5 class="font-semibold mb-2">인터넷 검색 키워드 목록</h5>
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
-                {{ usb_event_total|format_count }} records
+                {{ internet_keyword_search_terms_total|format_count }} records
               </div>
               <div class="text-xs ms-auto">
                 <div class="dropdown">

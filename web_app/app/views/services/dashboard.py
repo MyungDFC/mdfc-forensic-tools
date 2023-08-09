@@ -29,6 +29,9 @@ def digital_forensics():
     edge_downloads_path = Path(session.get("root_directory", None)) / "edge_downloads.json"
     chrome_downloads_path = Path(session.get("root_directory", None)) / "chrome_downloads.json"
 
+    edge_keyword_search_terms_path = Path(session.get("root_directory", None)) / "edge_keyword_search_terms.json"
+    chrome_keyword_search_terms_path = Path(session.get("root_directory", None)) / "chrome_keyword_search_terms.json"
+
     with open(usb_event_path, "r", encoding="utf-8") as f:
         usb_event_records = json.load(f)
 
@@ -46,14 +49,19 @@ def digital_forensics():
 
     # browser records
     with open(edge_history_path, "r", encoding="utf-8") as f:
-        records = json.load(f)
+        internet_history_records = json.load(f)
 
-    with open(edge_history_path, "r", encoding="utf-8") as f:
-        records = json.load(f)
+    with open(edge_downloads_path, "r", encoding="utf-8") as f:
+        internet_downloads_records = json.load(f)
+
+    with open(edge_keyword_search_terms_path, "r", encoding="utf-8") as f:
+        internet_keyword_search_terms_records = json.load(f)
+
     
     usb_event_total = len(usb_event_records)
-    internet_visits_total = len(records)
-    internet_downloads_total = len(records)
+    internet_visits_total = len(internet_history_records)
+    internet_downloads_total = len(internet_downloads_records)
+    internet_keyword_search_terms_total = len(internet_keyword_search_terms_records)
     logon_event_total = len(logon_event_records)
     jumplist_total = len(jumplist_records)
     prefetch_total = len(prefetch_records)
@@ -64,6 +72,7 @@ def digital_forensics():
         usb_event_total=usb_event_total,
         internet_visits_total=internet_visits_total,
         internet_downloads_total=internet_downloads_total,
+        internet_keyword_search_terms_total=internet_keyword_search_terms_total,
         logon_event_total=logon_event_total,
         jumplist_total=jumplist_total,
         prefetch_total=prefetch_total,
