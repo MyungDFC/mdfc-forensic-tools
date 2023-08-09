@@ -11,7 +11,7 @@
 </h1>
 <!-- Surtitle -->
 <h6 class="text-sm font-semibold mb-1 text-muted">
-  사용자의 컴퓨터에서 삭제된 데이터를 확인합니다
+  사용자가 휴지통에 버린 데이터를 확인합니다
   <br>[확인된 기록: 총 {{ total|format_count }} 건]
 </h6>
 {% endblock ResultCardTitle %}

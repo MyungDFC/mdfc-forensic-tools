@@ -1,3 +1,4 @@
+import re
 import json
 from pathlib import Path
 
@@ -54,6 +55,13 @@ def digital_forensics():
         with open(jumplist_path, "r", encoding="utf-8") as f:
             jumplist_records = json.load(f)
 
+        drive_pattern = r"^[A-Z]:\\"
+
+        file_opening_records = [record for record in jumplist_records if re.match(drive_pattern, record["path"])]
+        file_external_opening_records = [record for record in jumplist_records
+               if re.match(drive_pattern, record["path"]) and record["drive_type"] == "Removable (Floppy, Zip, etc..)"]
+
+
     if prefetch_path.exists():
         with open(prefetch_path, "r", encoding="utf-8") as f:
             prefetch_records = json.load(f)
@@ -67,21 +75,33 @@ def digital_forensics():
         with open(edge_history_path, "r", encoding="utf-8") as f:
             internet_history_records = json.load(f)
 
+    if chrome_history_path.exists():
+        with open(chrome_history_path, "r", encoding="utf-8") as f:
+            internet_history_records.extend(json.load(f))
+
     if edge_downloads_path.exists():
         with open(edge_downloads_path, "r", encoding="utf-8") as f:
             internet_downloads_records = json.load(f)
+
+    if chrome_downloads_path.exists():
+        with open(chrome_downloads_path, "r", encoding="utf-8") as f:
+            internet_downloads_records.extend(json.load(f))
 
     if edge_keyword_search_terms_path.exists():
         with open(edge_keyword_search_terms_path, "r", encoding="utf-8") as f:
             internet_keyword_search_terms_records = json.load(f)
 
+    if chrome_keyword_search_terms_path.exists():
+        with open(chrome_keyword_search_terms_path, "r", encoding="utf-8") as f:
+            internet_keyword_search_terms_records.extend(json.load(f))
     
     usb_event_total = len(usb_event_records)
     internet_visits_total = len(internet_history_records)
     internet_downloads_total = len(internet_downloads_records)
     internet_keyword_search_terms_total = len(internet_keyword_search_terms_records)
     logon_event_total = len(logon_event_records)
-    jumplist_total = len(jumplist_records)
+    file_opening_total = len(file_opening_records)
+    file_external_opening_total = len(file_external_opening_records)
     prefetch_total = len(prefetch_records)
     recyclebin_total = len(recyclebin_records)
 
@@ -92,7 +112,8 @@ def digital_forensics():
         internet_downloads_total=internet_downloads_total,
         internet_keyword_search_terms_total=internet_keyword_search_terms_total,
         logon_event_total=logon_event_total,
-        jumplist_total=jumplist_total,
+        file_opening_total=file_opening_total,
+        file_external_opening_total=file_external_opening_total,
         prefetch_total=prefetch_total,
         recyclebin_total=recyclebin_total,
     )

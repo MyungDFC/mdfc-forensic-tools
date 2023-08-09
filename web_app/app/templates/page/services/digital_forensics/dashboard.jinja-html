@@ -70,7 +70,7 @@
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
           <div class="p-2">
-            <a href="{{ url_for('artifact.jumplist') }}" class="d-block">
+            <a href="{{ url_for('artifact.jumplist_external') }}" class="d-block">
               <img class="img-fluid rounded-2" alt="..."
                 src="{{ url_for('static', filename='img/dashboard/data_leakage.jpg') }}" />
             </a>
@@ -79,7 +79,7 @@
             <h5 class="font-semibold mb-2">외부데이터 열람 기록</h5>
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
-                {{ usb_event_total|format_count }} records
+                {{ file_external_opening_total|format_count }} records
               </div>
               <div class="text-xs ms-auto">
                 <div class="dropdown">
@@ -267,7 +267,7 @@
             <h5 class="font-semibold mb-2">파일/폴더 열람 기록</h5>
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
-                {{ jumplist_total|format_count }} records
+                {{ file_opening_total|format_count }} records
               </div>
               <div class="text-xs ms-auto">
                 <div class="dropdown">
@@ -400,7 +400,7 @@
             </a>
           </div>
           <div class="px-4 pt-2 pb-4">
-            <h5 class="font-semibold mb-2">휴지통 분석 기록</h5>
+            <h5 class="font-semibold mb-2">삭제된 데이터 기록</h5>
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
                 {{ recyclebin_total|format_count }} records
