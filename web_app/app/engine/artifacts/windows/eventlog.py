@@ -68,7 +68,7 @@ class ForensicEvent(ForensicArtifact):
             try:
                 evtx = Evtx(fh=entry.open("rb"))
             except:
-                pass
+                continue
             
             for event in evtx:
                 event_id = event.get("EventID")
@@ -112,7 +112,7 @@ class ForensicEvent(ForensicArtifact):
             try:
                 evtx = Evtx(fh=entry.open("rb"))
             except:
-                pass
+                continue
             
             for event in evtx:
                 if (event_id := event.get("EventID")) == 1006:
@@ -150,7 +150,7 @@ class ForensicEvent(ForensicArtifact):
             try:
                 evtx = Evtx(fh=entry.open("rb"))
             except:
-                pass
+                continue
             
             for event in evtx:
                 event_id = event.get("EventID")

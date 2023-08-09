@@ -14,7 +14,7 @@ def process():
         "RecycleBin",
         "Prefetch",
         "JumpList",
-        "LogonEvent",
+        # "LogonEvent",
         "USB(EventLog)",
         # "WLAN",
     ]
