@@ -336,6 +336,20 @@ header .image-text .header-text {
     line-height: 1.4rem;
 }
 
+#service-table-main .table .text-lg {
+    font-size: .8125rem;
+    white-space: inherit;
+    min-width: 120px;
+    max-width: 200px;
+}
+
+#service-table-main .table td {
+    font-size: .8125rem;
+    white-space: inherit;
+    min-width: 200px;
+    max-width: 800px;
+}
+
 .card-header .mx-n1 {
     align-items: end;
 }
@@ -449,7 +463,7 @@ header .image-text .header-text {
 }
 
 .people-img {
-    height: 200px;
+    height: 240px;
 }
 
 /* faq */

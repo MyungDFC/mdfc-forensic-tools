@@ -18,6 +18,182 @@
     </div>
     <!-- Team -->
     <div class="row g-8">
+      {# Lee HongJae #}
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="card border-0 shadow shadow-4-hover">
+          <img alt="..." class="img-fluid rounded shadow people-img"
+            src="{{ url_for('static', filename='img/people/lee_hongjae.jpg') }}">
+        </div>
+        <div class="mt-5">
+          <!-- Name -->
+          <a href="#" class="h5 d-block mb-1">Lee HongJae</a>
+          <!-- Job Title -->
+          <p class="text-muted text-sm">Digital Forensic Team Director</p>
+          <!-- Social Links -->
+          <div class="mx-n1 mt-3">
+            {# email #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="hjlee@myung.co.kr">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z">
+                </path>
+              </svg>
+            </a>
+            {# facebook #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                </path>
+              </svg>
+            </a>
+            {# instagram #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z">
+                </path>
+                <circle cx="11.994" cy="11.979" r="3.003"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {# Kim Sanguk #}
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="card border-0 shadow shadow-4-hover">
+          <img alt="..." class="img-fluid rounded shadow people-img"
+            src="{{ url_for('static', filename='img/logo/home.png') }}">
+        </div>
+        <div class="mt-5">
+          <!-- Name -->
+          <a href="#" class="h5 d-block mb-1">Kim Sanguk</a>
+          <!-- Job Title -->
+          <p class="text-muted text-sm">R&D Chef Manager</p>
+          <!-- Social Links -->
+          <div class="mx-n1 mt-3">
+            {# email #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="swkim@myung.co.kr">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z">
+                </path>
+              </svg>
+            </a>
+            {# facebook #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                </path>
+              </svg>
+            </a>
+            {# instagram #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z">
+                </path>
+                <circle cx="11.994" cy="11.979" r="3.003"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {# Lee Kiri #}
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="card border-0 shadow shadow-4-hover">
+          <img alt="..." class="img-fluid rounded shadow people-img"
+            src="{{ url_for('static', filename='img/logo/home.png') }}">
+        </div>
+        <div class="mt-5">
+          <!-- Name -->
+          <a href="#" class="h5 d-block mb-1">Lee Kiri</a>
+          <!-- Job Title -->
+          <p class="text-muted text-sm">Data Recovery Senior Engineer</p>
+          <!-- Social Links -->
+          <div class="mx-n1 mt-3">
+            {# email #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="kiry@myung.co.kr">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z">
+                </path>
+              </svg>
+            </a>
+            {# facebook #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                </path>
+              </svg>
+            </a>
+            {# instagram #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z">
+                </path>
+                <circle cx="11.994" cy="11.979" r="3.003"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {# Lee Jongwoo #}
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="card border-0 shadow shadow-4-hover">
+          <img alt="..." class="img-fluid rounded shadow people-img"
+            src="{{ url_for('static', filename='img/logo/home.png') }}">
+        </div>
+        <div class="mt-5">
+          <!-- Name -->
+          <a href="#" class="h5 d-block mb-1">Lee Jongwoo</a>
+          <!-- Job Title -->
+          <p class="text-muted text-sm">Data Recovery Team Leader</p>
+          <!-- Social Links -->
+          <div class="mx-n1 mt-3">
+            {# email #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="jwlee@myung.co.kr">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z">
+                </path>
+              </svg>
+            </a>
+            {# facebook #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                </path>
+              </svg>
+            </a>
+            {# instagram #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z">
+                </path>
+                <circle cx="11.994" cy="11.979" r="3.003"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
       {# Kim Donggeon #}
       <div class="col-lg-3 col-sm-6 mb-5">
         <div class="card border-0 shadow shadow-4-hover">
@@ -106,22 +282,21 @@
           </div>
         </div>
       </div>
-      {# Park Sujin #}
+      {# Hwang Mingi #}
       <div class="col-lg-3 col-sm-6 mb-5">
         <div class="card border-0 shadow shadow-4-hover">
           <img alt="..." class="img-fluid rounded shadow people-img"
-            src="{{ url_for('static', filename='img/people/park_sujin.jpg') }}">
+            src="{{ url_for('static', filename='img/people/hwang_mingi.jpg') }}">
         </div>
         <div class="mt-5">
           <!-- Name -->
-          <a href="#" class="h5 d-block mb-1">Park Sujin</a>
+          <a href="#" class="h5 d-block mb-1">Hwang Mingi</a>
           <!-- Job Title -->
-          <p class="text-muted text-sm">Brand Marketer</p>
+          <p class="text-muted text-sm">Digital Forensic Investigator</p>
           <!-- Social Links -->
           <div class="mx-n1 mt-3">
             {# email #}
-            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
-              href="mailto:sjpark21@myung.co.kr">
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="mghwang@myung.co.kr">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                 <path
@@ -139,8 +314,51 @@
               </svg>
             </a>
             {# instagram #}
-            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
-              href="https://www.instagram.com/smile_sujin_" target="_blank">
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z">
+                </path>
+                <circle cx="11.994" cy="11.979" r="3.003"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {# Han Heesu #}
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="card border-0 shadow shadow-4-hover">
+          <img alt="..." class="img-fluid rounded shadow people-img"
+            src="{{ url_for('static', filename='img/people/han_heesu.jpg') }}">
+        </div>
+        <div class="mt-5">
+          <!-- Name -->
+          <a href="#" class="h5 d-block mb-1">Han Heesu</a>
+          <!-- Job Title -->
+          <p class="text-muted text-sm">Memory Recovery Engineer</p>
+          <!-- Social Links -->
+          <div class="mx-n1 mt-3">
+            {# email #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z">
+                </path>
+              </svg>
+            </a>
+            {# facebook #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                </path>
+              </svg>
+            </a>
+            {# instagram #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                 <path
@@ -188,6 +406,52 @@
             {# instagram #}
             <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
               href="https://www.instagram.com/__.jjooon/" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20.947 8.305a6.53 6.53 0 0 0-.419-2.216 4.61 4.61 0 0 0-2.633-2.633 6.606 6.606 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.606 6.606 0 0 0-2.185.42 4.607 4.607 0 0 0-2.633 2.633 6.554 6.554 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.61 4.61 0 0 0 2.634 2.632 6.584 6.584 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.59 6.59 0 0 0 2.186-.419 4.615 4.615 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709zm-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246zm4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078z">
+                </path>
+                <circle cx="11.994" cy="11.979" r="3.003"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {# Park Sujin #}
+      <div class="col-lg-3 col-sm-6 mb-5">
+        <div class="card border-0 shadow shadow-4-hover">
+          <img alt="..." class="img-fluid rounded shadow people-img"
+            src="{{ url_for('static', filename='img/people/park_sujin.jpg') }}">
+        </div>
+        <div class="mt-5">
+          <!-- Name -->
+          <a href="#" class="h5 d-block mb-1">Park Sujin</a>
+          <!-- Job Title -->
+          <p class="text-muted text-sm">Brand Marketer</p>
+          <!-- Social Links -->
+          <div class="mx-n1 mt-3">
+            {# email #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
+              href="mailto:sjpark21@myung.co.kr">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z">
+                </path>
+              </svg>
+            </a>
+            {# facebook #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path
+                  d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                </path>
+              </svg>
+            </a>
+            {# instagram #}
+            <a class="btn btn-xs btn-square btn-secondary text-sm rounded-circle mx-1"
+              href="https://www.instagram.com/smile_sujin_" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                 style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
                 <path

@@ -21,6 +21,8 @@
 <th scope="col">파일 이름</th>
 <th scope="col">확장자</th>
 <th scope="col">파일 크기</th>
+<th scope="col">볼륨 이름</th>
+<th scope="col">볼륨 일련번호</th>
 <th scope="col">파일 경로</th>
 {% endblock TableHeader %}
 
@@ -46,6 +48,12 @@
   </td>
   <td>
     <span>{{ record.get("filesize", "") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("volume_label", "") }}</span>
+  </td>
+  <td>
+    <span>{{ record.get("volume_serial_number", "") }}</span>
   </td>
   <td>
     <span>{{ record.get("path", "") }}</span>

@@ -21,6 +21,7 @@ def digital_forensics():
     logon_event_path = root_directory / "logon_event.json"
     jumplist_path = root_directory / "jumplist.json"
     prefetch_path = root_directory / "prefetch.json"
+    wlan_event_path = root_directory / "wlan_event.json"
     recyclebin_path = root_directory / "recyclebin.json"
 
     # browser records
@@ -51,6 +52,10 @@ def digital_forensics():
         with open(logon_event_path, "r", encoding="utf-8") as f:
             logon_event_records = json.load(f)
 
+    if wlan_event_path.exists():
+        with open(wlan_event_path, "r", encoding="utf-8") as f:
+            wlan_event_records = json.load(f)
+
     if jumplist_path.exists(): 
         with open(jumplist_path, "r", encoding="utf-8") as f:
             jumplist_records = json.load(f)
@@ -60,7 +65,6 @@ def digital_forensics():
         file_opening_records = [record for record in jumplist_records if re.match(drive_pattern, record["path"])]
         file_external_opening_records = [record for record in jumplist_records
                if re.match(drive_pattern, record["path"]) and record["drive_type"] == "Removable (Floppy, Zip, etc..)"]
-
 
     if prefetch_path.exists():
         with open(prefetch_path, "r", encoding="utf-8") as f:
@@ -100,6 +104,7 @@ def digital_forensics():
     internet_downloads_total = len(internet_downloads_records)
     internet_keyword_search_terms_total = len(internet_keyword_search_terms_records)
     logon_event_total = len(logon_event_records)
+    wlan_event_total = len(wlan_event_records)
     file_opening_total = len(file_opening_records)
     file_external_opening_total = len(file_external_opening_records)
     prefetch_total = len(prefetch_records)
@@ -112,6 +117,7 @@ def digital_forensics():
         internet_downloads_total=internet_downloads_total,
         internet_keyword_search_terms_total=internet_keyword_search_terms_total,
         logon_event_total=logon_event_total,
+        wlan_event_total=wlan_event_total,
         file_opening_total=file_opening_total,
         file_external_opening_total=file_external_opening_total,
         prefetch_total=prefetch_total,

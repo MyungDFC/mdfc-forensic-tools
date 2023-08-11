@@ -593,19 +593,55 @@ def prefetch_reload():
 
 @bp.route("/wlan_event", methods=["GET"])
 def wlan_event():
-    title = "Wi-Fi History"
+    title = "무선 인터넷(Wifi) 사용기록"
+    artifact_icon_html = """
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-router" viewBox="0 0 16 16">
+    <path d="M5.525 3.025a3.5 3.5 0 0 1 4.95 0 .5.5 0 1 0 .707-.707 4.5 4.5 0 0 0-6.364 0 .5.5 0 0 0 .707.707Z"/>
+    <path d="M6.94 4.44a1.5 1.5 0 0 1 2.12 0 .5.5 0 0 0 .708-.708 2.5 2.5 0 0 0-3.536 0 .5.5 0 0 0 .707.707ZM2.5 11a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Zm4.5-.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2.5.5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Zm1.5-.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Z"/>
+    <path d="M2.974 2.342a.5.5 0 1 0-.948.316L3.806 8H1.5A1.5 1.5 0 0 0 0 9.5v2A1.5 1.5 0 0 0 1.5 13H2a.5.5 0 0 0 .5.5h2A.5.5 0 0 0 5 13h6a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5h.5a1.5 1.5 0 0 0 1.5-1.5v-2A1.5 1.5 0 0 0 14.5 8h-2.306l1.78-5.342a.5.5 0 1 0-.948-.316L11.14 8H4.86L2.974 2.342ZM14.5 9a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h13Z"/>
+    <path d="M8.5 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
+    </svg>
     """
-        'records' variable is list of str(json), which is a result of 'json.dumps()'.
-        So, you have to convert it to list of dict(json) using 'json.loads'.
-    """
-    records = [
-        json.loads(record)
-        for record in session.get("wlan_event", "{}")
-    ]
+    category = artifact_category.get("wlan_event", None)
+    artifact_page = "artifact.wlan_event"
+    artifact_path = Path(session.get("root_directory", None)) / "wlan_event.json"
+
+    with open(artifact_path, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    # Pagination variables
+    page = request.args.get('page', default=1, type=int)
+    per_page = request.args.get('per_page', default=50, type=int)
+
+    # Pagination
+    items_on_page, total, last_page, block_start, block_end = pagination(records, page, per_page)
 
     return render_template(
-        "page/dashboard/table_wlan_event.jinja-html",
+        "page/services/digital_forensics/table_wlan_event.jinja-html",
         title = title,
-        records=records
+        category=category,
+        artifact_icon_html=artifact_icon_html,
+        artifact_page=artifact_page,
+        records=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total,
+        last_page=last_page,
+        block_start=block_start,
+        block_end=block_end,
+        reload_url=url_for("artifact.wlan_event_reload"),
     )
 
+@bp.route("/wlan_event/reload", methods=["GET"])
+def wlan_event_reload():
+    artifacts = ["WLAN",]
+    root_directory = Path(session.get("root_directory", None))
+    
+    case = CaseManager(
+        _artifacts=artifacts,
+        root_directory=root_directory
+    )
+    case.parse_all()
+    case.export_all()
+    
+    return redirect(url_for("artifact.wlan_event"))

@@ -1,7 +1,7 @@
 {% extends "base/digital_forensics/table.jinja-html" %}
 
 {% block ContentImage %}
-<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/internet_search.jpg') }}">
+<img alt="..." class="img-fluid rounded" src="{{ url_for('static', filename='img/dashboard/wlan_event.jpg') }}">
 {% endblock ContentImage %}
 
 {% block ResultCardTitle %}
@@ -11,19 +11,17 @@
 </h1>
 <!-- Surtitle -->
 <h6 class="text-sm font-semibold mb-1 text-muted">
-  사용자가 인터넷에서 검색한 키워드를 확인합니다
+  사용자 시스템에 연결된 무선인터넷 정보를 확인합니다
   <br>[확인된 기록: 총 {{ total|format_count }} 건]
 </h6>
 {% endblock ResultCardTitle %}
 
 {% block TableHeader %}
-<th scope="col">검색 시간</th>
-<th scope="col">검색어</th>
-<th scope="col">웹사이트 제목</th>
-<th scope="col">검색 엔진</th>
-<th scope="col">URL</th>
-<th scope="col">방문 횟수</th>
-<th scope="col">브라우저</th>
+<th scope="col">이벤트 시간</th>
+<th scope="col">이벤트 유형</th>
+<th scope="col">프로필 이름</th>
+<th scope="col">SSID</th>
+<th scope="col">인터페이스 GUID</th>
 {% endblock TableHeader %}
 
 {% block TableBody %}
@@ -41,24 +39,17 @@
     <span>{{ record.get("ts", "")|format_datetime }}</span>
   </td>
   <td>
-    <span>{{ record.get("term", "") }}</span>
+    <span>{{ record.get("task", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("title", "") }}</span>
+    <span>{{ record.get("profile_name", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("search_engine", "") }}</span>
+    <span>{{ record.get("ssid", "") }}</span>
   </td>
   <td>
-    <span>{{ record.get("url", "") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("visit_count", "") }}</span>
-  </td>
-  <td>
-    <span>{{ record.get("browser_type", "") }}</span>
+    <span>{{ record.get("interface_guid", "") }}</span>
   </td>
 </tr>
-
 {% endfor %}
 {% endblock TableBody %}

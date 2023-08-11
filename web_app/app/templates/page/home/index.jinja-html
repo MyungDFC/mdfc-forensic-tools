@@ -63,7 +63,7 @@
             <div class="card shadow-none border-0">
               <div class="card-body">
                 <h2 class="font-weight-bold text-center mb-0">
-                  40,000+
+                  40만 명+
                 </h2>
                 <p class="text-center text-muted mb-0">
                   우리가 만난 고객
@@ -73,30 +73,30 @@
             <div class="card shadow-none border-0">
               <div class="card-body">
                 <h2 class="font-weight-bold text-center mb-0">
-                  2,500.000+
+                  50만 개+
                 </h2>
                 <p class="text-center text-muted mb-0">
-                  우리가 살린 데이터
+                  우리가 살린 저장장치
                 </p>
               </div>
             </div>
             <div class="card shadow-none border-0">
               <div class="card-body">
                 <h2 class="font-weight-bold text-center mb-0">
-                  99.99%
+                  1000억 원+
                 </h2>
                 <p class="text-center text-muted mb-0">
-                  되살아난 데이터 용량
+                  되살린 데이터의 가치
                 </p>
               </div>
             </div>
             <div class="card shadow-none border-0">
               <div class="card-body">
                 <h2 class="font-weight-bold text-center mb-0">
-                  97%
+                  29만 시간+
                 </h2>
                 <p class="text-center text-muted mb-0">
-                  복구 성공률
+                  우리가 걸어온 시간
                 </p>
               </div>
             </div>
@@ -238,8 +238,8 @@
             <img alt="..." class="rounded shadow" src="{{ url_for('static', filename='img/home/ceo.jpg') }}">
           </div>
           <p class="text-xl text-heading lh-relaxed">
-            (주)명정보기술은 데이터 재난에 맞서 국내외 50만건 이상의 데이터를 복구해 오고 있습니다.<br>데이터에는 기업/사람의 모든
-            희로애락이 담겨 있습니다.<br>우리 (주)명정보기술은 데이터에 담긴 귀하의 소중한 추억을 지켜드립니다.
+            (주)명정보기술은 데이터 재난에 맞서 국내외<br>50만건 이상의 데이터를 복구해 오고 있습니다.<br>데이터에는 기업/사람의 모든
+            희로애락이 담겨 있습니다.<br>우리 (주)명정보기술은 데이터에 담긴<br>귀하의 소중한 추억을 지켜드립니다.
           </p>
           <!-- CEO signature -->
           <div class="d-inline-block w-32 svg-fluid mt-16 mb-6">
@@ -261,32 +261,11 @@
           <img src="{{ url_for('static', filename='img/logo/myung_logo.png') }}" class="h-10" alt="...">
         </div>
       </div>
-      <div class="row mt-10 mb-7">
-        <div class="col">
-          <ul class="nav justify-content-center">
-            <li class="nav-item">
-              <a href="#" class="nav-link text-lg">Demos</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-lg">Pages</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-lg">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-lg">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-lg">Elements</a>
-            </li>
-          </ul>
-        </div>
-      </div>
       <div class="row justify-content-center my-7">
         <div class="col-auto">
           <ul class="nav">
             <li class="nav-item">
-              <a href="#" class="nav-link text-lg text-muted">
+              <a href="https://github.com/changjoon-park" class="nav-link text-lg text-muted">
                 <figure>
                   <svg width="1em" height="1em" aria-hidden="true" focusable="false" data-prefix="fab"
                     data-icon="github" class="svg-inline--fa fa-github fa-w-16" role="img"
@@ -356,7 +335,9 @@
       <div class="row justify-content-center text-center">
         <div class="col-xl-9">
           <p class="text-sm text-muted opacity-8">
-            &copy; Copyright 2021 Webpixels - Build like a PRO with Purpose UI. Plan, build and launch beautiful and
+            &copy; Copyright 2023 Myung Infotech - Investigate a digital forensic artifact like a professional with MDFC
+            Tool. Plan, build and launch beautiful
+            and
             consistent user interfaces for the web that drives meaningful engagement and growth for your brand.
           </p>
         </div>

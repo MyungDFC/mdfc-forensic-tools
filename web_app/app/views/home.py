@@ -16,7 +16,7 @@ def process():
         "JumpList",
         # "LogonEvent",
         "USB(EventLog)",
-        # "WLAN",
+        "WLAN",
     ]
 
     ROOT_DIRECTORY_NAME = "_myungit"

@@ -296,6 +296,8 @@
       </div>
     </div>
     <!-- User Logon -->
+    {# TODO: Performance Issue #}
+    <!-- 
     <div class="px-5 mb-4">
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
@@ -337,7 +339,10 @@
         </div>
       </div>
     </div>
+    -->
     <!-- Program Execution -->
+    {# TODO: Authority Issue #}
+    <!-- 
     <div class="px-5 mb-4">
       <div class="card shadow border-0">
         <div class="card border-0 shadow shadow-4-hover">
@@ -352,6 +357,49 @@
             <div class="d-flex align-items-center">
               <div class="text-xs text-muted">
                 {{ prefetch_total|format_count }} records
+              </div>
+              <div class="text-xs ms-auto">
+                <div class="dropdown">
+                  <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-three-dots"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+                    </svg>
+                  </a>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" id="reload-btn-recyclebin">
+                      Reload
+                    </button>
+                    <a href=" #!" class="dropdown-item">
+                      Export to CSV
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="d-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    <!-- WLAN Event -->
+    <div class="px-5 mb-4">
+      <div class="card shadow border-0">
+        <div class="card border-0 shadow shadow-4-hover">
+          <div class="p-2">
+            <a href="{{ url_for('artifact.wlan_event') }}" class="d-block">
+              <img class="img-fluid rounded-2" alt="..."
+                src="{{ url_for('static', filename='img/dashboard/wlan_event.jpg') }}" />
+            </a>
+          </div>
+          <div class="px-4 pt-2 pb-4">
+            <h5 class="font-semibold mb-2">무선 인터넷(Wifi) 사용기록</h5>
+            <div class="d-flex align-items-center">
+              <div class="text-xs text-muted">
+                {{ wlan_event_total|format_count }} records
               </div>
               <div class="text-xs ms-auto">
                 <div class="dropdown">

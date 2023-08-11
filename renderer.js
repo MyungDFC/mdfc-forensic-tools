@@ -100,7 +100,7 @@ const createMainWindow = () => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: true,
+      // devTools: true,
     }
   });
 
@@ -159,14 +159,17 @@ const createMainWindow = () => {
 app.on("ready", function () {
   // start the backend server
   startPythonSubprocess();
-  createLoadingScreen()
-  setTimeout(() => {
-    if (loadingScreen) {
-      loadingScreen.close()
-    }
-    createMainWindow()
-    mainWindow.show()
-  }, 1000);
+  // createLoadingScreen()
+  createMainWindow()
+  mainWindow.show()
+
+  // setTimeout(() => {
+  //   if (loadingScreen) {
+  //     loadingScreen.close()
+  //   }
+  //   createMainWindow()
+  //   mainWindow.show()
+  // }, 1000);
 });
 
 // disable menu

@@ -262,4 +262,4 @@ class Prefetch(ForensicArtifact):
                     "previousruns": previousruns,
                 }
             except:
-                pass
+                continue
